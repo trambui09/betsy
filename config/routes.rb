@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :order_items, only: [:delete, :update]
   resources :orders
   resources :categories
+
+  get '/auth/github', as: "github_login"
 end
