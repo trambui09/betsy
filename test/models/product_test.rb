@@ -102,7 +102,7 @@ describe Product do
       end
 
       expect(new_product.categories.count).must_equal start_count + 3
-      
+
     end
     #
     # it "has many orders through order_items" do
