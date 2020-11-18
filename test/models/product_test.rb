@@ -91,6 +91,7 @@ describe Product do
     it "has many categories" do
       new_product.save
       start_count = new_product.categories.count
+
       categories = [categories(:decor),categories(:food), categories(:gifts)]
       categories.each do |category|
         new_product.categories << category
@@ -100,8 +101,8 @@ describe Product do
         expect(category).must_be_instance_of Category
       end
 
-
-
+      expect(new_product.categories.count).must_equal start_count + 3
+      
     end
     #
     # it "has many orders through order_items" do
