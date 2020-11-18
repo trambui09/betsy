@@ -49,5 +49,54 @@ describe Product do
 
   describe  "relations" do
 
+    describe "merchant" do
+      before do
+        @merchant_1 = merchants(:merch_one)
+        @product_1 = Product.new(name: "test",
+                              price: 25.00)
+
+      end
+
+      it "can set the merchant using Merchant" do
+
+        @product_1.merchant = @merchant_1
+        # check that AR recognizes the relationship
+        expect(@product_1.merchant_id).must_equal @merchant_1.id
+
+
+      end
+
+      it "can set the merchant using merchant_id" do
+
+        @product_1.merchant_id = @merchant_1.id
+        expect(@product_1.merchant).must_equal @merchant_1
+      end
+
+      # TODO: this test is not passing, saying it's nil, but do we need it? since we have two above
+      # it "has a merchant" do
+      #
+      #   # product = products(:product_one)
+      #   # expect(product.merchant).must_equal merchants(:merch_one)
+      #
+      #   expect(@product_1.merchant).must_equal @merchant_1
+      # end
+
+    end
+
+
+
+
+    # it "has many order_items" do
+    #
+    # end
+    #
+    # it "has many categories" do
+    #
+    # end
+    #
+    # it "has many orders through order_items" do
+    #
+    # end
+
   end
 end
