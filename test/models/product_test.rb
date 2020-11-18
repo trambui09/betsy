@@ -73,19 +73,17 @@ describe Product do
       end
 
       # TODO: this test is not passing, saying it's nil, but do we need it? since we have two above
-      # it "has a merchant" do
+      # it "belongs to  a merchant" do
       #
       #   # product = products(:product_one)
       #   # expect(product.merchant).must_equal merchants(:merch_one)
       #
-      #   expect(@product_1.merchant).must_equal @merchant_1
+      #   # expect(@product_1.merchant.valid?).must_equal true
+      #   expect(@product_1.merchant).must_be_instance_of Merchant
       # end
 
     end
-
-
-
-
+    
     # it "has many order_items" do
     #
     # end
