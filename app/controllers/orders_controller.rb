@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @order = Order. all
+    @order = Order.all
   end
 
   def show
@@ -8,13 +8,14 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
+    @order = Order.new(status: "pending")
   end
 
   def create
     @order = Order.new(order_params)
 
     if @order.save
+      @order.status = "paid"
       flash[:success] = "Successfully created Order ##{@order.id}"
       redirect_to order_path(@order.id)
       return
@@ -27,6 +28,7 @@ class OrdersController < ApplicationController
   def destroy
     if @order
       @order.destroy
+      @order.status = "cancelled"
       flash[:success] = "Successfully cancelled Order ##{@order.id}"
       redirect_to root_path
       return
