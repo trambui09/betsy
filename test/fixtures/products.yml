@@ -1,0 +1,22 @@
+product_one:
+  name: "tree"
+  price: 100.00
+  merchant_id : merch_one
+
+product_two:
+  name: "lights"
+  price: 23.00
+  merchant_id : merch_two
+
+product_three:
+  name: "sugar cookies"
+  price: 5.00
+  merchant_id : merch_three
+
+product_four:
+  name: "ornament"
+  price: 7.50
+  merchant_id : merch_four
+
+
+
