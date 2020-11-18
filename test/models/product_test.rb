@@ -28,6 +28,20 @@ describe Product do
 
   describe "validations" do
     it "must have a name" do
+      new_product.name = nil
+
+      expect(new_product.valid?).must_equal false
+      expect(new_product.errors.messages).must_include :name
+      expect(new_product.errors.messages[:name]).must_equal ["can't be blank"]
+
+    end
+
+    it "must have a price that's a number greater than 0" do
+      new_product.price = -5.00
+
+      expect(new_product.valid?).must_equal false
+      expect(new_product.errors.messages).must_include :price
+      expect(new_product.errors.messages[:price]).must_equal ["price must be greater than 0"]
 
     end
 
