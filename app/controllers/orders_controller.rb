@@ -1,11 +1,10 @@
 class OrdersController < ApplicationController
+  def index
+    @order = Order. all
+  end
+
   def show
     @order = Order.find_by(id: params[:id])
-
-    if @order.nil?
-      redirect_to orders_path
-      return
-    end
   end
 
   def new
@@ -22,6 +21,17 @@ class OrdersController < ApplicationController
     else
       flash.now[:danger] = "Failed to create order"
       render :new, status: :bad_request
+    end
+  end
+
+  def destroy
+    if @order
+      @order.destroy
+      flash[:success] = "Successfully cancelled Order ##{@order.id}"
+      redirect_to root_path
+      return
+    else
+      head :not_found
       return
     end
   end
@@ -31,3 +41,4 @@ class OrdersController < ApplicationController
     return params.require(:order).permit(:status, :name, :address, :email, :credit_card_num, :exp_date, :cvv, :zip_code)
   end
 end
+

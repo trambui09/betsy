@@ -7,5 +7,3 @@ class Order < ApplicationRecord
   validates :cvv, length: { is: 3 }
   validates :credit_card_num, length: { is: 16 }
 end
-
-
