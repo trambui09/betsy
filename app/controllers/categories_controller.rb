@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     # @category.name = "food"
     if @category.save
-      flash[:success] = "Succesfully created #{@category.name}"
+      flash[:success] = "Succesfully created #{@category.name} category"
       redirect_to category_path(@category.id)
     else
       @category.errors.each do |column, message|
