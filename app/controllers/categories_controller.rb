@@ -16,6 +16,17 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
+  def create
+    @category = Category.new(category_params)
+    @category.name = "food"
+    if @category.save
+      redirect_to category_path(@category.id)
+    else
+      render :new
+      return
+    end
+  end
+
   def edit
     @category = Category.find_by(id: params[:id])
     if @category.nil?
