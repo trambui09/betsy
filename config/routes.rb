@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources :merchants
   resources :order_items, only: [:delete, :update]
   resources :orders
-  resources :categories
+  resources :categories do
+    resources :products, only: [:index]
+  end
 end

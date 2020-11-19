@@ -3,8 +3,26 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    if params[:category_id]
+      category = Category.find_by(id: params[:category_id])
+      @products = category.products
+    else
+      @products = Product.all
+    end
+
   end
+
+  # def index
+  #   if params[:author_id]
+  #     # This is the nested route, /author/:author_id/books
+  #     author = Author.find_by(id: params[:author_id])
+  #     @books = author.books
+  #
+  #   else
+  #     # This is the 'regular' route, /books
+  #     @books = Book.all
+  #   end
+  # end
 
   def show
     # @product = Product.find_by(id: params[:id])
