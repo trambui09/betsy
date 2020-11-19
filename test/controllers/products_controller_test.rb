@@ -65,7 +65,25 @@ describe ProductsController do
     end
   end
 
-  describe ""
+  describe "edit" do
+    it "can get to the product edit page" do
+      get edit_product_path(@product.id)
+
+      must_respond_with :success
+
+    end
+
+    it "will return not_found if product id is invalid" do
+      get edit_product_path(-1)
+
+      must_respond_with :not_found
+    end
+
+  end
+
+  describe "update" do
+
+  end
 
 
   describe "destroy" do
