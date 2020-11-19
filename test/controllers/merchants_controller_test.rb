@@ -1,7 +1,48 @@
 require "test_helper"
 
 describe MerchantsController do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  describe "auth_callback" do
+    it "logs in an existing merchant and redirects to the root route" do
+      # Count the merchants, to make sure we're not (for example) creating
+      # a new merchant every time we get a login request
+      start_count = Merchant.count
+
+      # Get a merchant from the fixtures
+      merchant = merchants(:santa)
+
+      perform_login(merchant)
+
+      # Send a login request for that user
+      # Note that we're using the named path for the callback, as defined
+      # in the `as:` clause in `config/routes.rb`
+      get auth_callback_path(:github)
+
+      must_redirect_to root_path
+
+      # Since we can read the session, check that the merchant ID was set as expected
+      session[:merchant_id].must_equal merchant.id
+
+      # Should *not* have created a new merchant
+      Merchant.count.must_equal start_count
+    end
+
+    it "creates an account for a new merchant and redirects to the root route" do
+      start_count = Merchant.count
+      merchant = Merchant.new(provider: "github", uid: 99999, name: "test_merchant", email: "test@merchant.com")
+
+      perform_login(merchant)
+      get auth_callback_path(:github)
+
+      must_redirect_to root_path
+
+      # Should have created a new merchant
+      Merchant.count.must_equal start_count + 1
+
+      # The new merchant's ID should be set in the session
+      session[:merchant_id].must_equal Merchant.last.id
+    end
+
+    it "redirects to the login route if given invalid merchant data" do
+    end
+  end
 end
