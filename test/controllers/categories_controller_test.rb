@@ -48,6 +48,14 @@ describe CategoriesController do
     end
   end
 
+  describe "new" do
+    it "responds with success" do
+      get new_category_path
+
+      must_respond_with :success
+    end
+  end
+
   describe "edit" do
     before do
       @category_1 = Category.create(name: "food")
