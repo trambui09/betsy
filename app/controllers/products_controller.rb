@@ -1,11 +1,27 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
-  # skip_before_action :require_login, only: [:index]
-  # before_action :current_merchant, only: [:index]
 
   def index
-    @products = Product.all
+    if params[:category_id]
+      category = Category.find_by(id: params[:category_id])
+      @products = category.products
+    else
+      @products = Product.all
+    end
+
   end
+
+  # def index
+  #   if params[:author_id]
+  #     # This is the nested route, /author/:author_id/books
+  #     author = Author.find_by(id: params[:author_id])
+  #     @books = author.books
+  #
+  #   else
+  #     # This is the 'regular' route, /books
+  #     @books = Book.all
+  #   end
+  # end
 
   def show
     # @product = Product.find_by(id: params[:id])
@@ -92,7 +108,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    return params.require(:product).permit(:name, :price, :description, :photo_url, :inventory_stock, :merchant_id)
+    return params.require(:product).permit(:name, :price, :description, :photo_url, :inventory_stock, :merchant_id, category_ids: [])
   end
 
   def find_product
