@@ -1,12 +1,23 @@
 class ProductsController < ApplicationController
 
+  before_action :find_product, only: [:show, :edit, :update, :destroy]
   def index
     @products = Product.all
+  end
+
+  def show
+    # @product = Product.find_by(id: params[:id])
+
+    if @product.nil?
+      head :not_found
+      return
+    end
   end
 
   def new
     @product = Product.new
   end
+
 
   def create
     merchant = if params[:merchant_id]
@@ -31,9 +42,37 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+
+    if @product.nil?
+      head :not_found
+      return
+    end
+  end
+
+  def update
+
+    if @product.nil?
+      head :not_found
+      return
+    elsif @product.update(product_params)
+      flash[:success] = "Succesfully updated #{@product.name}"
+      redirect_to product_path(@product)
+    else # save failed
+      @product.errors.each do |column, message|
+        flash.now[:error] = "A problem occurred: Could not #{action_name} #{@product.name} #{column}: #{message}"
+      end
+
+      render :edit, status: :bad_request
+      return
+
+    end
+
+  end
+
   def destroy
-    product_id = params[:id]
-    @product = Product.find_by(id: product_id)
+    # product_id = params[:id]
+    # @product = Product.find_by(id: product_id)
 
     if @product
       @product.destroy
@@ -52,5 +91,9 @@ class ProductsController < ApplicationController
 
   def product_params
     return params.require(:product).permit(:name, :price, :description, :photo_url, :inventory_stock, :merchant_id)
+  end
+
+  def find_product
+    @product = Product.find_by(id: params[:id])
   end
 end

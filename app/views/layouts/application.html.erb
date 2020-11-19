@@ -10,6 +10,27 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <h1>HolyHolly</h1>
+      <nav>
+        <ul>
+          <li>
+            <%= link_to "Products", products_path %>
+          </li>
+          <li>
+            <%= link_to "Merchants", merchants_path %>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+
+    </footer>
+
   </body>
 </html>
