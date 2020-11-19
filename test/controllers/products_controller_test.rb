@@ -9,6 +9,19 @@ describe ProductsController do
     end
   end
 
+  describe "show" do
+    it "can get to the product show page" do
+
+    end
+
+    it "will show not_found when given an invalid product id " do
+      get product_path(-1)
+
+      must_respond_with :not_found
+    end
+
+  end
+
   describe 'new' do
     it 'can get the new product path' do
       get new_product_path
@@ -45,6 +58,7 @@ describe ProductsController do
 
     end
   end
+
 
   describe "destroy" do
     before do
