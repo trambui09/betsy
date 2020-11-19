@@ -22,7 +22,7 @@ class MerchantsController < ApplicationController
     merchant = Merchant.new
     merchant.uid = auth_hash[:uid]
     merchant.provider = "github"
-    merchant.username = auth_hash["info"]["name"]
+    merchant.username = auth_hash["info"]["username"]
     merchant.email = auth_hash["info"]["email"]
 
     # Note that the user has not been saved.

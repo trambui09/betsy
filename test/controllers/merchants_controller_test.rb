@@ -28,7 +28,7 @@ describe MerchantsController do
 
     it "creates an account for a new merchant and redirects to the root route" do
       start_count = Merchant.count
-      merchant = Merchant.new(provider: "github", uid: 99999, name: "test_merchant", email: "test@merchant.com")
+      merchant = Merchant.new(provider: "github", uid: 99999, username: "test_merchant", email: "test@merchant.com")
 
       perform_login(merchant)
       get auth_callback_path(:github)
@@ -43,6 +43,7 @@ describe MerchantsController do
     end
 
     it "redirects to the login route if given invalid merchant data" do
+
     end
   end
 end

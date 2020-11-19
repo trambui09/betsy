@@ -2,12 +2,12 @@ rudolph:
   provider: github
   uid: 1939
   email: rednose@gmail.com
-  name: most_famous_reindeer
+  username: most_famous_reindeer
 
 santa:
   provider: github
   uid: 1225
   email: santa@northpole.net
-  name: hohoho
+  username: hohoho
 
 

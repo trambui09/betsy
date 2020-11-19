@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "merchants#create", as: "auth_callback"
   delete "/logout", to: "merchants#destroy", as: "logout"
 
-  # root to: 'homepages#index'
-  #
+  root to: 'homepages#index'
+
   # resources :products
   # resources :merchants
   # resources :order_items, only: [:delete, :update]
