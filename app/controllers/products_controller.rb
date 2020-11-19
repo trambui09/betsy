@@ -44,9 +44,29 @@ class ProductsController < ApplicationController
 
   def edit
 
+    if @product.nil?
+      head :not_found
+      return
+    end
   end
 
   def update
+
+    if @product.nil?
+      head :not_found
+      return
+    elsif @product.update(product_params)
+      flash[:success] = "Succesfully updated #{@product.name}"
+      redirect_to product_path(@product)
+    else # save failed
+      @product.errors.each do |column, message|
+        flash.now[:error] = "A problem occurred: Could not #{action_name} #{@product.name} #{column}: #{message}"
+      end
+
+      render :edit, status: :bad_request
+      return
+
+    end
 
   end
 
