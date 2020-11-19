@@ -65,7 +65,7 @@ describe ProductsController do
 
     end
   end
-  
+
   describe "edit" do
     it "can get to the product edit page" do
       get edit_product_path(@product.id)
@@ -135,8 +135,6 @@ describe ProductsController do
 
   end
 
-
->>>>>>> master
   describe "destroy" do
     before do
       merchant = Merchant.create(username: "test merchant", email: "test@test.com")
