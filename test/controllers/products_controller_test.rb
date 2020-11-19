@@ -82,48 +82,58 @@ describe ProductsController do
 
   end
 
-  # describe "update" do
-  #
-  #   let (:new_product_hash) {
-  #     {
-  #         product: {
-  #             name: "testing name name",
-  #             price: 25.50,
-  #             description: "testing description",
-  #             inventory_stock: 5,
-  #             photo_url: "github.com",
-  #             merchant_id: @merchant_1.id
-  #         }
-  #     }
-  #   }
-  #
-  #   it "can update an existing work" do
-  #     product = products(:product_two)
-  #
-  #     expect {
-  #       patch product_path(product.id), params: new_product_hash
-  #     }.wont_differ "Product.count"
-  #
-  #     must_redirect_to product_path(product.id)
-  #
-  #     product = Product.find_by(id: product.id)
-  #     expect(product.name).must_equal new_product_hash[:product][:name]
-  #   end
-  #
-  #   it "would show not_found given an invalid id" do
-  #     expect {
-  #       patch product_path(-1), params: new_product_hash
-  #     }.wont_differ "Product.count"
-  #
-  #     must_respond_with :not_found
-  #   end
-  #
-  #   it " will not update if the params is invalid" do
-  #
-  #
-  #   end
-  #
-  # end
+  describe "update" do
+
+    let (:new_product_hash) {
+      {
+          product: {
+              name: "testing name name",
+              price: 25.50,
+              description: "testing description",
+              inventory_stock: 5,
+              photo_url: "github.com",
+              merchant_id: @merchant.id
+          }
+      }
+    }
+
+    it "can update an existing work" do
+      # product = products(:product_two)
+
+      expect {
+        patch product_path(@product.id), params: new_product_hash
+      }.wont_differ "Product.count"
+
+      must_redirect_to product_path(@product.id)
+
+      product = Product.find_by(id: @product.id)
+      expect(product.name).must_equal new_product_hash[:product][:name]
+    end
+
+    it "would show not_found given an invalid id" do
+      expect {
+        patch product_path(-1), params: new_product_hash
+      }.wont_differ "Product.count"
+
+      must_respond_with :not_found
+    end
+
+    it " will not update if the params is invalid" do
+      new_product_hash[:product][:name] = nil
+
+      expect {
+        patch product_path(@product.id), params: new_product_hash
+      }.wont_differ "Product.count"
+
+      @product.reload
+      must_respond_with :bad_request
+      expect(@product.name).wont_be_nil
+
+    end
+
+    # TODO: do we need to test for price validity
+
+  end
 
 
   describe "destroy" do
@@ -149,6 +159,14 @@ describe ProductsController do
       expect(deleted_product).must_be_nil
       must_respond_with :redirect
       must_redirect_to products_path
+    end
+
+    it "will show not_found for invalid product " do
+      expect {
+        delete product_path(-1)
+      }.wont_differ "Product.count"
+
+      must_respond_with :not_found
     end
   end
 
