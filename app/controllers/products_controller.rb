@@ -12,21 +12,8 @@ class ProductsController < ApplicationController
 
   end
 
-  # def index
-  #   if params[:author_id]
-  #     # This is the nested route, /author/:author_id/books
-  #     author = Author.find_by(id: params[:author_id])
-  #     @books = author.books
-  #
-  #   else
-  #     # This is the 'regular' route, /books
-  #     @books = Book.all
-  #   end
-  # end
-
   def show
     # @product = Product.find_by(id: params[:id])
-
     if @product.nil?
       head :not_found
       return
@@ -36,7 +23,6 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
   end
-
 
   def create
     merchant = if params[:merchant_id]
@@ -84,15 +70,12 @@ class ProductsController < ApplicationController
 
       render :edit, status: :bad_request
       return
-
     end
-
   end
 
   def destroy
     # product_id = params[:id]
     # @product = Product.find_by(id: product_id)
-
     if @product
       @product.destroy
       if params[:merchant_id]

@@ -10,7 +10,9 @@
     </div>
     <div class="form-group">
       <%= f.label :inventory_stock %>
-      <%= f.text_field :inventory_stock, class:"form-control"%>
+      <%= f.select :inventory_stock, options_for_select(1..20),
+                   {},
+                   class:"form-control"%>
     </div>
     <div class="form-group">
       <%= f.label :description %>
