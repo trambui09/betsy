@@ -21,6 +21,15 @@
             <%= link_to "Merchants", merchants_path %>
           </li>
         </ul>
+        <ul>
+          <li>
+            <% if session[:merchant_id] %>
+              <%= link_to "Log out", logout_path, method: "delete" %>
+            <% else %>
+              <%= link_to "Login with Github", github_login_path %>
+            <% end %>
+          </li>
+        </ul>
       </nav>
 
     </header>

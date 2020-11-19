@@ -43,7 +43,15 @@ describe MerchantsController do
     end
 
     it "redirects to the login route if given invalid merchant data" do
+      start_count = Merchant.count
+      merchant = Merchant.new(provider: "github", uid: 99999, username: "", email: "")
 
+      perform_login(merchant)
+      get auth_callback_path(:github)
+
+      # Should *not* have created a new merchant
+      Merchant.count.must_equal start_count
+      must_redirect_to root_path
     end
   end
 end
