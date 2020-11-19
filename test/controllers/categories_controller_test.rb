@@ -48,6 +48,33 @@ describe CategoriesController do
     end
   end
 
+  describe "new" do
+    it "responds with success" do
+      get new_category_path
+
+      must_respond_with :success
+    end
+  end
+
+  describe "create" do
+    it "can create a new category with valid information accurately, and redirect" do
+      category_hash = {
+          category: {
+              name: "food"
+          }
+      }
+      expect{
+        post categories_path, params: category_hash
+      }.must_change "Category.count", 1
+
+      new_category = Category.find_by(name: category_hash[:category][:name])
+
+      expect(new_category.name).must_equal category_hash[:category][:name]
+      must_respond_with :redirect
+      # must_redirect_to category_path(new_category.id)
+    end
+  end
+
   describe "edit" do
     before do
       @category_1 = Category.create(name: "food")
