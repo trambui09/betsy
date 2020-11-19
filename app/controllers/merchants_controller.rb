@@ -41,6 +41,7 @@ class MerchantsController < ApplicationController
     # If we get here, we have a valid user instance
     session[:merchant_id] = merchant.id
     redirect_to root_path
+    raise
   end
 
   def destroy
