@@ -1,20 +1,43 @@
 require "test_helper"
 
 describe OrdersController do
-  # before do
-  #   @order =Order.create(status:"paid", name:"test name", address:"890 test ", email: "test email", credit_card_num: 99999999999999999, exp_date: 11/24, cvv: 342, billing_zip: 98765)
-  # end
-  # before do
-  #   @order = (:cart_one)
-  # end
+
   describe 'show'  do
     before do
-      @order = Order.create(status:"paid", name:"test name", address:"890 test ", email: "test email", credit_card_num: 123456, exp_date: 11/24, cvv: 342, billing_zip: 98765)
+      @order = Order.create(status:"paid", name:"test name", address:"890 test ", email: "test email", credit_card_num: 1234567891234567, exp_date: 11/24, cvv: 342, billing_zip: 98765)
     end
     it 'will show an order' do
       id = @order.id
       get orders_path(@order.id)
       must_respond_with :success
+    end
+    describe "new" do
+
+      it "will create a new order" do
+        get new_order_path
+        must_respond_with :success
+      end
+    end
+    describe "create" do
+
+      it " will not create order when given an invalid order id" do
+
+        order_hash = {
+            order: {
+                status: "",
+                name: "",
+                address: "",
+                email: "",
+                credit_card_num: "",
+                cvv: "",
+                billing_zip: ""
+
+            }
+        }
+        expect{
+          post orders_path,params:order_hash
+        }.wont_change "Order.count"
+        end
     end
   end
 end
