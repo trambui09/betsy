@@ -65,9 +65,6 @@ describe ProductsController do
     end
   end
 
-  describe ""
-
-
   describe "destroy" do
     before do
       merchant = Merchant.create(username: "test merchant", email: "test@test.com")

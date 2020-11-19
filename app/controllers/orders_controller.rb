@@ -1,10 +1,13 @@
 class OrdersController < ApplicationController
-  def index
-    @order = Order.all
-  end
+  # def index
+  #   @order = Order.all
+  # end
 
   def show
     @order = Order.find_by(id: params[:id])
+    if @order.nil?
+      head :not_found
+    end
   end
 
   def new
@@ -13,7 +16,6 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-
     if @order.save
       @order.status = "paid"
       flash[:success] = "Successfully created Order ##{@order.id}"
