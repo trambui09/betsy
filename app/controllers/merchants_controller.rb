@@ -1,4 +1,5 @@
 class MerchantsController < ApplicationController
+  skip_before_action :require_login, except: [:current_merchant]
   # def index
   #   @merchants = Merchant.all
   # end
@@ -16,7 +17,7 @@ class MerchantsController < ApplicationController
 
   def create
     auth_hash = request.env["omniauth.auth"]
-    merchant = Merchant.find_by(uid: auth_hash[:uid], provider: "github")
+    merchant = Merchant.find_by(uid: auth_hash[:uid], provider: auth_hash[:provider])
     if merchant
       # User was found in the database
       flash[:success] = "Logged in as returning merchant #{merchant.username}"

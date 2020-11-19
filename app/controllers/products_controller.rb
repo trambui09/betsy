@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
-
   before_action :find_product, only: [:show, :edit, :update, :destroy]
+  # skip_before_action :require_login, only: [:index]
+  # before_action :current_merchant, only: [:index]
+
   def index
     @products = Product.all
   end
