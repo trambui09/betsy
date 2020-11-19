@@ -18,11 +18,15 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @category.name = "food"
+    # @category.name = "food"
     if @category.save
+      flash[:success] = "Succesfully created #{@category.name}"
       redirect_to category_path(@category.id)
     else
-      render :new
+      @category.errors.each do |column, message|
+        flash.now[:error] = "A problem occurred: Could not create #{@category.name} #{column}: #{message}"
+      end
+      render :new, status: :bad_request
       return
     end
   end
