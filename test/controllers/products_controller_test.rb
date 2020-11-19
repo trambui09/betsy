@@ -1,6 +1,9 @@
 require "test_helper"
 
 describe ProductsController do
+  before do
+    @product = products(:product_one)
+  end
 
   describe 'index' do
     it "gets index" do
@@ -11,6 +14,9 @@ describe ProductsController do
 
   describe "show" do
     it "can get to the product show page" do
+      get product_path(@product.id)
+
+      must_respond_with :success
 
     end
 
@@ -58,6 +64,8 @@ describe ProductsController do
 
     end
   end
+
+  describe ""
 
 
   describe "destroy" do
