@@ -20,6 +20,9 @@
           <li>
             <%= link_to "Merchants", merchants_path %>
           </li>
+          <li>
+            <%= link_to "My account", merchant_path(@current_merchant) %>
+          </li>
         </ul>
         <ul>
           <% if @current_merchant %>

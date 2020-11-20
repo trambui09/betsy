@@ -1,13 +1,21 @@
-<main>
-  <header>Welcome to your dashboard: <%=@merchant.username %></header>
-</main>
 
-<section>
-  <h2>Summary: </h2>
-  <p><%= link_to %></p>
-</section>
-<!--Will need to add Merchant's products -->
-<!--Will need to add Merchant's orders -->
+  <div>
+  <h1 > <%= "#{@current_merchant.username}"%>'s Dashboard </h1>
+  <p> Joined site on: <%= @current_merchant.created_at.strftime("%B %d, %Y") %></p>
+  <%= link_to "Add new product", new_product_path %>
+  <%= link_to "Add Category", new_category_path %>
+  </div>
+
+
+  <div>
+  <% @current_merchant.products.each do |product| %>
+      <%= image_tag product.img_url, alt: product.description %>
+    <% end %>
+    <%= link_to product.name, product_path(product.id) %>
+    <%= link_to "Edit Product", edit_product_path(product.id)%>
+    <%= link_to "Delete Product", product_path(product.id), method: :delete %>
+</div>
+
 
 
 
