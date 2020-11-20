@@ -9,14 +9,12 @@ class OrderItem < ApplicationRecord
 
     if product.inventory_stock == 0
       flash[:error] = "Product #{product.name} is out of stock!"
-      redirect_to products_path
-      return
     end
   end
 
-  def check_inventory
-    if self.quantity > product.inventory_stock
-      flash[:error] = ""
-    end
-  end
+  # def check_inventory
+  #   if self.quantity > product.inventory_stock
+  #     flash[:error] = ""
+  #   end
+  # end
 end

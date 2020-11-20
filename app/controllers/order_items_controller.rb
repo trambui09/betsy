@@ -1,14 +1,14 @@
 class OrderItemsController < ApplicationController
+  before_action :find_item, only: [:edit, :update]
+
   def create
+    raise
     if session[:order_id].nil?
-      # need to figure out where quantity gets stored when submitting form
-      # make form for quantity, which you would get quantity when you submit
-      # submit via post request with nested route, and controller can be for orderitems#create
       @order = Order.create(status: "pending")
       session[:order_id] = @order.id
     end
 
-    @item = OrderItem.new(quantity: params[:id][:quantity], product_id: params[:id], order_id: session[:order_id])
+    @item = OrderItem.new(quantity: params[:post][:quantity].to_i, product_id: params[:id], order_id: session[:order_id])
 
     if @item.save
       flash[:success] = "Successfully added item to your cart"
@@ -22,8 +22,6 @@ class OrderItemsController < ApplicationController
   end
 
   def edit
-    @item = OrderItem.find_by(id: params[:id])
-
     if @item.nil?
       redirect_to orders_path
       return
@@ -31,8 +29,6 @@ class OrderItemsController < ApplicationController
   end
 
   def update
-    @item = OrderItem.find_by(id: params[:id])
-
     if @item.nil?
       redirect_to orders_path
       return
@@ -44,5 +40,10 @@ class OrderItemsController < ApplicationController
       render :edit, status: :bad_request
       return
     end
+  end
+
+  private
+  def find_item
+    @item = OrderItem.find_by(id: params[:id])
   end
 end

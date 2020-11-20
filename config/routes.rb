@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/auth/github", as: "github_login"
   get "/auth/:provider/callback", to: "merchants#create", as: "auth_callback"
   post "/logout", to: "merchants#logout", as: "logout"
+  post "/products/:id/orders", to: "order_items#create", as: "add_cart"
 
   root to: 'homepages#index'
 

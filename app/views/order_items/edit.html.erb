@@ -2,8 +2,9 @@
   <section>
     <div class="form-group">
       <%= f.label :quantity %>
-<!--      validation when you check out if someone else buys the product before you-->
-      <%= f.select :quantity, options_for_select(1..@product.inventory_stock),
+      <!-- validation when you check out if someone else checks out and buys the product before you -->
+<!--      @item.product.inventory_stock-->
+      <%= f.select :quantity, options_for_select(1..20),
                    {},
                    class:"form-control"%>
     </div>
