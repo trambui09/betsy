@@ -1,6 +1,7 @@
 require "test_helper"
 
 describe Merchant do
+  
   let (:new_merchant) {
     Merchant.new(provider: "github",
                  uid: 111,
@@ -9,10 +10,12 @@ describe Merchant do
   }
 
   it "can instantiated a new merchant with the right fields" do
+
     expect(new_merchant.valid?).must_equal true
   end
 
   it "can respond to all the fields" do
+
     new_merchant.save
     merchant = Merchant.first
 
@@ -29,16 +32,15 @@ describe Merchant do
       expect(new_merchant.valid?).must_equal false
       expect(new_merchant.errors.messages).must_include  :username
       expect(new_merchant.errors.messages[:username]).must_equal ["can't be blank"]
-
     end
 
     it "must have an email" do
+
       new_merchant.email = nil
 
       expect(new_merchant.valid?).must_equal false
       expect(new_merchant.errors.messages).must_include  :email
       expect(new_merchant.errors.messages[:email]).must_equal ["can't be blank"]
-
     end
 
     it "have an unique uid with given provider" do
@@ -100,11 +102,7 @@ describe Merchant do
         expect(merchant.username).must_equal auth_hash["info"]["nickname"]
         expect(merchant.uid).must_equal auth_hash[:uid]
         expect(merchant.email).must_equal auth_hash["info"]["email"]
-
-
-
       end
-
     end
   end
 end
