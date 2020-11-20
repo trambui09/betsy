@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
-  # def index
-  #   @order = Order.all
-  # end
+  def index
+    @cart = @current_cart.products
+  end
 
   def show
     @order = Order.find_by(id: params[:id])
@@ -20,11 +20,11 @@ class OrdersController < ApplicationController
   end
 
   def create
-
     @order = Order.new(order_params)
 
     if @order.save
       @order.status = "paid"
+      @order.save
       flash[:success] = "Successfully created Order ##{@order.id}"
       redirect_to order_path(@order.id)
       return

@@ -11,7 +11,7 @@
   <% end %>
 </ul>
 
-<%= form_with scope: :post, url: add_cart_path(@product), method: :post do |f| %>
+<%= form_with url: add_cart_path(@product), method: :post do |f| %>
   <section>
     <div class="form-group">
       <%= f.label :quantity %>
