@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
