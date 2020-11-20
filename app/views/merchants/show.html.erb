@@ -1,21 +1,44 @@
 
-  <div>
+
+<div>
   <h1 > <%= "#{@current_merchant.username}"%>'s Dashboard </h1>
-  <p> Joined site on: <%= @current_merchant.created_at.strftime("%B %d, %Y") %></p>
-  <%= link_to "Add new product", new_product_path %>
+  <p> Joined site on: </p>
   <%= link_to "Add Category", new_category_path %>
+    <p><%= link_to "Add new product", new_product_path %></p>
   </div>
 
+<h2>Merchant Summary: <%= link_to @current_merchant.username, merchant_path(@current_merchant.id) %> </h2>
+<p>Joined site <%= @current_merchant.created_at.strftime("%B %d, %Y") %></p>
 
-  <div>
-  <% @current_merchant.products.each do |product| %>
-      <%= image_tag product.img_url, alt: product.description %>
+<section class="merchant-roducts__container">
+  <h3 class="-merchant-product_header">Votes</h3>
+  <table class="table">
+  <h2>Products</h2>
+    <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Price</th>
+      <th>Stock</th>
+      <th>Active</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @current_merchant.products.each do |product|%>
+    <%# product = Product.find_by(id: product.id) %>
+      <tr>
+        <td> <%= link_to product.name, product_path(product.id) %></td>
+        <td> <%=product.price %></td>
+        <td><%= product.inventory_stock %></td>
+<!--        <td><%# product.category %></td>-->
+      </tr>
     <% end %>
-    <%= link_to product.name, product_path(product.id) %>
-    <%= link_to "Edit Product", edit_product_path(product.id)%>
-    <%= link_to "Delete Product", product_path(product.id), method: :delete %>
-</div>
+    </tbody>
+  </table>
+</section>
 
+
+      <%#= link_to "Edit Product", edit_product_path(product.id)%>
+      <%#= link_to "Delete Product", product_path(product.id), method: :delete %>
 
 
 

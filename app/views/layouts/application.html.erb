@@ -24,10 +24,10 @@
         <ul>
           <% if @current_merchant %>
             <li><%= link_to "Log out", logout_path, method: :post %></li>
-          <% else %>
             <li>
               <%= link_to "My account", merchant_path(@current_merchant) %>
             </li>
+            <% else %>
             <li><%= link_to "Log in with Github", github_login_path %></li>
           <% end %>
         </ul>
