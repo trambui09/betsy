@@ -42,16 +42,26 @@ describe Merchant do
     end
 
     it "have an unique uid with given provider" do
+      new_merchant.save
 
+      invalid_uid_merchant = Merchant.new(provider: "github",
+                                          uid: 111,
+                                          email: "bad@gmail",
+                                          username: "badname")
+
+      expect(invalid_uid_merchant.valid?).must_equal false
+      expect(invalid_uid_merchant.errors.messages).must_include :uid
+      expect(invalid_uid_merchant.errors.messages[:uid]).must_equal ["uid can't be the same for same provider"]
     end
-
   end
 
   describe "relations" do
+
     before do
       @merchant_1 = merchants(:merch_one)
       @merchant_3 = merchants(:merch_three)
     end
+
     it "can have many products" do
 
       @merchant_1.products.each do |product|
@@ -62,9 +72,12 @@ describe Merchant do
     end
 
     it "can have zero products" do
+
       expect(@merchant_3.products.count).must_equal 0
     end
-
   end
 
+  describe "custom methods" do
+
+  end
 end
