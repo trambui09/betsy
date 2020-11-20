@@ -2,3 +2,13 @@
 <%= image_tag("placeholder.jpg", size: "250x250") %>
 <p><%= number_to_currency(@product.price) %></p>
 <p>Sold by: <%= link_to @product.merchant.username, merchant_path(@product.merchant.id) %></p>
+<p>Categories:</p>
+<ul>
+  <% @product.categories.each do |category| %>
+    <li>
+      <%= link_to category.name, category_products_path(category) %>
+    </li>
+  <% end %>
+</ul>
+
+

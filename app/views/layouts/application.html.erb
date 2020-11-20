@@ -24,6 +24,14 @@
       </nav>
 
     </header>
+
+    <section>
+      <div >
+        <% flash.each do |name, message| %>
+          <%= message %>
+        <% end %>
+      </div>
+    </section>
     <main>
       <%= yield %>
     </main>
