@@ -21,4 +21,28 @@ describe Merchant do
     end
   end
 
+  describe "validations" do
+
+  end
+
+  describe "relations" do
+    before do
+      @merchant_1 = merchants(:merch_one)
+      @merchant_3 = merchants(:merch_three)
+    end
+    it "can have many products" do
+
+      @merchant_1.products.each do |product|
+        expect(product).must_be_instance_of Product
+      end
+
+      expect(@merchant_1.products.count).must_equal 3
+    end
+
+    it "can have zero products" do
+      expect(@merchant_3.products.count).must_equal 0
+    end
+
+  end
+
 end
