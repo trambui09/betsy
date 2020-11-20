@@ -7,7 +7,6 @@ cart_one:
   exp_date: 11/2025
   cvv: 432
   billing_zip: 15000
-#
 cart_two:
   name: Jack Frost
   email: JFrost@Icey.com
@@ -16,7 +15,6 @@ cart_two:
   exp_date: 12/2024
   cvv: 123
   billing_zip: 98765
-#
 cart_three:
   name: Grinch
   email: grinch@xmassucks.com

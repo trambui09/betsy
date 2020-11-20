@@ -1,0 +1,21 @@
+tree_items:
+  quantity: 2
+  product: product_one
+  order: cart_one
+ornament_items:
+  quantity: 1
+  product: product_four
+  order: cart_one
+cookie_items:
+  quantity: 2
+  product: product_three
+  order: cart_two
+tree_cart_2:
+  quantity: 3
+  product: product_one
+  order: cart_two
+tree_cart_3:
+  quantity: 1
+  product: product_one
+  order: cart_three
+

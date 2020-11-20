@@ -84,10 +84,29 @@ describe Product do
 
     end
     
-    # it "has many order_items" do
-    #
-    # end
-    #
+    it "has many order_items" do
+      product = products(:product_one)
+
+      product.order_items.each do |order_item|
+        expect(order_item).must_be_instance_of OrderItem
+      end
+
+      expect(product.order_items.count).must_equal 3
+
+    end
+
+    it "has many orders through order_items" do
+
+      product = products(:product_one)
+
+      product.orders.each do |order|
+        expect(order).must_be_instance_of Order
+      end
+
+      expect(product.orders.count).must_equal 3
+
+    end
+
     it "has many categories" do
       new_product.save
       start_count = new_product.categories.count
@@ -104,10 +123,6 @@ describe Product do
       expect(new_product.categories.count).must_equal start_count + 3
 
     end
-    #
-    # it "has many orders through order_items" do
-    #
-    # end
 
   end
 end
