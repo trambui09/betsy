@@ -78,6 +78,33 @@ describe Merchant do
   end
 
   describe "custom methods" do
+    describe "self.build_from_github" do
+      # I don't think we have tested this before
+      it "can create a merchant from the auth_hash" do
+        # arrange
+        auth_hash = {
+            provider: "github",
+            uid: 222,
+            "info" => {
+                "nickname" => "bettyboo",
+                "email" => "bettybooo@gmail.com"
+            }
+        }
+        # act
+        start_count = Merchant.count
+        merchant = Merchant.build_from_github(auth_hash)
+        merchant.save!
 
+        # assert
+        expect(Merchant.count).must_equal start_count + 1
+        expect(merchant.username).must_equal auth_hash["info"]["nickname"]
+        expect(merchant.uid).must_equal auth_hash[:uid]
+        expect(merchant.email).must_equal auth_hash["info"]["email"]
+
+
+
+      end
+
+    end
   end
 end
