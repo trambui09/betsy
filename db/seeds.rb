@@ -8,20 +8,26 @@
 merchants = [
     {
         username: "merryx",
-        email: "merryx@gmail.com"
+        email: "merryx@gmail.com",
+        uid: 1225,
+        provider: "github"
     },
     {
         username: "hohoho",
-        email: "santa@gmail.com"
+        email: "santa@gmail.com",
+        uid: 1,
+        provider: "github"
     },
     {
         username: "rednose",
-        email: "rednose@gmail.com"
+        email: "rednose@gmail.com",
+        uid: 2,
+        provider: "github"
     }
 ]
 
 merchants.each do |merchant|
-  Merchant.create(merchant)
+  Merchant.create!(merchant)
 end
 
 products = [
