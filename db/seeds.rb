@@ -72,4 +72,3 @@ end
 # cat3 = Category.create(name: "gifts")
 
 
-
