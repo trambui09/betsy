@@ -8,7 +8,7 @@ describe MerchantsController do
       start_count = Merchant.count
 
       # Get a merchant from the fixtures
-      merchant = merchants(:santa)
+      merchant = merchants(:merch_two)
 
       perform_login(merchant)
 
