@@ -80,3 +80,6 @@ end
 
 gem 'omniauth'
 gem 'omniauth-github'
+
+
+gem 'faker'

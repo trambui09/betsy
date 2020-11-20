@@ -1,3 +1,4 @@
+# require 'faker'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -23,11 +24,36 @@ merchants = [
         email: "rednose@gmail.com",
         uid: 2,
         provider: "github"
+    },
+    {
+        username: "jinglebell",
+        email: "jinglebell@gmail.com",
+        uid: 41,
+        provider: "github"
+    },
+    {
+        username: "candle",
+        email: "candle@gmail.com",
+        uid: 26,
+        provider: "github"
+    },
+    {
+        username: "reindeer",
+        email: "reindeer@gmail.com",
+        uid: 17,
+        provider: "github"
+    },
+    {
+        username: "snoopy",
+        email: "snoopy@gmail.com",
+        uid: 61,
+        provider: "github"
     }
+
 ]
 
 merchants.each do |merchant|
-  Merchant.create!(merchant)
+  Merchant.create(merchant)
 end
 
 products = [
@@ -45,6 +71,26 @@ products = [
         name: "ornament",
         price: 1.50,
         merchant_id: (Merchant.find_by username: "rednose").id
+    },
+    {
+        name: "scarf",
+        price: 3.99,
+        merchant_id: (Merchant.find_by username: "jinglebell").id
+    },
+    {
+        name: "pijama",
+        price: 15.99,
+        merchant_id: (Merchant.find_by username: "candle").id
+    },
+    {
+        name: "chocolate",
+        price: 3.59,
+        merchant_id: (Merchant.find_by username: "reindeer").id
+    },
+    {
+        name: "stocking",
+        price: 8.90,
+        merchant_id: (Merchant.find_by username: "snoopy").id
     }
 ]
 
