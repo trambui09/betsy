@@ -1,10 +1,10 @@
-rudolph:
+merch_one:
   provider: github
   uid: 1939
   email: rednose@northpole.net
   username: most_famous_reindeer
 
-santa:
+merch_two:
   provider: github
   uid: 1225
   email: santa@northpole.net
