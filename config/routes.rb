@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'homepages#index'
   resources :products
   resources :merchants
-  resources :order_items, only: [:delete, :update]
+  resources :order_items, only: [:delete, :update, :create]
   resources :orders
 
   resources :categories
