@@ -23,6 +23,28 @@ describe Merchant do
 
   describe "validations" do
 
+    it "must have an username" do
+      new_merchant.username = nil
+
+      expect(new_merchant.valid?).must_equal false
+      expect(new_merchant.errors.messages).must_include  :username
+      expect(new_merchant.errors.messages[:username]).must_equal ["can't be blank"]
+
+    end
+
+    it "must have an email" do
+      new_merchant.email = nil
+
+      expect(new_merchant.valid?).must_equal false
+      expect(new_merchant.errors.messages).must_include  :email
+      expect(new_merchant.errors.messages[:email]).must_equal ["can't be blank"]
+
+    end
+
+    it "have an unique uid with given provider" do
+
+    end
+
   end
 
   describe "relations" do
