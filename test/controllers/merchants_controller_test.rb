@@ -54,4 +54,18 @@ describe MerchantsController do
       must_redirect_to root_path
     end
   end
+
+  describe "logout" do
+    it "can log out a logged in merchant" do
+      perform_login
+      expect(session[:merchant_id]).wont_be_nil
+
+      post logout_path
+      expect(session[:merchant_id]).must_be_nil
+
+      expect(flash[:success]).must_equal "Successfully logged out"
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
+  end
 end

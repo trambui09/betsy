@@ -1,8 +1,8 @@
 class MerchantsController < ApplicationController
-  skip_before_action :require_login, except: [:current_merchant]
-  # def index
-  #   @merchants = Merchant.all
-  # end
+  # skip_before_action :require_login, except: [] for actions that guests can view (homepages#index, login page)
+  def index
+    @merchants = Merchant.all
+  end
   #
   # def show
   #   @merchant = Merchant.find_by_id(params[:id])
@@ -42,13 +42,14 @@ class MerchantsController < ApplicationController
     # If we get here, we have a valid user instance
     session[:merchant_id] = merchant.id
     redirect_to root_path
-    raise
+    return
   end
 
-  def destroy
+  def logout
     session[:merchant_id] = nil
     flash[:success] = "Successfully logged out"
 
     redirect_to root_path
+    return
   end
 end
