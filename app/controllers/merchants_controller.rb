@@ -3,17 +3,16 @@ class MerchantsController < ApplicationController
   def index
     @merchants = Merchant.all
   end
-  #
-  # def show
-  #   @merchant = Merchant.find_by_id(params[:id])
-  #
-  #   if @merchant.nil?
-  #     redirect_to merchants_path
-  #     return
-  #   end
-  #
-  #   @products = @merchant.products
-  # end
+  def show
+    @merchant = Merchant.find_by_id(params[:id])
+
+    if @merchant.nil?
+      redirect_to merchants_path
+      return
+    end
+
+    @products = @merchant.products
+  end
 
   def create
     auth_hash = request.env["omniauth.auth"]

@@ -1,12 +1,12 @@
 cart_one:
+  status: paid
   name: Santa Claus
   email: santa@northpole.com
   address: 101 North Pole
-  credit_card_num: 1234567800019876
+  credit_card_num: 1234567890123456
   exp_date: 11/2025
   cvv: 432
   billing_zip: 15000
-
 cart_two:
   name: Jack Frost
   email: JFrost@Icey.com
@@ -15,7 +15,6 @@ cart_two:
   exp_date: 12/2024
   cvv: 123
   billing_zip: 98765
-
 cart_three:
   name: Grinch
   email: grinch@xmassucks.com

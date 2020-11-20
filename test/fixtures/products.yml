@@ -7,19 +7,19 @@ product_one:
 product_two:
   name: "lights"
   price: 23.00
-  merchant: merch_two
+  merchant: merch_one
   inventory_stock: 10
 
 product_three:
   name: "sugar cookies"
   price: 5.00
-  merchant: merch_three
+  merchant: merch_one
   inventory_stock: 10
 
 product_four:
   name: "ornament"
   price: 7.50
-  merchant: merch_four
+  merchant: merch_two
   inventory_stock: 10
 
 

@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   resources :products
   resources :merchants
-  resources :order_items, only: [:delete, :update, :new]
+  resources :order_items, only: [:delete, :update, :create]
   resources :orders
+  resources :categories
   resources :categories do
     resources :products, only: [:index]
   end

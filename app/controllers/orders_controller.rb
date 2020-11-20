@@ -1,10 +1,13 @@
 class OrdersController < ApplicationController
-  def index
-    @order = Order.all
-  end
+  # def index
+  #   @order = Order.all
+  # end
 
   def show
     @order = Order.find_by(id: params[:id])
+    if @order.nil?
+      head :not_found
+    end
   end
 
   def new
@@ -17,6 +20,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+
     @order = Order.new(order_params)
 
     if @order.save
@@ -27,6 +31,7 @@ class OrdersController < ApplicationController
     else
       flash.now[:danger] = "Failed to create order"
       render :new, status: :bad_request
+      return
     end
   end
 

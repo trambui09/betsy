@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
     end
 
   end
-
   def show
     # @product = Product.find_by(id: params[:id])
     if @product.nil?
@@ -24,11 +23,12 @@ class ProductsController < ApplicationController
   end
 
   def create
-    merchant = if params[:merchant_id]
-                 Merchant.find_by(id: params[:merchant_id])
-               elsif params[:product][:merchant_id]
-                 Merchant.find_by(id: params[:product][:merchant_id])
-               end
+    # merchant = if params[:merchant_id]
+    #              Merchant.find_by(id: params[:merchant_id])
+    #            elsif params[:product][:merchant_id]
+    #              Merchant.find_by(id: params[:product][:merchant_id])
+    #            end
+    merchant = @current_merchant
 
     @product = merchant.products.new(product_params)
     # @product.default

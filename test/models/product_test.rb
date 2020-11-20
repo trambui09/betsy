@@ -124,5 +124,20 @@ describe Product do
 
     end
 
+    it "can have many reviews or none" do
+      product_1 = products(:product_one)
+      product_2 = products(:product_two)
+      product_3 = products(:product_three)
+
+      product_1.reviews.each do |review|
+        expect(review).must_be_instance_of Review
+      end
+
+      expect(product_1.reviews.count).must_equal 3
+      expect(product_2.reviews.count).must_equal 1
+      expect(product_3.reviews.count).must_equal 0
+
+    end
+
   end
 end
