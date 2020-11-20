@@ -21,12 +21,19 @@
             <%= link_to "Merchants", merchants_path %>
           </li>
         </ul>
+        <ul>
+          <% if @current_merchant %>
+            <li><%= link_to "Log out", logout_path, method: :post %></li>
+          <% else %>
+            <li><%= link_to "Log in with Github", github_login_path %></li>
+          <% end %>
+        </ul>
       </nav>
 
     </header>
 
     <section>
-      <div >
+      <div>
         <% flash.each do |name, message| %>
           <%= message %>
         <% end %>
