@@ -8,7 +8,12 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new(status: "pending")
+    if session[:order_id]
+      @order = Order.new(status: "pending")
+    else
+      redirect_to orders_path
+      return
+    end
   end
 
   def create
@@ -25,22 +30,18 @@ class OrdersController < ApplicationController
     end
   end
 
-  def destroy
-    if @order
-      @order.destroy
-      @order.status = "cancelled"
-      flash[:success] = "Successfully cancelled Order ##{@order.id}"
-      redirect_to root_path
-      return
-    else
-      head :not_found
-      return
-    end
+  def cancel
+    @order.status = "cancelled"
+    @order.save
+    session[:order_id] = nil
+    flash[:success] = "Successfully cancelled Order ##{@order.id}"
+    redirect_to root_path
+    return
   end
 
   private
   def order_params
-    return params.require(:order).permit(:status, :name, :address, :email, :credit_card_num, :exp_date, :cvv, :billing_zip)
+    return params.require(:order).permit(:name, :address, :email, :credit_card_num, :exp_date, :cvv, :billing_zip)
   end
 end
 
