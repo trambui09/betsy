@@ -2,7 +2,8 @@ class Merchant < ApplicationRecord
   has_many :products
 
   validates :username, :email, presence: true
-  validates :uid, uniqueness: { scope: :provider }
+  validates :uid, uniqueness: { scope: :provider,
+                                message: "uid can't be the same for same provider" }
 
   def self.build_from_github(auth_hash)
     merchant = Merchant.new

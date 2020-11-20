@@ -10,4 +10,10 @@ merch_two:
   email: santa@northpole.net
   username: hohoho
 
+merch_three:
+  provider: github
+  uid: 1234
+  email: elf@gmail.com
+  username: helper_elf
+
 

@@ -1,0 +1,16 @@
+review_1:
+  product: product_one
+  rating: 3
+  description: "A great and large tree, it suited my needs"
+review_2:
+  product: product_one
+  rating: 5
+  description: "Well made tree"
+review_3:
+  product: product_one
+  rating: 1
+  description: "Tree fell on me"
+review_4:
+  product: product_two
+  rating: 5
+  description: "Was bright and happy for the lights"
