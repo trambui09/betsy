@@ -17,10 +17,20 @@
 
 @import "**/*";
 
+@font-face {
+  font-family: 'holly_and_berriesregular';
+  src:font-url('fonts/holly_and_berries-webfont.woff');
+  src:font-url('fonts/holly_and_berries-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 header h1 {
   text-align: center;
+  font-family: 'holly_and_berriesregular', Arial, sans-serif;
   background-color: forestgreen;
-  color: crimson;
+  color: antiquewhite;
   padding: 75px;
   margin-bottom: 0px;
 }

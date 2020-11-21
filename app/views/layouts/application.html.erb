@@ -12,8 +12,8 @@
   <body>
     <header>
       <h1>
-        HolyHolly
-        <small>Sharing the Holly spirits with you</small>
+        Holy Holly
+<!--        <small>Sharing the Holly spirits with you</small>-->
       </h1>
       <nav class="navbar navbar-light" style="background-color: #d2f8d2;">
         <ul class="nav app-header__site-nav-container">
@@ -33,7 +33,7 @@
             <% else %>
             <li><%= link_to "Log in with Github", github_login_path, class: "nav-link" %></li>
           <% end %>
-          <li><%= link_to "Cart", show_cart_path %></li>
+          <li><%= link_to "Cart", show_cart_path, class: "nav-link" %></li>
         </ul>
       </nav>
 
