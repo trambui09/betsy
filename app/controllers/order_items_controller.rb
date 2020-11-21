@@ -2,14 +2,15 @@ class OrderItemsController < ApplicationController
   before_action :find_item, only: [:update, :destroy]
 
   def create
-    if session[:order_id].nil?
+    # unless you quit your browser, session remains unchanged
+    # dropping and reseeding the database deletes cart associated with the session
+    if session[:order_id].nil? || Order.find_by(id: session[:order_id]).nil?
       @order = Order.create(status: "pending")
       session[:order_id] = @order.id
     end
 
     @item = OrderItem.find_by(product_id: params[:id], order_id: session[:order_id])
     if @item.nil?
-      # no problem with references?
       @item = OrderItem.new(quantity: params[:quantity], product_id: params[:id], order_id: session[:order_id])
     else
       # only update quantity when product exists in current order
