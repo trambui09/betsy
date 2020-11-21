@@ -31,13 +31,39 @@ header h1 {
   font-family: 'holly_and_berriesregular', Arial, sans-serif;
   background-color: forestgreen;
   color: antiquewhite;
-  padding: 75px;
+  padding: 30px;
   margin-bottom: 0px;
   letter-spacing: 3px;
   font-size: 125px;
 }
 
 header h1 small {
+  font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif;
   color: whitesmoke;
+  font-size: small;
   margin-top: 0px;
+}
+body {
+  background: #242424;
+  font-family: 'Open Sans', sans-serif;
+  color: #F3F3F3;
+}
+
+.promo {
+  background-image: url("holyhollypromobanner.jpg");
+  background-color: #cccccc;
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 3px;
+}
+
+footer {
+  background-color: forestgreen;
+  text-align: center;
+  padding: 15px;
 }
