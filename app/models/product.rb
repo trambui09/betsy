@@ -12,6 +12,6 @@ class Product < ApplicationRecord
                                                     message: "price must be greater than 0"}
 
   def self.recently_added
-    
+    return Product.order('created_at DESC').limit(6)
   end
 end

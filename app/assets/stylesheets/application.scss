@@ -72,10 +72,26 @@ body {
   letter-spacing: 3px;
 }
 
+.recently-added-header {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  border-bottom: 5px solid lightgrey;
+  padding-bottom: 10px;
+}
+
 .root-products {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-right: 20px;
+  margin-left: 20px;
+
+}
+
+.root-products ul {
+  list-style-type: none;
 }
 
 .root-products h4 {
