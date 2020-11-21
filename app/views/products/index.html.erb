@@ -1,3 +1,6 @@
+<%if @merchant%>
+<h2><%= @merchant.username %> shop </h2>
+<%end %>
 <h2>Products: </h2>
 <ul>
   <% @products.each do |product| %>
