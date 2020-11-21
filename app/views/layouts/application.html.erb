@@ -11,25 +11,27 @@
 
   <body>
     <header>
-      <h1>HolyHolly</h1>
-      <nav class="navbar navbar-dark bg-dark">
-        <ul>
-          <li>HolyHolly</li>
-          <li>
-            <%= link_to "Products", products_path %>
+      <h1>
+        HolyHolly
+        <small>Sharing the Holly spirits with you</small>
+      </h1>
+      <nav class="navbar navbar-light" style="background-color: #d2f8d2;">
+        <ul class="nav app-header__site-nav-container">
+          <li >
+            <%= link_to "Products", products_path, class: "nav-link" %>
           </li>
           <li>
-            <%= link_to "Merchants", merchants_path %>
+            <%= link_to "Merchants", merchants_path, class: "nav-link" %>
           </li>
         </ul>
-        <ul>
+        <ul class="nav app-header__site-nav-container">
           <% if @current_merchant %>
-            <li><%= link_to "Log out", logout_path, method: :post %></li>
             <li>
-              <%= link_to "My account", merchant_path(@current_merchant) %>
+              <%= link_to "My account", merchant_path(@current_merchant), class: "nav-link" %>
             </li>
+            <li><%= link_to "Log out", logout_path, method: :post, class: "nav-link" %></li>
             <% else %>
-            <li><%= link_to "Log in with Github", github_login_path %></li>
+            <li><%= link_to "Log in with Github", github_login_path, class: "nav-link" %></li>
           <% end %>
         </ul>
       </nav>
