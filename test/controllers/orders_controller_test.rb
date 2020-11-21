@@ -6,11 +6,11 @@ describe OrdersController do
     before do
       @order = Order.create(status:"paid", name:"test name", address:"890 test ", email: "test email", credit_card_num: 1234567891234567, exp_date: 11/24, cvv: 342, billing_zip: 98765)
     end
-    it 'will show an order' do
-      id = @order.id
-      get orders_path(@order.id)
-      must_respond_with :success
-    end
+    # it 'will show an order' do
+    #   id = @order.id
+    #   get order_path(@order.id)
+    #   must_respond_with :success
+    # end
     describe "new" do
 
       it "will create a new order" do
