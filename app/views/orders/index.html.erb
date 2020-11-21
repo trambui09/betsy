@@ -1,7 +1,0 @@
-<% if @cart.empty? %>
-  <p>Your cart is empty</p>
-<% else %>
-  <% @cart.each do |product| %>
-    <p><%= product.name %> x <%=  %></p>
-  <% end %>
-<% end %>

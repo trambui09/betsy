@@ -1,0 +1,29 @@
+<% if @cart.nil? %>
+  <p>Your cart is empty</p>
+<% else %>
+  <section>
+    <% @cart.each do |item| %>
+      <% %>
+      <p><%= item.product.name %> <%= item.product.price %> x <%= item.quantity %></p>
+      <%= form_with url: order_item_path(item.id), method: :patch do |f| %>
+        <section>
+          <div class="form-group">
+            <%= f.label :quantity %>
+            <!-- validation when you check out if someone else checks out and buys the product before you -->
+            <%= f.select :quantity, options_for_select(1..20),
+                         {},
+                         class:"form-control"%>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit "Update Item", class: "btn btn-primary" %>
+          </div>
+        </section>
+      <% end %>
+      <%= link_to "Remove from Cart", order_item_path(item.id),
+                  method: :delete,
+                  data: { confirm: "Are you sure you want to delete this item from your cart?" },
+                  class: "btn btn-danger" %>
+    <% end %>
+  </section>
+<% end %>

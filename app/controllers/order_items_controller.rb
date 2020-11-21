@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :find_item, only: [:edit, :update]
+  before_action :find_item, only: [:update, :destroy]
 
   def create
     if session[:order_id].nil?
@@ -7,7 +7,14 @@ class OrderItemsController < ApplicationController
       session[:order_id] = @order.id
     end
 
-    @item = OrderItem.new(quantity: params[:quantity], product_id: params[:id], order_id: session[:order_id])
+    @item = OrderItem.find_by(product_id: params[:id], order_id: session[:order_id])
+    if @item.nil?
+      # no problem with references?
+      @item = OrderItem.new(quantity: params[:quantity], product_id: params[:id], order_id: session[:order_id])
+    else
+      # only update quantity when product exists in current order
+      @item.quantity += params[:quantity].to_i
+    end
 
     if @item.save
       flash[:success] = "Successfully added item to your cart"
@@ -20,23 +27,28 @@ class OrderItemsController < ApplicationController
     redirect_back fallback_location: '/'
   end
 
-  def edit
+  def update
     if @item.nil?
-      redirect_to orders_path
+      redirect_to show_cart_path
+      return
+    elsif @item.update(quantity: params[:quantity])
+      flash[:success] = "Quantity successfully updated"
+      redirect_to show_cart_path
+      return
+    else
+      render :edit, status: :bad_request
       return
     end
   end
 
-  def update
-    if @item.nil?
-      redirect_to orders_path
-      return
-    elsif @item.update(quantity: params[:quantity])
-      flash[:success] = "Quantity successfully updated"
-      redirect_to orders_path
+  def destroy
+    if @item
+      @item.destroy
+      flash[:success] = "Successfully removed #{@item.product.name} from your cart"
+      redirect_to show_cart_path
       return
     else
-      render :edit, status: :bad_request
+      head :not_found
       return
     end
   end
