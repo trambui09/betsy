@@ -1,5 +1,5 @@
 <h1><%= @product.name %></h1>
-<%= image_tag("placeholder.jpg", size: "250x250") %>
+<%= image_tag(@product.photo_url, size: "250x250") %>
 <p><%= number_to_currency(@product.price) %></p>
 <p>Sold by: <%= link_to @product.merchant.username, merchant_path(@product.merchant.id) %></p>
 <p>Categories:</p>

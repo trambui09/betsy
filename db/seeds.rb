@@ -60,37 +60,45 @@ products = [
     {
         name: "tree",
         price: 100.00,
-        merchant_id: (Merchant.find_by username: "hohoho").id
+        merchant_id: (Merchant.find_by username: "hohoho").id,
+        photo_url: "placeholder.jpg"
+
     },
     {
         name: "sugar cookies",
         price: 2.30,
-        merchant_id: (Merchant.find_by username: "merryx").id
+        merchant_id: (Merchant.find_by username: "merryx").id,
+        photo_url: "placeholder.jpg"
     },
     {
         name: "ornament",
         price: 1.50,
-        merchant_id: (Merchant.find_by username: "rednose").id
+        merchant_id: (Merchant.find_by username: "rednose").id,
+        photo_url: "placeholder.jpg"
     },
     {
         name: "scarf",
         price: 3.99,
-        merchant_id: (Merchant.find_by username: "jinglebell").id
+        merchant_id: (Merchant.find_by username: "jinglebell").id,
+        photo_url: "placeholder.jpg"
     },
     {
         name: "pijama",
         price: 15.99,
-        merchant_id: (Merchant.find_by username: "candle").id
+        merchant_id: (Merchant.find_by username: "candle").id,
+        photo_url: "placeholder.jpg"
     },
     {
         name: "chocolate",
         price: 3.59,
-        merchant_id: (Merchant.find_by username: "reindeer").id
+        merchant_id: (Merchant.find_by username: "reindeer").id,
+        photo_url: "placeholder.jpg"
     },
     {
         name: "stocking",
         price: 8.90,
-        merchant_id: (Merchant.find_by username: "snoopy").id
+        merchant_id: (Merchant.find_by username: "snoopy").id,
+        photo_url: "placeholder.jpg"
     }
 ]
 
