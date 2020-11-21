@@ -5,11 +5,26 @@ class ProductsController < ApplicationController
     if params[:category_id]
       category = Category.find_by(id: params[:category_id])
       @products = category.products
+    elsif params[:merchant_id]
+    merchant= Merchant.find_by(id: params[:merchant_id])
+    @products = merchant.products
     else
       @products = Product.all
     end
-
   end
+
+  def merchant_product_index
+    @merchant = Merchant.find_by(id:params[:id])
+
+    if @merchant
+      flash[:status]= :error
+      flash[:message]= "No merchant with that ID is found."
+      redirect_to products_path
+    else
+      @products = Product.where(merchant_id: @merchant.id)
+    end
+  end
+
   def show
     # @product = Product.find_by(id: params[:id])
     if @product.nil?

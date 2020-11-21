@@ -5,10 +5,15 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "merchants#create", as: "auth_callback"
   post "/logout", to: "merchants#logout", as: "logout"
 
+  # get "merchants/:id/products", to: "products#merchant_product_index", as: "merchant_products"
+
   root to: 'homepages#index'
 
   resources :products
-  resources :merchants
+  resources :merchants do
+    resources :products, only: [:index]
+  end
+
   resources :order_items, only: [:delete, :update, :create]
   resources :orders
 
