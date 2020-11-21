@@ -10,6 +10,6 @@ class Order < ApplicationRecord
   end
 
   def is_pending?
-    return status == "pending"
+    return self.status == "pending"
   end
 end
