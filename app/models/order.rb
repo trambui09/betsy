@@ -25,4 +25,12 @@ class Order < ApplicationRecord
     return total_cost
 
   end
+
+  def update_stock
+    self.order_items do |item|
+      item.product.inventory_stock -= item.quantity
+      item.product.save!
+    end
+  end
+
 end
