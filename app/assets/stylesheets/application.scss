@@ -44,7 +44,7 @@ header h1 a {
 
 header h1 a:hover {
   text-decoration: none;
-  color: white,
+  color: white;
 }
 
 header h1 small {
@@ -102,6 +102,16 @@ main {
 
 .root-products h4 {
   color: #1c7430;
+}
+
+.cart-header {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.total-cart-cost {
+  text-align: end;
+  margin-right: 100px;
 }
 
 footer {

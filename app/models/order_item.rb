@@ -16,4 +16,11 @@ class OrderItem < ApplicationRecord
   #     flash[:error] = ""
   #   end
   # end
+  def total_price
+    self.product.price * self.quantity
+  end
+
+  def total_cart_cost
+    self.map{|item| item.total_price}.sum
+  end
 end
