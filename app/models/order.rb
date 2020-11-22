@@ -14,16 +14,7 @@ class Order < ApplicationRecord
   end
 
   def total_cost
-    total_cost = 0
-    if self.order_items.empty?
-      return 0
-    else
-      self.order_items.each do |item|
-        total_cost += item.total_price
-      end
-    end
-    return total_cost
-
+    return self.order_items.map(&:total_price).sum
   end
 
   def update_stock

@@ -30,5 +30,8 @@
     <% end %>
   </table>
   <p></p>
-  <p class="total-cart-cost">Total: <%= number_to_currency(@cart.map{|item| item.total_price}.sum) %></p>
+<!--  this wasn't working because @cart is the list of the order_items in the order. Current_order is the instance of Order-->
+<!--  <p class="total-cart-cost">Total: <%#= number_to_currency(@cart.map{|item| item.total_price}.sum) %></p>-->
+  <p class="total-cart-cost">Subtotal: <%= number_to_currency(@current_order.total_cost) %></p>
+  <p class="total-cart-cost">Total: <%= number_to_currency(@current_order.total_cost * 1.10) %></p>
 <% end %>
