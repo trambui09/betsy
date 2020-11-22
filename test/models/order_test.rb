@@ -67,6 +67,108 @@ describe Order do
       expect(new_order.errors.messages[:name]).must_equal ["can't be blank"]
 
     end
+
+    it "must have an address" do
+
+      unless :is_pending? == true
+        return new_order.name = nil
+      end
+
+
+      expect(new_order.valid?).must_equal false
+      expect(new_order.errors.messages).must_include :address
+      expect(new_order.errors.messages[:address]).must_equal ["can't be blank"]
+
+    end
+
+    it "must have an email" do
+
+      unless :is_pending? == true
+        return new_order.email = nil
+      end
+
+
+      expect(new_order.valid?).must_equal false
+      expect(new_order.errors.messages).must_include :email
+      expect(new_order.errors.messages[:email]).must_equal ["can't be blank"]
+
+    end
+
+    it "must have a credit card number" do
+
+      unless :is_pending? == true
+        return new_order.credit_card_num = nil
+      end
+
+
+      expect(new_order.valid?).must_equal false
+      expect(new_order.errors.messages).must_include :credit_card_num
+      expect(new_order.errors.messages[:credit_card_num]).must_equal ["can't be blank"]
+
+    end
+
+    # it "credit card number must be an integer" do
+    #   unless :is_pending? == true
+    #   new_order.credit_card_num = 11111333390.90
+    #   end
+    #
+    #   expect(new_order.valid?).must_equal false
+    #   expect(new_order.errors.messages).must_include :credit_card_num
+    # end
+
+    # it "credit card number must be 16 digits long" do
+    #     unless :is_pending? == true
+    #     new_order.credit_card_num = 11112222
+    #     end
+    #
+    #     expect(new_order.valid?).must_equal false
+    #     expect(new_order.errors.messages).must_include :credit_card_num
+    # end
+
+    it "must have an expiration date" do
+
+      unless :is_pending? == true
+        return new_order.exp_date = nil
+      end
+
+
+      expect(new_order.valid?).must_equal false
+      expect(new_order.errors.messages).must_include :exp_date
+      expect(new_order.errors.messages[:exp_date]).must_equal ["can't be blank"]
+
+    end
+
+    it "must have a cvv" do
+
+      unless :is_pending? == true
+        return new_order.cvv = nil
+      end
+
+
+      expect(new_order.valid?).must_equal false
+      expect(new_order.errors.messages).must_include :cvv
+      expect(new_order.errors.messages[:cvv]).must_equal ["can't be blank"]
+
+    end
+
+    it "must have a billing zip" do
+
+      unless :is_pending? == true
+        return new_order.billing_zip = nil
+      end
+
+
+      expect(new_order.valid?).must_equal false
+      expect(new_order.errors.messages).must_include :billing_zip
+      expect(new_order.errors.messages[:billing_zip]).must_equal ["can't be blank"]
+
+    end
+
+
+
+
+
+
   end
 
   describe "custom methods" do
