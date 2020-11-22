@@ -13,7 +13,7 @@ class Order < ApplicationRecord
     return self.status == "pending"
   end
 
-  def total_cost
+  def total_cart_cost
     return self.order_items.map(&:total_price).sum
   end
 
