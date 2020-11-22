@@ -3,6 +3,7 @@ product_one:
   price: 100.00
   merchant: merch_one
   inventory_stock: 10
+  photo_url: placeholder.jpg
 
 product_two:
   name: "lights"

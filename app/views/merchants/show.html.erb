@@ -10,7 +10,7 @@
 <h2>Merchant Summary: <%= link_to @current_merchant.username, merchant_path(@current_merchant.id) %> </h2>
 <p>Joined site <%= @current_merchant.created_at.strftime("%B %d, %Y") %></p>
 
-<section class="merchant-roducts__container">
+<section class="merchant-products__container">
   <h3 class="-merchant-product_header">Votes</h3>
   <table class="table">
   <h2>Products</h2>
@@ -20,6 +20,8 @@
       <th>Price</th>
       <th>Stock</th>
       <th>Active</th>
+      <th>Edit</th>
+
     </tr>
     </thead>
     <tbody>
@@ -29,6 +31,8 @@
         <td> <%= link_to product.name, product_path(product.id) %></td>
         <td> <%=product.price %></td>
         <td><%= product.inventory_stock %></td>
+        <td> </td>
+        <td> <%= link_to "Edit", edit_product_path(product.id), class: "btn btn-primary" %> </td>
 <!--        <td><%# product.category %></td>-->
       </tr>
     <% end %>

@@ -16,3 +16,106 @@
 @import "bootstrap";
 
 @import "**/*";
+
+@font-face {
+  font-family: 'holly_and_berriesregular';
+  src:font-url('fonts/holly_and_berries-webfont.woff');
+  src:font-url('fonts/holly_and_berries-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+header h1 {
+  text-align: center;
+  font-family: 'holly_and_berriesregular', Arial, sans-serif;
+  background-color: forestgreen;
+  color: white;
+  padding: 30px;
+  margin-bottom: 0px;
+  letter-spacing: 3px;
+  font-size: 125px;
+}
+
+header h1 a {
+  text-decoration: none;
+  color: white;
+}
+
+header h1 a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+header h1 small {
+  font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+  color: whitesmoke;
+  font-size: small;
+  margin-top: 0px;
+}
+body {
+  //background: #242424;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #d2f8d2;
+  margin: auto;
+}
+
+main {
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+.promo {
+  background-image: url("holyhollypromobanner.jpg");
+  background-color: #cccccc;
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 3px;
+}
+
+.recently-added-header {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  border-bottom: 5px solid lightgrey;
+  padding-bottom: 10px;
+}
+
+.root-products {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-right: 20px;
+  margin-left: 20px;
+
+}
+
+.root-products ul {
+  list-style-type: none;
+}
+
+.root-products h4 {
+  color: #1c7430;
+}
+
+.cart-header {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.total-cart-cost {
+  text-align: end;
+  margin-right: 100px;
+}
+
+footer {
+  background-color: forestgreen;
+  text-align: center;
+  padding: 15px;
+}

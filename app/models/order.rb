@@ -10,6 +10,19 @@ class Order < ApplicationRecord
   end
 
   def is_pending?
-    return status == "pending"
+    return self.status == "pending"
+  end
+
+  def total_cost
+    total_cost = 0
+    if self.order_items.empty?
+      return 0
+    else
+      self.order_items.each do |item|
+        total_cost += item.total_price
+      end
+    end
+    return total_cost
+
   end
 end

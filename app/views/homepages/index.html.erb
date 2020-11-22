@@ -1,2 +1,24 @@
-<p>hi</p>
-<%#= image_tag("placeholder.jpg", size: "250x250", alt: "Christmas box palceholder") %>
+<section class="row promo">
+  <h2>
+    <small>Introducing</small>
+    <br>
+    <strong>Holiday Collection</strong>
+  </h2>
+</section>
+<h4 class="recently-added-header"><strong>Recently Added</strong></h4>
+<section class="row root-products">
+<!--  <h4><strong>Recently Added</strong></h4>-->
+  <% Product.recently_added.each do |product| %>
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <%= image_tag(product.photo_url, size: "250x250", alt: "product image" )%>
+      <br>
+      <%= link_to product.name, product_path(product) %>
+      <br>
+      <p><%= number_to_currency(product.price) %></p>
+    </div>
+  </div>
+  <% end %>
+
+
+</section>

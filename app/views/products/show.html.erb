@@ -1,5 +1,5 @@
 <h1><%= @product.name %></h1>
-<%= image_tag("placeholder.jpg", size: "250x250") %>
+<%= image_tag(@product.photo_url, size: "250x250") %>
 <p><%= number_to_currency(@product.price) %></p>
 <p>Sold by: <%= link_to @product.merchant.username, merchant_path(@product.merchant.id) %></p>
 <p>Categories:</p>
@@ -10,5 +10,21 @@
     </li>
   <% end %>
 </ul>
+
+<%= form_with url: add_cart_path(@product), method: :post do |f| %>
+  <section>
+    <div class="form-group">
+      <%= f.label :quantity %>
+      <!-- validation when you check out if someone else checks out and buys the product before you -->
+      <%= f.select :quantity, options_for_select(1..20),
+                   {},
+                   class:"form-control"%>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+    </div>
+  </section>
+<% end %>
 
 
