@@ -9,12 +9,22 @@ Rails.application.routes.draw do
   # get cart_id from session make custom route
   # show for confirmation page
 
+  # get "merchants/:id/products", to: "products#merchant_product_index", as: "merchant_products"
+
   root to: 'homepages#index'
 
   resources :products
-  resources :merchants
+
+  resources :merchants do
+    resources :products, only: [:index]
+  end
+
+  resources :order_items, only: [:delete, :update, :create]
+  resources :orders
+
   resources :order_items, only: [:create, :update, :destroy]
   resources :orders, except: [:index]
+
   resources :categories
   resources :categories do
     resources :products, only: [:index]

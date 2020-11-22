@@ -68,4 +68,11 @@ describe MerchantsController do
       must_redirect_to root_path
     end
   end
+
+  describe "index" do
+    it "can load all merchants" do
+      get merchants_path
+      must_respond_with :ok
+    end
+  end
 end
