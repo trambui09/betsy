@@ -161,7 +161,7 @@ describe Product do
 
         recently_added = Product.recently_added
         expect(recently_added.first).must_equal added_product
-        
+
       end
     end
   end
