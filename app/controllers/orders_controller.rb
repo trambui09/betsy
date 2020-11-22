@@ -23,11 +23,13 @@ class OrdersController < ApplicationController
   end
 
   def update
-    raise
-    @order = @current_order.assign_attributes(order_params)
+    @order = @current_order
+    @order.update(order_params)
     @order.status = "paid"
 
     if @order.save
+      # ask about this
+      @cart = nil
       flash[:success] = "Successfully created Order ##{@order.id}"
       redirect_to order_path(@order.id)
       return
@@ -39,6 +41,7 @@ class OrdersController < ApplicationController
   end
 
   def cancel
+    @order = @current_order
     @order.status = "cancelled"
     @order.save
     session[:order_id] = nil
@@ -49,7 +52,8 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    return params.require(:order).permit(:name, :email, :address, :credit_card_num, :exp_date, :cvv, :billing_zip)
+    # why no require ordeR?
+    return params.permit(:name, :email, :address, :credit_card_num, :exp_date, :cvv, :billing_zip)
   end
 end
 

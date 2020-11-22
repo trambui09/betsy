@@ -16,6 +16,7 @@ class OrderItem < ApplicationRecord
   #     flash[:error] = ""
   #   end
   # end
+
   def total_price
     self.product.price * self.quantity
   end

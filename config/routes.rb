@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   post "/logout", to: "merchants#logout", as: "logout"
   post "/products/:id/orders", to: "order_items#create", as: "add_cart"
   get "/cart", to: "orders#cart", as: "show_cart"
+  # can't do patch ask if this is right HTTP verb
+  post "/orders/:id", to: "orders#cancel", as: "cancel_order"
   # get cart_id from session make custom route
-  # show for confirmation page
 
   root to: 'homepages#index'
 
