@@ -140,4 +140,29 @@ describe Product do
     end
 
   end
+
+  describe "custom methods" do
+    describe "recently_added" do
+      it "shows 6 products" do
+        # act
+        recently_added = Product.recently_added
+        # assert
+        expect(recently_added.count).must_equal 6
+      end
+
+      it "shows the newest added product as first" do
+
+        added_product = Product.create!(name: "added test",
+                                        price: 24.50,
+                                        merchant_id: @merchant.id,
+                                        description: "testing description",
+                                        photo_url: "testing.com",
+                                        inventory_stock: 5)
+
+        recently_added = Product.recently_added
+        expect(recently_added.first).must_equal added_product
+
+      end
+    end
+  end
 end

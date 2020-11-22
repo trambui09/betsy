@@ -23,5 +23,23 @@ product_four:
   merchant: merch_two
   inventory_stock: 10
 
+product_five:
+  name: "chocolate"
+  price: 7.50
+  merchant: merch_two
+  inventory_stock: 5
+
+product_six:
+  name: "snow globe"
+  price: 15.50
+  merchant: merch_two
+  inventory_stock: 5
+
+product_seven:
+  name: "hot chocolate"
+  price: 7.50
+  merchant: merch_two
+  inventory_stock: 5
+
 
 

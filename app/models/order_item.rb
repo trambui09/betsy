@@ -20,7 +20,7 @@ class OrderItem < ApplicationRecord
     self.product.price * self.quantity
   end
 
-  def total_cart_cost
-    self.map{|item| item.total_price}.sum
-  end
+  # def total_cart_cost
+  #   self.map{|item| item.total_price}.sum
+  # end
 end
