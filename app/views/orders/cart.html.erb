@@ -19,7 +19,7 @@
               <%= f.select :quantity, options_for_select(1..20)%>
             </td>
             <td class="form-group">
-              <%= f.submit "Update Item", method: :patch%>
+              <%= f.submit "Update Item", method: :patch %>
               <%= link_to "Remove from Cart", order_item_path(item.id),
                           method: :delete,
                           data: { confirm: "Are you sure you want to delete this item from your cart?" },
@@ -31,4 +31,5 @@
   </table>
   <p></p>
   <p class="total-cart-cost">Total: <%= number_to_currency(@cart.map{|item| item.total_price}.sum) %></p>
+  <%= link_to "Check Out", new_order_path, class: "btn btn-primary" %>
 <% end %>

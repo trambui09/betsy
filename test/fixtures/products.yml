@@ -41,5 +41,11 @@ product_seven:
   merchant: merch_two
   inventory_stock: 5
 
+candy_cane:
+  name: "candy cane"
+  price: 0.99
+  merchant: merch_two
+  inventory_stock: 12
+
 
 
