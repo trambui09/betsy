@@ -55,7 +55,18 @@ describe Order do
   end
 
   describe "validations" do
+    it "must have a name" do
 
+      unless :is_pending? == true
+        return new_order.name = nil
+      end
+
+
+      expect(new_order.valid?).must_equal false
+      expect(new_order.errors.messages).must_include :name
+      expect(new_order.errors.messages[:name]).must_equal ["can't be blank"]
+
+    end
   end
 
   describe "custom methods" do
