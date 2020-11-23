@@ -106,7 +106,7 @@ describe Order do
         product_1_quantity_purchased = order_1.order_items.first.quantity
         # act
         order_1.update_stock
-
+        order_1.reload
         # assert
         expect(product_1_stock).must_equal product_1_stock -  product_1_quantity_purchased
 
