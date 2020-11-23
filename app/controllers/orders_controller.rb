@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def cart
-    @cart = @current_order.order_items if @current_order
+    @cart = @current_order.order_items if @current_order && @current_order.is_pending?
   end
 
   def show
@@ -29,8 +29,6 @@ class OrdersController < ApplicationController
     @order.status = "paid"
 
     if @order.save
-      # ask about this
-      @cart = nil
       flash[:success] = "Successfully created Order ##{@order.id}"
       # TODO: add the update_stock here
       @order.update_stock
