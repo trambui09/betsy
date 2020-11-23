@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include Pagy::Backend
+
 
   before_action :current_merchant
   before_action :current_order

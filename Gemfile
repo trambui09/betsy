@@ -88,4 +88,4 @@ gem 'omniauth-github'
 
 
 gem 'faker'
-gem 'pagy'
+
