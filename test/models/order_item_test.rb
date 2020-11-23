@@ -1,15 +1,24 @@
 require "test_helper"
 
 describe OrderItem do
+  let(:new_order) {
+    OrderItem.new(quantity: 1,
+                  product: products(:product_three),
+                  order: orders(:cart_one))
+  }
+  describe "validations" do
+
+    it "can be instantiated with valid data" do
+
+      expect(new_order.valid?).must_equal true
+    end
+  end
+
   # it "does a thing" do
   #   value(1+1).must_equal 2
   # end
 
   describe "relations" do
-
-  end
-
-  describe "validations" do
 
   end
 
