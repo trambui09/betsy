@@ -2,14 +2,14 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy, :update_status]
 
   def index
-    if params[:category_id]
+     if params[:category_id]
       category = Category.find_by(id: params[:category_id])
       @products = category.products
     elsif params[:merchant_id]
       @merchant= Merchant.find_by(id: params[:merchant_id])
     @products = @merchant.products
     else
-      @products = Product.all
+      @pagy, @products = pagy(Product.all, items:6)
     end
   end
 
