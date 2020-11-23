@@ -13,19 +13,16 @@ Rails.application.routes.draw do
 
   root to: 'homepages#index'
 
-  resources :products
+  resources :categories do
+    resources :products, only: [:index]
+  end
 
   resources :merchants do
     resources :products, only: [:index]
   end
 
-  resources :order_items, only: [:delete, :update, :create]
-  resources :orders
-
-  resources :order_items, only: [:create, :update, :destroy]
-  resources :orders, except: [:index, :create, :update]
   resources :categories
-  resources :categories do
-    resources :products, only: [:index]
-  end
+  resources :products
+  resources :order_items, only: [:destroy, :update, :create]
+  resources :orders, only: [:show, :new]
 end
