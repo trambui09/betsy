@@ -17,6 +17,8 @@
 
 @import "**/*";
 
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
 @font-face {
   font-family: 'holly_and_berriesregular';
   src:font-url('fonts/holly_and_berries-webfont.woff');
@@ -25,6 +27,16 @@
   font-style: normal;
 }
 
+.navbar {
+  font-family: 'Sacramento', cursive;
+  font-size: 1.5rem;
+  background-color: red;
+  margin-bottom: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sacramento', cursive;
+}
 
 header h1 {
   text-align: center;
@@ -105,7 +117,8 @@ main {
 }
 
 footer {
-  margin-top: 1%;
+  font-size: small;
+  margin-top: 2rem;
   background-color: forestgreen;
   text-align: center;
   padding: 15px;
@@ -117,7 +130,7 @@ footer {
   padding-bottom: 10px;
 }
 
-.total-cart-cost, .checkout {
+.cart-cost, .checkout {
   text-align: end;
   margin-right: 5%;
 }
@@ -161,4 +174,21 @@ footer {
 
 hr {
   border-top: 0.5rem dotted red;
+}
+
+ul {
+  list-style-type: none;
+}
+
+// new order
+.new-order-form {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.new-order-form .btn {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }

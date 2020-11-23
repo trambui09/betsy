@@ -10,7 +10,7 @@
   <% end %>
 </section>
 
-<section>
+<section class="new-order-form">
   <%= form_with url: paid_order_path(@order), method: :post do |f| %>
     <div class="form-group">
       <%= f.label :name %>
@@ -47,6 +47,6 @@
       <%= f.text_field :billing_zip, class: "form-control" %>
     </div>
 
-    <%= f.submit "Place Order", class: "btn btn-primary" %>
+    <%= f.submit "Place Order", class: "btn btn-success" %>
   <% end %>
 </section>
