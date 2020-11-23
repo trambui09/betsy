@@ -2,12 +2,36 @@
 <h2><%= @merchant.username %>'s Holiday Shop </h2>
 <%end %>
 <h2>Products: </h2>
-<ul>
-  <% @products.each do |product| %>
-    <li>
-      <%= link_to product.name, product_path(product) %>
-    </li>
-  <% end %>
-</ul>
+<main>
+  <section class="row">
+    <aside class="columns medium-2 small-12 categories">
+      <p>Shop by Category</p>
+<!--      <ul>-->
+        <%# @product.categories.each do |category| %>
+<!--          <li>-->
+            <%#= link_to category.name, category_products_path(category) %>
+<!--          </li>-->
+        <%# end %>
+<!--      </ul>-->
+    </aside>
+    <section class="columns medium-10 small-12 all products">
+      <h5>Products</h5>
+
+
+    </section>
+    <section class="paginate columns medium-10 small-12">
+
+    </section>
+
+  </section>
+<!--  <ul>-->
+    <%# @products.each do |product| %>
+<!--      <li>-->
+        <%#= link_to product.name, product_path(product) %>
+<!--      </li>-->
+    <%# end %>
+<!--  </ul>-->
+</main>
+
 
 <%= button_to "Back to Merchants Page", merchants_path, method: :get %>
