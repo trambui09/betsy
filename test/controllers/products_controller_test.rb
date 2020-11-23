@@ -1,9 +1,13 @@
 require "test_helper"
 
 describe ProductsController do
+
+  before do
+    @product = products(:product_one)
+  end
+
   describe "logged in merchants" do
     before do
-      @product = products(:product_one)
       perform_login(merchants(:merch_one))
       @merchant = merchants(:merch_one)
     end
@@ -25,16 +29,13 @@ describe ProductsController do
 
       it "will show not_found when given an invalid product id " do
         get product_path(-1)
-
         must_respond_with :not_found
       end
-
     end
 
     describe 'new' do
       it 'can get the new product path' do
         get new_product_path
-
         must_respond_with :success
       end
     end
@@ -71,17 +72,13 @@ describe ProductsController do
     describe "edit" do
       it "can get to the product edit page" do
         get edit_product_path(@product.id)
-
         must_respond_with :success
-
       end
 
       it "will return not_found if product id is invalid" do
         get edit_product_path(-1)
-
         must_respond_with :not_found
       end
-
     end
 
     describe "update" do
@@ -132,9 +129,7 @@ describe ProductsController do
         expect(@product.name).wont_be_nil
 
       end
-
       # TODO: do we need to test for price validity
-
     end
 
     describe "destroy" do
@@ -145,8 +140,6 @@ describe ProductsController do
 
       it "destroys the product instance in db when product exists, then redirects" do
         # Arrange
-
-
         id = Product.find_by(name: "test")[:id]
         # id = trip.id
         # Act
@@ -174,7 +167,6 @@ describe ProductsController do
 
   describe "guest users" do
     it "can access index" do
-
       get products_path
       must_respond_with :success
     end
@@ -183,11 +175,12 @@ describe ProductsController do
       get new_product_path
       must_redirect_to root_path
       flash[:error].must_equal "You must be logged in to do that"
-
     end
 
     it "cannot access edit" do
-
+      get edit_product_path(@product.id)
+      must_redirect_to root_path
+      flash[:error].must_equal "You must be logged in to do that"
     end
   end
 end
