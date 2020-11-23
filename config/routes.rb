@@ -6,16 +6,15 @@ Rails.application.routes.draw do
   post "/logout", to: "merchants#logout", as: "logout"
   post "/products/:id/orders", to: "order_items#create", as: "add_cart"
   get "/cart", to: "orders#cart", as: "show_cart"
-  # can't do patch ask if this is right HTTP verb
-  post "/orders/:id", to: "orders#cancel", as: "cancel_order"
-  # get cart_id from session make custom route
+  post "/orders/:id", to: "orders#checkout", as: "paid_order"
+  patch "/orders/:id", to: "orders#cancel", as: "cancel_order"
 
   root to: 'homepages#index'
 
   resources :products
   resources :merchants
   resources :order_items, only: [:create, :update, :destroy]
-  resources :orders, except: [:index, :create]
+  resources :orders, except: [:index, :create, :update]
   resources :categories
   resources :categories do
     resources :products, only: [:index]

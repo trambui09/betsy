@@ -88,7 +88,6 @@ describe OrderItemsController do
 
       expect(flash[:success]).must_equal "Quantity successfully updated"
       must_respond_with :redirect
-      must_redirect_to show_cart_path
     end
 
     it "does not update any order item if given an invalid id, and redirects to cart" do

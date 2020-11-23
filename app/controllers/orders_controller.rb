@@ -17,14 +17,15 @@ class OrdersController < ApplicationController
 
     if @order.nil?
       flash[:warning] = "You must have a cart in session"
-      redirect_to show_cart_path
+      redirect_to root_path
       return
     end
   end
 
-  def update
+  def checkout
     @order = @current_order
-    @order.update(order_params)
+    # update without saving
+    @order.assign_attributes(order_params)
     @order.status = "paid"
 
     if @order.save
