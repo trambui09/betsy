@@ -52,8 +52,20 @@ describe OrderItem do
   end
 
   describe "relationships" do
+    it "has a product" do
+      product_one = order_items(:cookie_items)
 
+      expect(product_one).must_respond_to :product
+      expect(product_one.product).must_be_kind_of Product
+    end
 
+    it "has an order" do
+
+      product_one = order_items(:tree_items)
+
+      expect(product_one).must_respond_to :order
+      expect(product_one.order).must_be_kind_of Order
+    end
   end
 
   describe "custom methods" do
