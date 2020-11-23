@@ -2,11 +2,14 @@
 <h2><%= @merchant.username %>'s Holiday Shop </h2>
 <%end %>
 <h2>Products: </h2>
+<% %>
 <ul>
   <% @products.each do |product| %>
+    <% if product.status == "active" %>
     <li>
       <%= link_to product.name, product_path(product) %>
     </li>
+    <% end %>
   <% end %>
 </ul>
 

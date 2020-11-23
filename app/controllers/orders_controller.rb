@@ -48,6 +48,7 @@ class OrdersController < ApplicationController
     @order = @current_order
     @order.status = "cancelled"
     @order.save
+    @order.update_stock
     session[:order_id] = nil
     flash[:success] = "Successfully cancelled Order ##{@order.id}"
     redirect_to root_path
