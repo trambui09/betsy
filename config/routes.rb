@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :merchants do
     resources :products, only: [:index]
+    resources :orders, only: [:index]
   end
 
   resources :categories
