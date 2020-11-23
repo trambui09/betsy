@@ -173,6 +173,21 @@ describe ProductsController do
   end
 
   describe "guest users" do
-    
+    it "can access index" do
+
+      get products_path
+      must_respond_with :success
+    end
+
+    it "cannot access new" do
+      get new_product_path
+      must_redirect_to root_path
+      flash[:error].must_equal "You must be logged in to do that"
+
+    end
+
+    it "cannot access edit" do
+
+    end
   end
 end
