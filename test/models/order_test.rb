@@ -107,23 +107,23 @@ describe Order do
 
     end
 
-    # it "credit card number must be an integer" do
-    #   unless :is_pending? == true
-    #   new_order.credit_card_num = 11111333390.90
-    #   end
-    #
-    #   expect(new_order.valid?).must_equal false
-    #   expect(new_order.errors.messages).must_include :credit_card_num
-    # end
+    it "credit card number must be an integer" do
 
-    # it "credit card number must be 16 digits long" do
-    #     unless :is_pending? == true
-    #     new_order.credit_card_num = 11112222
-    #     end
-    #
-    #     expect(new_order.valid?).must_equal false
-    #     expect(new_order.errors.messages).must_include :credit_card_num
-    # end
+      new_order.credit_card_num = 11111333390.90
+      new_order.status = "paid"
+
+      expect(new_order.valid?).must_equal false
+      expect(new_order.errors.messages).must_include :credit_card_num
+    end
+
+    it "credit card number must be 16 digits long" do
+
+        new_order.credit_card_num = 11112222
+        new_order.status = "paid"
+
+        expect(new_order.valid?).must_equal false
+        expect(new_order.errors.messages).must_include :credit_card_num
+    end
 
     it "must have an expiration date" do
 
@@ -149,6 +149,24 @@ describe Order do
       expect(new_order.errors.messages).must_include :cvv
       expect(new_order.errors.messages[:cvv]).must_equal ["can't be blank"]
 
+    end
+
+    it "cvv must be an integer" do
+
+      new_order.cvv = 11111333390.90
+      new_order.status = "paid"
+
+      expect(new_order.valid?).must_equal false
+      expect(new_order.errors.messages).must_include :cvv
+    end
+
+    it "cvv must be 3 digits long" do
+
+      new_order.cvv = 11112222
+      new_order.status = "paid"
+
+      expect(new_order.valid?).must_equal false
+      expect(new_order.errors.messages).must_include :cvv
     end
 
     it "must have a billing zip" do
