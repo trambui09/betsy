@@ -4,6 +4,7 @@ describe ProductsController do
   describe "logged in merchants" do
     before do
       @product = products(:product_one)
+      perform_login(merchants(:merch_one))
       @merchant = merchants(:merch_one)
     end
 
@@ -169,6 +170,9 @@ describe ProductsController do
         must_respond_with :not_found
       end
     end
+  end
 
+  describe "guest users" do
+    
   end
 end
