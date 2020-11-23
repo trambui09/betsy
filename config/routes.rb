@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   post "/logout", to: "merchants#logout", as: "logout"
   post "/products/:id/orders", to: "order_items#create", as: "add_cart"
   get "/cart", to: "orders#cart", as: "show_cart"
-  # get cart_id from session make custom route
-  # show for confirmation page
+  post "/orders/:id", to: "orders#checkout", as: "paid_order"
+  patch "/orders/:id", to: "orders#cancel", as: "cancel_order"
 
   # get "merchants/:id/products", to: "products#merchant_product_index", as: "merchant_products"
 
@@ -23,8 +23,7 @@ Rails.application.routes.draw do
   resources :orders
 
   resources :order_items, only: [:create, :update, :destroy]
-  resources :orders, except: [:index]
-
+  resources :orders, except: [:index, :create, :update]
   resources :categories
   resources :categories do
     resources :products, only: [:index]
