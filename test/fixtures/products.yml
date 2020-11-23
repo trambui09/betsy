@@ -4,48 +4,56 @@ product_one:
   merchant: merch_one
   inventory_stock: 10
   photo_url: placeholder.jpg
+  status: "active"
 
 product_two:
   name: "lights"
   price: 23.00
   merchant: merch_one
   inventory_stock: 10
+  status: "active"
 
 product_three:
   name: "sugar cookies"
   price: 5.00
   merchant: merch_one
   inventory_stock: 10
+  status: "active"
 
 product_four:
   name: "ornament"
   price: 7.50
   merchant: merch_two
   inventory_stock: 10
+  status: "active"
 
 product_five:
   name: "chocolate"
   price: 7.50
   merchant: merch_two
   inventory_stock: 5
+  status: "active"
 
 product_six:
   name: "snow globe"
   price: 15.50
   merchant: merch_two
   inventory_stock: 5
+  status: "active"
 
 product_seven:
   name: "hot chocolate"
   price: 7.50
   merchant: merch_two
   inventory_stock: 5
+  status: "active"
 
 candy_cane:
   name: "candy cane"
   price: 0.99
   merchant: merch_two
   inventory_stock: 12
+  status: "active"
 
 
 

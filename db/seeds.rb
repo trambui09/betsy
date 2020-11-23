@@ -62,7 +62,8 @@ products = [
         price: 100.00,
         merchant_id: (Merchant.find_by username: "hohoho").id,
         photo_url: "https://i.pinimg.com/600x315/74/99/40/749940775702d84b2bb9e3545b0cc724.jpg",
-        inventory_stock: 20
+        inventory_stock: 20,
+        status: "active"
 
     },
     {
@@ -70,42 +71,48 @@ products = [
         price: 2.30,
         inventory_stock: 20,
         merchant_id: (Merchant.find_by username: "merryx").id,
-        photo_url: "https://theforkedspoon.com/wp-content/uploads/2016/12/IMGP0520-1-500x500.jpg"
+        photo_url: "https://theforkedspoon.com/wp-content/uploads/2016/12/IMGP0520-1-500x500.jpg",
+        status: "active"
     },
     {
         name: "ornament",
         price: 1.50,
         inventory_stock: 20,
         merchant_id: (Merchant.find_by username: "rednose").id,
-        photo_url: "https://371266-1160757-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/11/MWA_GlassOrnaments_02.jpg"
+        photo_url: "https://371266-1160757-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/11/MWA_GlassOrnaments_02.jpg",
+        status: "active"
     },
     {
         name: "scarf",
         price: 3.99,
         inventory_stock: 20,
         merchant_id: (Merchant.find_by username: "jinglebell").id,
-        photo_url: "https://ae01.alicdn.com/kf/HTB1QESnXPDuK1Rjy1zjq6zraFXaE/Christmas-Scarves-for-women-Reindeer-Snowflake-Scarf-Warm-Poncho-Thick-Winter-Scarf-Tassels-Shawls-Xmas-Stoles.jpg"
+        photo_url: "https://ae01.alicdn.com/kf/HTB1QESnXPDuK1Rjy1zjq6zraFXaE/Christmas-Scarves-for-women-Reindeer-Snowflake-Scarf-Warm-Poncho-Thick-Winter-Scarf-Tassels-Shawls-Xmas-Stoles.jpg",
+        status: "active"
     },
     {
         name: "pijama",
         price: 15.99,
         inventory_stock: 20,
         merchant_id: (Merchant.find_by username: "candle").id,
-        photo_url: "placeholder.jpg"
+        photo_url: "placeholder.jpg",
+        status: "active"
     },
     {
         name: "chocolate",
         price: 3.59,
         inventory_stock: 20,
         merchant_id: (Merchant.find_by username: "reindeer").id,
-        photo_url: "https://www.hotelchocolat.com/dw/image/v2/AAZP_PRD/on/demandware.static/-/Sites-hotelchocolat-master-catalog/default/dwe5d4ac27/images/263286-1.jpg?sw=500&sh=500&sm=fit"
+        photo_url: "https://www.hotelchocolat.com/dw/image/v2/AAZP_PRD/on/demandware.static/-/Sites-hotelchocolat-master-catalog/default/dwe5d4ac27/images/263286-1.jpg?sw=500&sh=500&sm=fit",
+        status: "active"
     },
     {
         name: "stocking",
         price: 8.90,
         inventory_stock: 20,
         merchant_id: (Merchant.find_by username: "snoopy").id,
-        photo_url: "https://images-na.ssl-images-amazon.com/images/I/61K6jaEyY7L._AC_.jpg"
+        photo_url: "https://images-na.ssl-images-amazon.com/images/I/61K6jaEyY7L._AC_.jpg",
+        status: "active"
     }
 ]
 
