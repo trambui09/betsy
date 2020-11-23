@@ -139,6 +139,21 @@ describe CategoriesController do
   end
 
   describe "guest users" do
+    it "can get to the index page" do
+      get categories_path
+      must_respond_with :success
+    end
+
+    it "can get to the show page" do
+      get category_path(categories(:decor).id)
+      must_respond_with :success
+    end
+    
+    it "cannot access the new category page" do
+      get new_category_path(categories(:decor).id)
+      must_redirect_to root_path
+      flash[:error].must_equal "You must be logged in to do that"
+    end
 
   end
 
