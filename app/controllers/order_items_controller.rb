@@ -2,7 +2,7 @@ class OrderItemsController < ApplicationController
   before_action :find_item, only: [:update, :destroy]
 
   def create
-    # unless you quit your browser, session remains unchanged
+    # unless you quit your browser, session persists as the id of the cart you first created
     # dropping and reseeding the database deletes cart associated with the session
     if session[:order_id].nil? || Order.find_by(id: session[:order_id]).nil?
       @order = Order.create(status: "pending")
@@ -34,9 +34,10 @@ class OrderItemsController < ApplicationController
       return
     elsif @item.update(quantity: params[:quantity])
       flash[:success] = "Quantity successfully updated"
-      redirect_to show_cart_path
+      redirect_back fallback_location: '/'
       return
     else
+      flash.now[:danger] = "Failed to update item"
       render :edit, status: :bad_request
       return
     end

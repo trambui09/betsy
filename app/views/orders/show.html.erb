@@ -1,0 +1,11 @@
+<%= @order.id %>
+<%= @order.updated_at %>
+<%= @order.status %>
+<%= @order.name %>
+<%= @order.address %>
+
+<% @order.order_items.each do |order_item| %>
+  <p><%= order_item.product.name %> <%= order_item.product.price %>x<%= order_item.quantity %></p>
+<% end %>
+
+<%= link_to "Cancel Order", cancel_order_path(@order), method: :patch, class: "btn btn-primary" %>

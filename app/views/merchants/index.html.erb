@@ -1,0 +1,12 @@
+<main>
+<h2>List of Merchants</h2>
+  <section class="merchant-table-index">
+    <ul>
+      <% @merchants.each do |merchant| %>
+        <li>
+          <%= link_to merchant.username, merchant_products_path(merchant) %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</main>
