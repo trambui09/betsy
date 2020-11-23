@@ -54,16 +54,48 @@ describe Order do
     end
   end
 
-  describe "can have pending status" do
-    it 'marks status as pending ' do
+  describe "validations" do
+    it "must have a name" do
 
-      expect(new_order.is_pending?).must_equal true
-      expect(new_order.status).must_equal "pending"
+      unless :is_pending? == true
+        return new_order.name = nil
+      end
+
+
+      expect(new_order.valid?).must_equal false
+      expect(new_order.errors.messages).must_include :name
+      expect(new_order.errors.messages[:name]).must_equal ["can't be blank"]
 
     end
   end
 
-  describe "validations" do
+  describe "custom methods" do
+    describe "can have pending status" do
+      it 'marks status as pending ' do
+
+        expect(new_order.is_pending?).must_equal true
+        expect(new_order.status).must_equal "pending"
+
+      end
+    end
+
+    describe "total cart cost" do
+      it "returns the subtotal of the cart" do
+        # arrange
+        order_1 = orders(:cart_one)
+        total_cost = 0
+        order_1.order_items.each do |item|
+          total_cost += item.total_price
+        end
+
+        # act
+        cart_total = order_1.total_cart_cost
+
+        # assert
+        expect(cart_total).must_equal total_cost
+
+      end
+    end
 
   end
 end

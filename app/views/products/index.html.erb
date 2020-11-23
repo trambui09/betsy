@@ -1,3 +1,6 @@
+<%if @merchant%>
+<h2><%= @merchant.username %>'s Holiday Shop </h2>
+<%end %>
 <h2>Products: </h2>
 <ul>
   <% @products.each do |product| %>
@@ -6,3 +9,5 @@
     </li>
   <% end %>
 </ul>
+
+<%= button_to "Back to Merchants Page", merchants_path, method: :get %>

@@ -9,10 +9,19 @@ Rails.application.routes.draw do
   post "/orders/:id", to: "orders#checkout", as: "paid_order"
   patch "/orders/:id", to: "orders#cancel", as: "cancel_order"
 
+  # get "merchants/:id/products", to: "products#merchant_product_index", as: "merchant_products"
+
   root to: 'homepages#index'
 
   resources :products
-  resources :merchants
+
+  resources :merchants do
+    resources :products, only: [:index]
+  end
+
+  resources :order_items, only: [:delete, :update, :create]
+  resources :orders
+
   resources :order_items, only: [:create, :update, :destroy]
   resources :orders, except: [:index, :create, :update]
   resources :categories
