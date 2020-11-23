@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_product, only: [:show, :edit, :update, :destroy, :update_status]
 
   def index
     if params[:category_id]
@@ -73,6 +73,21 @@ class ProductsController < ApplicationController
       render :edit, status: :bad_request
       return
     end
+  end
+
+  def update_status
+    if @product.status == "active"
+      @product.update_attribute(:status, "retired")
+      flash[:success] = "Succesfully set the product to #{@product.status}"
+      redirect_to merchant_path(@current_merchant)
+
+    else
+      @product.update_attribute(:status, "active")
+      flash[:success] = "Succesfully set the product to #{@product.status}"
+      redirect_to merchant_path(@current_merchant)
+    end
+
+
   end
 
   def destroy
