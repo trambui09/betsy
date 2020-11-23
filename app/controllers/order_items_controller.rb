@@ -34,7 +34,7 @@ class OrderItemsController < ApplicationController
       return
     elsif @item.update(quantity: params[:quantity])
       flash[:success] = "Quantity successfully updated"
-      redirect_back fallback_location: '/'
+      redirect_to show_cart_path
       return
     else
       flash.now[:danger] = "Failed to update item"

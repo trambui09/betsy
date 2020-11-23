@@ -97,5 +97,39 @@ describe Order do
       end
     end
 
+    describe "update_stock" do
+      it "can accurately reduce the stock if the order status is paid" do
+        # arrange
+        order_1 = orders(:cart_one)
+        product_1 = order_1.order_items.first.product
+        product_1_stock = product_1.inventory_stock
+        product_1_quantity_purchased = order_1.order_items.first.quantity
+        order_1.status == "paid"
+        # act
+        order_1.update_stock
+        order_1.reload
+        product_1_stock_after = order_1.order_items.first.product.inventory_stock
+        # assert
+        expect(product_1_stock_after).must_equal product_1_stock -  product_1_quantity_purchased
+
+        # order_1.status == "cancelled"
+        #
+        # order_1.update_stock
+        # order_1.reload
+        # product_1_after_cancelling = order_1.order_items.first.product.inventory_stock
+        #
+        # expect(product_1_after_cancelling).must_equal product_1_stock
+
+      end
+
+      # it "return the product stock if the order is cancelled" do
+      #   order_1 = orders(:cart_one)
+      #   order_1.status == "cancelled"
+      #
+      #   order_1.update_stock
+      #   order_1.reload
+      #
+      # end
+    end
   end
 end

@@ -32,6 +32,9 @@ class OrdersController < ApplicationController
       # ask about this
       @cart = nil
       flash[:success] = "Successfully created Order ##{@order.id}"
+      # TODO: add the update_stock here
+      @order.update_stock
+
       redirect_to order_path(@order.id)
       return
     else
@@ -45,6 +48,7 @@ class OrdersController < ApplicationController
     @order = @current_order
     @order.status = "cancelled"
     @order.save
+    @order.update_stock
     session[:order_id] = nil
     flash[:success] = "Successfully cancelled Order ##{@order.id}"
     redirect_to root_path

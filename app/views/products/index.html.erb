@@ -2,6 +2,7 @@
 <h2><%= @merchant.username %>'s Holiday Shop </h2>
 <%end %>
 <h2>Products: </h2>
+
 <main>
   <section class="row">
     <aside class="columns medium-2 small-12 categories">
@@ -32,6 +33,18 @@
     <%# end %>
 <!--  </ul>-->
 </main>
+
+
+
+<ul>
+  <% @products.each do |product| %>
+    <% if product.status == "active" %>
+    <li>
+      <%= link_to product.name, product_path(product) %>
+    </li>
+    <% end %>
+  <% end %>
+</ul>
 
 
 <%= button_to "Back to Merchants Page", merchants_path, method: :get %>
