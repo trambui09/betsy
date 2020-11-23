@@ -75,61 +75,61 @@ describe CategoriesController do
     end
   end
 
-  describe "edit" do
-    before do
-      @category_1 = Category.create(name: "food")
-    end
-    it "responds with success when getting the edit page for an existing, valid category" do
-
-      # Act
-
-      get edit_category_path(@category_1)
-
-      # Assert
-      must_respond_with :success
-    end
-
-  end
-
-  describe "update" do
-    before do
-      Category.create!(name: "food")
-    end
-    let (:new_category_hash) {
-      {category:
-           {name: "gifts"}
-      }
-    }
-    it "can update an existing category with valid information accurately, and redirect" do
-      # Arrange
-
-      id = Category.first.id
-
-
-      # Act-Assert
-      expect {
-        patch category_path(id), params: new_category_hash
-      }.wont_change 'Category.count'
-
-      # Assert
-      must_respond_with :redirect
-
-      updated_category = Category.find_by(id: id)
-      expect(updated_category.name).must_equal new_category_hash[:category][:name]
-
-    end
-
-    it "does not update any category if given an invalid id, and responds with a 404" do
-
-      # Act-Assert
-      expect {
-        patch category_path(-1), params: new_category_hash
-      }.wont_change 'Category.count'
-
-      must_respond_with :not_found
-
-    end
-  end
+  # describe "edit" do
+  #   before do
+  #     @category_1 = Category.create(name: "food")
+  #   end
+  #   it "responds with success when getting the edit page for an existing, valid category" do
+  #
+  #     # Act
+  #
+  #     get edit_category_path(@category_1)
+  #
+  #     # Assert
+  #     must_respond_with :success
+  #   end
+  #
+  # end
+  #
+  # describe "update" do
+  #   before do
+  #     Category.create!(name: "food")
+  #   end
+  #   let (:new_category_hash) {
+  #     {category:
+  #          {name: "gifts"}
+  #     }
+  #   }
+  #   it "can update an existing category with valid information accurately, and redirect" do
+  #     # Arrange
+  #
+  #     id = Category.first.id
+  #
+  #
+  #     # Act-Assert
+  #     expect {
+  #       patch category_path(id), params: new_category_hash
+  #     }.wont_change 'Category.count'
+  #
+  #     # Assert
+  #     must_respond_with :redirect
+  #
+  #     updated_category = Category.find_by(id: id)
+  #     expect(updated_category.name).must_equal new_category_hash[:category][:name]
+  #
+  #   end
+  #
+  #   it "does not update any category if given an invalid id, and responds with a 404" do
+  #
+  #     # Act-Assert
+  #     expect {
+  #       patch category_path(-1), params: new_category_hash
+  #     }.wont_change 'Category.count'
+  #
+  #     must_respond_with :not_found
+  #
+  #   end
+  # end
 
 
 end
