@@ -18,16 +18,9 @@ class Order < ApplicationRecord
   end
 
   def update_stock
-      self.order_items.each do |item|
-        item.product.inventory_stock -= item.quantity
-        item.product.save!
-      end
+    self.order_items.each do |item|
+      item.product.inventory_stock -= item.quantity
+      item.product.save!
+    end
   end
-
-    # o.order_items.each do |item|
-    #   [3] pry(main)*   item.product.inventory_stock -= item.quantity
-    #   [3] pry(main)*   item.product.save!
-    #   [3] pry(main)* end
-
-
 end
