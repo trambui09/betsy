@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
 
+  before_action :require_login, only: [:new, :create]
+
   def index
     @categories = Category.all
   end
@@ -31,30 +33,29 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def edit
-    @category = Category.find_by(id: params[:id])
-    if @category.nil?
-      head :not_found
-      return
-    end
-  end
+  # TODO: don't think we need edit and update category
+  # def edit
+  #   @category = Category.find_by(id: params[:id])
+  #   if @category.nil?
+  #     head :not_found
+  #     return
+  #   end
+  # end
 
-  def update
-    @category = Category.find_by(id: params[:id])
-
-    if @category.nil?
-      head :not_found
-      return
-    elsif @category.update(category_params)
-      redirect_to categories_path(@category)
-      return
-    else
-      render :bad_request
-      return
-    end
-  end
-
-
+  # def update
+  #   @category = Category.find_by(id: params[:id])
+  #
+  #   if @category.nil?
+  #     head :not_found
+  #     return
+  #   elsif @category.update(category_params)
+  #     redirect_to categories_path(@category)
+  #     return
+  #   else
+  #     render :bad_request
+  #     return
+  #   end
+  # end
 
   private
   def category_params

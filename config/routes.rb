@@ -16,11 +16,12 @@ Rails.application.routes.draw do
   end
 
   resources :merchants do
-    resources :products, only: [:index]
+    resources :products, only: [:index, :update_status]
   end
 
-  resources :categories
+  resources :categories, only: [:index, :show, :new, :create]
   resources :products
+  post "/products/:id", to: "products#update_status", as: "update_product_status"
   resources :order_items, only: [:destroy, :update, :create]
   resources :orders, only: [:show, :new]
 end

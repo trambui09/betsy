@@ -2,12 +2,31 @@
 <h2><%= @merchant.username %>'s Holiday Shop </h2>
 <%end %>
 <h2>Products: </h2>
-<ul>
+
+<section class="row root-products">
+  <!--  <h4><strong>Recently Added</strong></h4>-->
   <% @products.each do |product| %>
-    <li>
-      <%= link_to product.name, product_path(product) %>
-    </li>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <%= image_tag(product.photo_url, size: "250x250", alt: "product image" )%>
+        <br>
+        <%= link_to product.name, product_path(product) %>
+        <br>
+        <p><%= number_to_currency(product.price) %></p>
+      </div>
+    </div>
   <% end %>
-</ul>
+
+
+</section>
+
+
+<div id = "pagination" >
+<!--  <button><%#= link_to 'Newest', products_path %></button>-->
+  <% if @page != 0 %>
+  <button><%= link_to 'Previous', products_path(page: @page - 1) %></button>
+  <%end %>
+  <button><%= link_to "Next", products_path(page: @page + 1) %></button>
+</div>
 
 <%= button_to "Back to Merchants Page", merchants_path, method: :get %>

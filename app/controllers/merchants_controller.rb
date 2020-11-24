@@ -1,5 +1,6 @@
 class MerchantsController < ApplicationController
   # skip_before_action :require_login, except: [] for actions that guests can view (homepages#index, login page)
+  before_action :require_login, only: [:show]
   def index
     @merchants = Merchant.all
   end
