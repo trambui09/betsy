@@ -1,6 +1,6 @@
 <h2 class="cart-header">🛒 Shopping Cart</h2>
 <% if @cart.nil? %>
-  <p>Your cart is empty. Shouldn't you start on your Christmas shopping? 🧐</p>
+  <p id="empty-cart-msg">Your cart is empty. Shouldn't you start on your Christmas shopping? 🧐</p>
 <% else %>
     <% @cart.order(:created_at).each do |item| %>
         <section class="cart-item">
@@ -20,7 +20,7 @@
                 <%= f.select :quantity, options_for_select(1..20), class: "form-control" %>
               </div>
               <div class="form-group">
-                <%= f.submit "Update Item" %>
+                <%= f.submit "Update Item", class: "btn btn-light" %>
               </div>
             <% end %>
           </div>

@@ -1,11 +1,43 @@
-<%= @order.id %>
-<%= @order.updated_at %>
-<%= @order.status %>
-<%= @order.name %>
-<%= @order.address %>
+<h2>Order Confirmation</h2>
+<section class="order-info">
+  <ul>
+    <li><strong>Order #<%= @order.id %></strong></li>
+    <li>Placed on: <%= @order.updated_at.strftime("%A, %b %e at %l:%M %p") %></li>
+    <li>Status: <%= @order.status %></li>
+    <li>Total (+ tax): <%= number_to_currency(@order.total_cart_cost * 1.101) %></li>
+    <li></li>
+  </ul>
+</section>
+<section class="order-info billing-info">
+  <ul>
+    <li><strong>Billing Information</strong></li>
+    <li>Name: <%= @order.name %></li>
+    <li>E-mail: <%= @order.email %></li>
+    <li>Shipping Address: <%= @order.address %></li>
+    <li>Credit Card Number: ************<%= @order.credit_card_num.to_s.last(4) %></li>
+    <li>Expiration Date: <%= @order.exp_date %></li>
+  </ul>
+</section>
 
-<% @order.order_items.each do |order_item| %>
-  <p><%= order_item.product.name %> <%= order_item.product.price %>x<%= order_item.quantity %></p>
-<% end %>
+<section class="table-container">
+  <table class="order-items-table">
+    <tr>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Unit Price</th>
+      <th>Total Price</th>
+    </tr>
+    <tbody>
+    <% @order.order_items.each do |order_item| %>
+      <tr>
+        <td><%= order_item.product.name %></td>
+        <td><%= order_item.quantity %></td>
+        <td><%= number_to_currency(order_item.product.price) %></td>
+        <td><%= number_to_currency(order_item.total_price) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
 
-<%= link_to "Cancel Order", cancel_order_path(@order), method: :patch, class: "btn btn-primary" %>
+<%= link_to "Cancel Order", cancel_order_path(@order), method: :patch, class: "btn btn-danger cancel-order-btn" %>

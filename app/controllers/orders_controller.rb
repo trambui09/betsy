@@ -38,6 +38,8 @@ class OrdersController < ApplicationController
         flash[:success] = "Successfully created Order ##{@current_order.id}"
         # TODO: add the update_stock here
         @current_order.update_stock
+        # ask about this
+        session[:order_id] = nil
         redirect_to order_path(@current_order.id)
         return
       else
