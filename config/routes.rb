@@ -6,10 +6,9 @@ Rails.application.routes.draw do
   post "/logout", to: "merchants#logout", as: "logout"
   post "/products/:id/orders", to: "order_items#create", as: "add_cart"
   get "/cart", to: "orders#cart", as: "show_cart"
-  post "/orders/:id", to: "orders#checkout", as: "paid_order"
-  patch "/orders/:id", to: "orders#cancel", as: "cancel_order"
-
-  # get "merchants/:id/products", to: "products#merchant_product_index", as: "merchant_products"
+  patch "/orders/:id/cancel", to: "orders#cancel", as: "cancel_order"
+  patch "/orders/:id", to: "orders#checkout", as: "paid_order"
+  post "/products/:id", to: "products#update_status", as: "update_product_status"
 
   root to: 'homepages#index'
 
@@ -24,7 +23,6 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show, :new, :create]
   resources :products
-  post "/products/:id", to: "products#update_status", as: "update_product_status"
   resources :order_items, only: [:destroy, :update, :create]
   resources :orders, only: [:show, :new]
 end

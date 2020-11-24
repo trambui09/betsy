@@ -17,6 +17,17 @@ class Order < ApplicationRecord
     return self.order_items.map(&:total_price).sum
   end
 
+  def in_stock
+    self.order_items.each do |item|
+      if item.quantity > item.product.inventory_stock
+        self.errors.add(:order_item, "#{item.product.name}: only #{item.product.inventory_stock} in stock. Please update the quantity of that order item in your cart.")
+        return false
+      end
+    end
+
+    return true
+  end
+
   def update_stock
     if self.status == "paid"
       self.order_items.each do |item|
@@ -29,13 +40,5 @@ class Order < ApplicationRecord
         item.product.save!
       end
     end
-  end
-
-  def merchant_order_items
-    # order has many order_items
-    # order_items has connection to product
-    # product has access to merchant
-
-
   end
 end

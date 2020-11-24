@@ -2,7 +2,7 @@
 <% if @cart.nil? %>
   <p>Your cart is empty</p>
 <% else %>
-    <% @cart.each do |item| %>
+    <% @cart.order(:created_at).each do |item| %>
         <%= item.product.name.capitalize %>
         <%= number_to_currency(item.product.price) %> x <%= item.quantity %>
 

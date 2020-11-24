@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
       category = Category.find_by(id: params[:category_id])
       @products = category.products.limit(PRODUCTS_PER_PAGE).offset(@page * PRODUCTS_PER_PAGE)
     elsif params[:merchant_id]
-      @merchant= Merchant.find_by(id: params[:merchant_id])
+      @merchant = Merchant.find_by(id: params[:merchant_id])
     @products = @merchant.products.limit(PRODUCTS_PER_PAGE).offset(@page * PRODUCTS_PER_PAGE)
     else
       @products = Product.all.limit(PRODUCTS_PER_PAGE).offset(@page * PRODUCTS_PER_PAGE)
