@@ -25,7 +25,7 @@
               <td><%= "x#{order_item.quantity}" %></td>
               <td><%= number_to_currency(order_item.total_price) %></td>
               <td><%= order_item.find_order.created_at.strftime("%m/%d/%y")%></td>
-              <td><%= link_to "Ship" %></td>
+              <td><%= link_to order_item.fulfillment_status, ship_item_path(order_item), method: :post %></td>
               <td><%= order_item.find_order.status %></td>
             </tr>
             <% end %>
