@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
   end
 
   def cart
-    @cart = @current_order.order_items if @current_order # && @current_order.is_pending?
+    @cart = @current_order.order_items if @current_order && @current_order.is_pending?
   end
 
   def show
