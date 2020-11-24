@@ -40,9 +40,11 @@
     </header>
 
     <section>
-      <div>
+      <div class="alert__container">
         <% flash.each do |name, message| %>
-          <%= message %>
+          <div class="alert alert-<%= name %>">
+            <strong><%= message %></strong>
+          </div>
         <% end %>
       </div>
     </section>

@@ -4,8 +4,7 @@
 </section>
 <section>
   <p>Price: <%= number_to_currency(@product.price) %></p>
-<!--  this should link to merchant's products, not require login-->
-  <p>Sold by: <%= link_to @product.merchant.username, merchant_path(@product.merchant.id) %></p>
+  <p>Sold by: <%= link_to @product.merchant.username, merchant_products_path(@product.merchant.id) %></p>
   <p>Categories:</p>
   <ul>
     <% @product.categories.each do |category| %>
@@ -24,7 +23,6 @@
       <%= form_with url: add_cart_path(@product), method: :post do |f| %>
         <div class="form-inline">
           <%= f.label :quantity %>
-          <!-- validation when you check out if someone else checks out and buys the product before you -->
           <%= f.select :quantity, options_for_select(1..@product.inventory_stock),
                        {},
                        class:"form-control"%>
