@@ -104,5 +104,15 @@ describe Merchant do
         expect(merchant.email).must_equal auth_hash["info"]["email"]
       end
     end
+
+    describe "total revenue" do
+
+      it "correctly calculates total revenue for one specific merchant" do
+
+
+        expect(merchants(:merch_four).total_revenue).must_equal 10.99
+      end
+    end
+
   end
 end
