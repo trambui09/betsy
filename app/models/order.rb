@@ -31,10 +31,11 @@ class Order < ApplicationRecord
     end
   end
 
-    # o.order_items.each do |item|
-    #   [3] pry(main)*   item.product.inventory_stock -= item.quantity
-    #   [3] pry(main)*   item.product.save!
-    #   [3] pry(main)* end
+  def merchant_order_items
+    # order has many order_items
+    # order_items has connection to product
+    # product has access to merchant
 
 
+  end
 end
