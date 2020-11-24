@@ -62,5 +62,12 @@ stocking:
   inventory_stock: 10
   status: "active"
 
+gingerbread:
+  name: "gingerbread cookies"
+  price: 5.00
+  merchant: merch_four
+  inventory_stock: 10
+  status: "active"
+
 
 

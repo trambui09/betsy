@@ -106,13 +106,19 @@ describe Merchant do
     end
 
     describe "total revenue" do
+      before do
+        @merchant = merchants(:merch_four)
+        @product_one = products(:product_one)
+      end
 
       it "correctly calculates total revenue for one specific merchant" do
+        order = orders(:cart_four)
 
-
-        expect(merchants(:merch_four).total_revenue).must_equal 10.99
+        expect(@merchant.total_revenue).must_equal 10.99
       end
     end
-
   end
 end
+
+# multiple products from the same merchants 3 stockings from same merchants and
+# cancelled item- cart_four as an order
