@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :find_item, only: [:update, :destroy]
+  before_action :find_item, only: [:update, :destroy, :ship]
 
   def create
     # unless you quit your browser, session persists as the id of the cart you first created
@@ -40,6 +40,15 @@ class OrderItemsController < ApplicationController
       flash.now[:danger] = "Failed to update item"
       render :edit, status: :bad_request
       return
+    end
+  end
+
+  def ship
+    if @item.fulfillment_status == "ship"
+      @item.update_attribute(:fulfillment_status, "shipped")
+      flash[:success] = "Succesfully #{@item.fulfillment_status} the item"
+      #TODO: figure to redirect_to path
+      redirect_to root_path
     end
   end
 

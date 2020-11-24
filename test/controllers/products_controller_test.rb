@@ -132,6 +132,27 @@ describe ProductsController do
       # TODO: do we need to test for price validity
     end
 
+    describe "toggle product status" do
+      it "can change product from active to retire" do
+        product = products(:product_one)
+        expect(product.status).must_equal "active"
+
+        post update_product_status_path(product.id)
+        found_product = Product.find_by(name: "tree")
+        expect(found_product.status).must_equal "retired"
+      end
+
+      it "can change product status from retire to active" do
+        product = products(:product_seven)
+        expect(product.status).must_equal "retired"
+
+        post update_product_status_path(product.id)
+        found_product = Product.find_by(name: "hot chocolate")
+        expect(found_product.status).must_equal "active"
+
+      end
+    end
+
     describe "destroy" do
       before do
         merchant = Merchant.create(username: "test merchant", email: "test@test.com")
@@ -174,13 +195,13 @@ describe ProductsController do
     it "cannot access new" do
       get new_product_path
       must_redirect_to root_path
-      flash[:error].must_equal "You must be logged in to do that"
+      expect(flash[:danger]).must_equal "You must be logged in to do that"
     end
 
     it "cannot access edit" do
       get edit_product_path(@product.id)
       must_redirect_to root_path
-      flash[:error].must_equal "You must be logged in to do that"
+      expect(flash[:danger]).must_equal "You must be logged in to do that"
     end
   end
 end
