@@ -131,6 +131,27 @@ describe ProductsController do
       end
       # TODO: do we need to test for price validity
     end
+    
+    describe "toggle product status" do
+      it "can change product from active to retire" do
+        product = products(:product_one)
+        expect(product.status).must_equal "active"
+
+        post update_product_status_path(product.id)
+        found_product = Product.find_by(name: "tree")
+        expect(found_product.status).must_equal "retired"
+      end
+
+      it "can change product status from retire to active" do
+        product = products(:product_seven)
+        expect(product.status).must_equal "retired"
+
+        post update_product_status_path(product.id)
+        found_product = Product.find_by(name: "hot chocolate")
+        expect(found_product.status).must_equal "active"
+
+      end
+    end
 
     describe "destroy" do
       before do
