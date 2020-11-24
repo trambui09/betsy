@@ -1,17 +1,5 @@
 <section>
-  <% if @order.errors.any? %>
-    <div class="alert alert-warning">
-      <ul>
-        <% @order.errors.each do |column, message| %>
-          <li><strong><%= column %></strong> <%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-</section>
-
-<section class="new-order-form">
-  <%= form_with url: paid_order_path(@order), method: :post do |f| %>
+  <%= form_with url: paid_order_path(@current_order), method: :patch do |f| %>
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control" %>

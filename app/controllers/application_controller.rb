@@ -12,8 +12,17 @@ class ApplicationController < ActionController::Base
 
   def require_login
     if @current_merchant.nil?
-      flash[:error] = "You must be logged in to do that"
+      flash[:danger] = "You must be logged in to do that"
       redirect_to root_path
+      return
+    end
+  end
+
+  def require_cart
+    if @current_order.nil?
+      flash[:danger] = "You must have a cart in session"
+      redirect_to root_path
+      return
     end
   end
 end

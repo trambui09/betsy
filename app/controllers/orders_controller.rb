@@ -1,4 +1,17 @@
 class OrdersController < ApplicationController
+  before_action :require_cart, only: [:new, :checkout, :cancel]
+
+  def index
+    @orders = []
+    if @current_merchant
+       @current_merchant.products.each do | product |
+         product.orders.each do |order|
+           @orders << order
+         end
+       end
+    end
+  end
+
   def cart
     @cart = @current_order.order_items if @current_order && @current_order.is_pending?
   end
@@ -13,48 +26,51 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = @current_order
-
-    if @order.nil?
-      flash[:warning] = "You must have a cart in session"
-      redirect_to root_path
-      return
-    end
   end
 
   def checkout
-    @order = @current_order
+    @current_order.status = "paid"
     # update without saving
-    @order.assign_attributes(order_params)
-    @order.status = "paid"
+    @current_order.assign_attributes(order_params)
 
-    if @order.save
-      flash[:success] = "Successfully created Order ##{@order.id}"
-      # TODO: add the update_stock here
-      @order.update_stock
-
-      redirect_to order_path(@order.id)
-      return
+    if @current_order.in_stock
+      if @current_order.save
+        flash[:success] = "Successfully created Order ##{@current_order.id}"
+        # TODO: add the update_stock here
+        @current_order.update_stock
+        redirect_to order_path(@current_order.id)
+        return
+      else
+        flash.now[:danger] = "Failed to create order"
+        @current_order.errors.each do |column, message|
+          flash.now[:warning] = "#{column.capitalize}: #{message}"
+        end
+        render :new, status: :bad_request
+        return
+      end
     else
-      flash.now[:danger] = "Failed to create order"
-      render :new, status: :bad_request
+      @current_order.errors.each do |column, message|
+        flash[:warning] = "#{column.capitalize} #{message}"
+      end
+      redirect_to show_cart_path
       return
     end
   end
 
   def cancel
-    @order = @current_order
-    @order.status = "cancelled"
-    @order.save
+    @current_order.status = "cancelled"
+    @current_order.save
+
+    @current_order.update_stock
+
     session[:order_id] = nil
-    flash[:success] = "Successfully cancelled Order ##{@order.id}"
+    flash[:success] = "Successfully cancelled Order ##{@current_order.id}"
     redirect_to root_path
     return
   end
 
   private
   def order_params
-    # why no require ordeR?
     return params.permit(:name, :email, :address, :credit_card_num, :exp_date, :cvv, :billing_zip)
   end
 end
