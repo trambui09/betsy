@@ -46,7 +46,7 @@ product_seven:
   price: 7.50
   merchant: merch_two
   inventory_stock: 5
-  status: "active"
+  status: "retired"
 
 candy_cane:
   name: "candy cane"

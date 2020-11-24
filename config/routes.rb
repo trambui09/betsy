@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/cart", to: "orders#cart", as: "show_cart"
   patch "/orders/:id/cancel", to: "orders#cancel", as: "cancel_order"
   patch "/orders/:id", to: "orders#checkout", as: "paid_order"
+  post "/products/:id", to: "products#update_status", as: "update_product_status"
 
   root to: 'homepages#index'
 
@@ -16,12 +17,12 @@ Rails.application.routes.draw do
   end
 
   resources :merchants do
+    resources :orders, only: [:index]
     resources :products, only: [:index, :update_status]
   end
 
   resources :categories, only: [:index, :show, :new, :create]
   resources :products
-  post "/products/:id", to: "products#update_status", as: "update_product_status"
   resources :order_items, only: [:destroy, :update, :create]
   resources :orders, only: [:show, :new]
 end
