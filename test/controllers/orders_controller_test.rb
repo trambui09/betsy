@@ -40,14 +40,14 @@ describe OrdersController do
     it "flashes a warning when no cart is in session and redirects to homepage" do
       get new_order_path
 
-      expect(flash[:warning]).must_equal "You must have a cart in session"
+      expect(flash[:danger]).must_equal "You must have a cart in session"
 
       must_respond_with :redirect
       must_redirect_to root_path
     end
   end
 
-  describe "checkout" do
+  describe "custom controller actions" do
     before do
       @candy_cane = products(:candy_cane)
       @item_hash = {
@@ -57,61 +57,127 @@ describe OrdersController do
       post add_cart_path(@candy_cane), params: @item_hash
     end
 
-    it "successfully checks out an order " do
-      order_id = session[:order_id]
+    describe "checkout" do
+      it "successfully checks out an order " do
+        order_id = session[:order_id]
 
-      order_hash = {
-          name: "Mrs. Claus",
-          email: "mrs.claus@gmail.com",
-          address: "North Pole",
-          credit_card_num: 1111222233334444,
-          exp_date: 1220,
-          cvv: 123,
-          billing_zip: 12345
-      }
+        order_hash = {
+            name: "Mrs. Claus",
+            email: "mrs.claus@gmail.com",
+            address: "North Pole",
+            credit_card_num: 1111222233334444,
+            exp_date: 1220,
+            cvv: 123,
+            billing_zip: 12345
+        }
 
-      expect {
+        expect {
+          patch paid_order_path(order_id), params: order_hash
+        }.wont_change "Order.count"
+
+        new_order = Order.find_by(id: order_id)
+        expect(new_order.status).must_equal "paid"
+        expect(new_order.name).must_equal order_hash[:name]
+        expect(new_order.email).must_equal order_hash[:email]
+        expect(new_order.address).must_equal order_hash[:address]
+        expect(new_order.credit_card_num).must_equal order_hash[:credit_card_num]
+        expect(new_order.exp_date).must_equal order_hash[:exp_date]
+        expect(new_order.cvv).must_equal order_hash[:cvv]
+        expect(new_order.billing_zip).must_equal order_hash[:billing_zip]
+      end
+
+      it "responds with bad request for invalid order attributes" do
+        order_id = session[:order_id]
+
+        invalid_order_hash = {
+            name: "",
+            email: "",
+            address: "",
+            credit_card_num: "",
+            exp_date: "",
+            cvv: "",
+            billing_zip: ""
+        }
+
+        expect {
+          patch paid_order_path(order_id), params: invalid_order_hash
+        }.wont_change "Order.count"
+
+        new_order = Order.find_by(id: order_id)
+        expect(new_order.status).must_equal "pending"
+        expect(flash[:danger]).must_equal "Failed to create order"
+        must_respond_with :bad_request
+      end
+
+      it "redirects to cart page for order items with quantity greater than our inventory of product" do
+        first_order_id = session[:order_id]
+
+        order_hash = {
+            name: "Mrs. Claus",
+            email: "mrs.claus@gmail.com",
+            address: "North Pole",
+            credit_card_num: 1111222233334444,
+            exp_date: 1220,
+            cvv: 123,
+            billing_zip: 12345
+        }
+
+        patch paid_order_path(first_order_id), params: order_hash
+
+        session[:order_id] = nil
+
+        @item_hash[:quantity] = 12
+        post add_cart_path(@candy_cane), params: @item_hash
+        second_order_id = session[:order_id]
+
+        expect {
+          patch paid_order_path(second_order_id), params: order_hash
+        }.wont_change "Order.count"
+
+        expect(flash[:warning]).must_equal "Order_item candy cane: only 11 in stock. Please update the quantity of that order item in your cart."
+        must_respond_with :redirect
+        must_redirect_to show_cart_path
+      end
+    end
+
+    describe "cancel" do
+      it "cancels an existing order" do
+        order_id = session[:order_id]
+
+        order_hash = {
+            name: "Mrs. Claus",
+            email: "mrs.claus@gmail.com",
+            address: "North Pole",
+            credit_card_num: 1111222233334444,
+            exp_date: 1220,
+            cvv: 123,
+            billing_zip: 12345
+        }
+
         patch paid_order_path(order_id), params: order_hash
-      }.wont_change "Order.count"
 
-      new_order = Order.find_by(id: order_id)
-      expect(new_order.status).must_equal "paid"
-      expect(new_order.name).must_equal order_hash[:name]
-      expect(new_order.email).must_equal order_hash[:email]
-      expect(new_order.address).must_equal order_hash[:address]
-      expect(new_order.credit_card_num).must_equal order_hash[:credit_card_num]
-      expect(new_order.exp_date).must_equal order_hash[:exp_date]
-      expect(new_order.cvv).must_equal order_hash[:cvv]
-      expect(new_order.billing_zip).must_equal order_hash[:billing_zip]
+        expect {
+          patch cancel_order_path(order_id)
+        }.wont_change "Order.count"
+
+        cancelled_order = Order.find_by(id: order_id)
+        expect(cancelled_order.status).must_equal "cancelled"
+        expect(session[:order_id]).must_be_nil
+        expect(flash[:success]).must_equal "Successfully cancelled Order ##{order_id}"
+
+        must_respond_with :redirect
+        must_redirect_to root_path
+      end
+
+      it "fails to cancel order when no cart in session and redirects" do
+        order_id = session[:order_id]
+        Order.delete_all
+        patch cancel_order_path(order_id)
+
+        expect(flash[:danger]).must_equal "You must have a cart in session"
+        must_respond_with :redirect
+        must_redirect_to root_path
+      end
     end
-
-    it "responds with bad request for invalid attributes" do
-      order_id = session[:order_id]
-
-      invalid_order_hash = {
-          name: "",
-          email: "",
-          address: "",
-          credit_card_num: 0,
-          exp_date: 0,
-          cvv: 0,
-          billing_zip: 0
-      }
-
-      expect {
-        patch paid_order_path(order_id), params: invalid_order_hash
-      }.wont_change "Order.count"
-
-      new_order = Order.find_by(id: order_id)
-      expect(new_order).must_be_nil
-    end
-
-    it "responds with bad request for order item quantity exceeds inventory of product" do
-
-    end
-  end
-
-  describe "cancel" do
-
   end
 end

@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   post "/logout", to: "merchants#logout", as: "logout"
   post "/products/:id/orders", to: "order_items#create", as: "add_cart"
   get "/cart", to: "orders#cart", as: "show_cart"
+  patch "/orders/:id/cancel", to: "orders#cancel", as: "cancel_order"
   patch "/orders/:id", to: "orders#checkout", as: "paid_order"
-  patch "/orders/cancel/:id", to: "orders#cancel", as: "cancel_order"
 
   root to: 'homepages#index'
 
