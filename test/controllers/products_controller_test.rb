@@ -131,7 +131,7 @@ describe ProductsController do
       end
       # TODO: do we need to test for price validity
     end
-    
+
     describe "toggle product status" do
       it "can change product from active to retire" do
         product = products(:product_one)
