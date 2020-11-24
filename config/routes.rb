@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :merchants do
+    resources :orders, only: [:index]
     resources :products, only: [:index, :update_status]
   end
 

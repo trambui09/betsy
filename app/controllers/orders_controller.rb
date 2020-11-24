@@ -1,4 +1,16 @@
 class OrdersController < ApplicationController
+
+  def index
+    @orders = []
+    if @current_merchant
+       @current_merchant.products.each do | product |
+         product.orders.each do |order|
+           @orders << order
+         end
+       end
+    end
+  end
+
   def cart
     @cart = @current_order.order_items if @current_order
   end

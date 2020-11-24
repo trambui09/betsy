@@ -69,10 +69,51 @@ describe MerchantsController do
     end
   end
 
-  describe "index" do
-    it "can load all merchants" do
-      get merchants_path
-      must_respond_with :ok
+  describe "logged in merchants" do
+
+    before do
+      @merchant = merchants(:merch_two)
+      perform_login(@merchant)
     end
+
+    describe "index" do
+      it "can load all merchants" do
+        get merchants_path
+        must_respond_with :ok
+      end
+    end
+
+    describe "merchant show page" do
+        it "can load the merchant show page" do
+          get merchant_path(@merchant.id)
+          must_respond_with :success
+        end
+    end
+
   end
+
+  describe "guest users" do
+
+    describe "index" do
+      it "can load all merchants" do
+        get merchants_path
+        must_respond_with :ok
+      end
+    end
+
+    describe "mechant show page/dashboard" do
+      it "can't access the merchant dashboard" do
+        merchant = merchants(:merch_two)
+        get merchant_path(merchant.id)
+        must_redirect_to root_path
+        flash[:error].must_equal "You must be logged in to do that"
+      end
+    end
+
+
+  end
+
+
+
+
 end
