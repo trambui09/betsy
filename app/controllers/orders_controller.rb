@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
          end
        end
     end
-    return @orders
   end
 
   def cart
