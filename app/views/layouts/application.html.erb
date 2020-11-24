@@ -13,10 +13,9 @@
     <header>
       <h1>
         <a href="/">&lt;Holy Holly&gt;</a>
-<!--        <br>-->
-<!--        <small>Sharing the Holly spirits with you</small>-->
+        <small><p>Sharing the *holly-day* spirit with you</p></small>
       </h1>
-      <nav class="navbar navbar-light" style="background-color: #d2f8d2;">
+      <nav class="navbar">
         <ul class="nav app-header__site-nav-container">
           <li >
             <%= link_to "Products", products_path, class: "nav-link" %>
@@ -41,9 +40,11 @@
     </header>
 
     <section>
-      <div>
+      <div class="alert__container">
         <% flash.each do |name, message| %>
-          <%= message %>
+          <div class="alert alert-<%= name %>">
+            <strong><%= message %></strong>
+          </div>
         <% end %>
       </div>
     </section>
@@ -52,8 +53,7 @@
     </main>
 
     <footer>
-      <p>Copyrighted 2020 by the HolyHolly Team</p>
-
+      &copy; 2020 by the HolyHolly Team
     </footer>
 
   </body>

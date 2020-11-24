@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
       redirect_to category_path(@category.id)
     else
       @category.errors.each do |column, message|
-        flash.now[:error] = "A problem occurred: Could not create #{@category.name} #{column}: #{message}"
+        flash.now[:warning] = "A problem occurred: Could not create #{@category.name} #{column}: #{message}"
       end
       render :new, status: :bad_request
       return

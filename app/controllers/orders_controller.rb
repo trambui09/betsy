@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :require_cart, only: [:new, :checkout, :cancel]
+  before_action :require_cart, only: [:new, :checkout]
+  before_action :find_order, only: [:show, :cancel]
 
   def index
     @orders = []
@@ -17,8 +18,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(id: params[:id])
-
     if @order.nil?
       head :not_found
       return
@@ -38,7 +37,8 @@ class OrdersController < ApplicationController
         flash[:success] = "Successfully created Order ##{@current_order.id}"
         # TODO: add the update_stock here
         @current_order.update_stock
-
+        # ask about this
+        session[:order_id] = nil
         redirect_to order_path(@current_order.id)
         return
       else
@@ -59,13 +59,16 @@ class OrdersController < ApplicationController
   end
 
   def cancel
-    @current_order.status = "cancelled"
-    @current_order.save
+    if @order.nil?
+      head :not_found
+      return
+    end
 
-    @current_order.update_stock
+    @order.status = "cancelled"
+    @order.save
+    @order.update_stock
 
-    session[:order_id] = nil
-    flash[:success] = "Successfully cancelled Order ##{@current_order.id}"
+    flash[:success] = "Successfully cancelled Order ##{@order.id}"
     redirect_to root_path
     return
   end
@@ -73,6 +76,10 @@ class OrdersController < ApplicationController
   private
   def order_params
     return params.permit(:name, :email, :address, :credit_card_num, :exp_date, :cvv, :billing_zip)
+  end
+
+  def find_order
+    @order = Order.find_by(id: params[:id])
   end
 end
 

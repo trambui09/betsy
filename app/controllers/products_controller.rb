@@ -72,7 +72,7 @@ class ProductsController < ApplicationController
       redirect_to product_path(@product)
     else # save failed
       @product.errors.each do |column, message|
-        flash.now[:error] = "A problem occurred: Could not #{action_name} #{@product.name} #{column}: #{message}"
+        flash.now[:warning] = "A problem occurred: Could not #{action_name} #{@product.name} #{column}: #{message}"
       end
 
       render :edit, status: :bad_request

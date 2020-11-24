@@ -84,6 +84,7 @@ describe OrdersController do
         expect(new_order.exp_date).must_equal order_hash[:exp_date]
         expect(new_order.cvv).must_equal order_hash[:cvv]
         expect(new_order.billing_zip).must_equal order_hash[:billing_zip]
+        expect(session[:order_id]).must_be_nil
       end
 
       it "responds with bad request for invalid order attributes" do
@@ -162,21 +163,16 @@ describe OrdersController do
 
         cancelled_order = Order.find_by(id: order_id)
         expect(cancelled_order.status).must_equal "cancelled"
-        expect(session[:order_id]).must_be_nil
         expect(flash[:success]).must_equal "Successfully cancelled Order ##{order_id}"
 
         must_respond_with :redirect
         must_redirect_to root_path
       end
 
-      it "fails to cancel order when no cart in session and redirects" do
-        order_id = session[:order_id]
-        Order.delete_all
-        patch cancel_order_path(order_id)
+      it "fails to cancel invalid order and responds with not found" do
+        patch cancel_order_path(-1)
 
-        expect(flash[:danger]).must_equal "You must have a cart in session"
-        must_respond_with :redirect
-        must_redirect_to root_path
+        must_respond_with :not_found
       end
     end
   end
