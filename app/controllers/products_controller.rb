@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
+
   before_action :find_product, only: [:show, :edit, :update, :destroy, :update_status]
+  before_action :require_login, only: [:new, :edit, :create, :update]
 
   before_action :set_page, only: [:index]
   PRODUCTS_PER_PAGE = 6
