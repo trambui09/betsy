@@ -152,7 +152,7 @@ describe CategoriesController do
     it "cannot access the new category page" do
       get new_category_path(categories(:decor).id)
       must_redirect_to root_path
-      flash[:error].must_equal "You must be logged in to do that"
+      flash[:danger].must_equal "You must be logged in to do that"
     end
 
   end

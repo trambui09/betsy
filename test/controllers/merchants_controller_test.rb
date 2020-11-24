@@ -106,7 +106,7 @@ describe MerchantsController do
         merchant = merchants(:merch_two)
         get merchant_path(merchant.id)
         must_redirect_to root_path
-        flash[:error].must_equal "You must be logged in to do that"
+        flash[:danger].must_equal "You must be logged in to do that"
       end
     end
 

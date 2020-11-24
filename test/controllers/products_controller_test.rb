@@ -195,13 +195,13 @@ describe ProductsController do
     it "cannot access new" do
       get new_product_path
       must_redirect_to root_path
-      expect(flash[:error]).must_equal "You must be logged in to do that"
+      expect(flash[:danger]).must_equal "You must be logged in to do that"
     end
 
     it "cannot access edit" do
       get edit_product_path(@product.id)
       must_redirect_to root_path
-      expect(flash[:error]).must_equal "You must be logged in to do that"
+      expect(flash[:danger]).must_equal "You must be logged in to do that"
     end
   end
 end

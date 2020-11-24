@@ -6,4 +6,14 @@ class OrderItem < ApplicationRecord
   def total_price
     self.product.price * self.quantity
   end
+
+  def find_order
+    order = Order.find_by(id: self.order_id)
+    return order
+  end
+
+  def find_product
+    product = Product.find_by(id: self.product_id)
+    return product
+  end
 end
