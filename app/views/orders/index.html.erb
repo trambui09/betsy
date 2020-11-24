@@ -1,21 +1,82 @@
+<center><h1>Order Summary</h1> </center>
+<br>
+<h4> <%=link_to "Back to My Account", merchant_path(session[:merchant_id]),class: "btn btn-secondary" %></h4>
+<br>
 
-<% if @current_merchant %>
-  <section>
-    <h3>Order Summary</h3>
-    <% if @orders.empty? %>
-      <p> You have no orders.</p>
-    <%else %>
-      <div>
-        <% @orders.each do |order| %>
-          <table class=" table table-borderless">
-            <tr>
-              <th>Order Number<strong> <%=link_to order.id,order_path(order) %></strong></th>
-              <th>Purchase Date<%= order.created_at.strftime("%m/%d/%y")%></th>
-              <th>Order status <%= order.status %></th>
-            </tr>
-          </table>
-        <% end %>
-      </div>
-    <%end %>
-  </section>
-<%end %>
+<table class="table">
+  <tr>
+    <td></td>
+    <th scope="col"> Orders</th>
+    <th scope="col"> Total Revenue: <%= number_to_currency(@current_merchant.total_revenue) %></th>
+  </tr>
+  <tr>
+    <th scope="row">Pending Orders</th>
+    <td><%@current_merchant.total_orders_by_status("pending") %></td>
+  </tr>
+  <tr>
+    <th scope="row"> Paid Orders </th>
+    <td><%=@current_merchant.total_orders_by_status("paid")%></td>
+  </tr>
+  <tr>
+    <th scope="row">Cancelled Orders</th>
+    <td><%=@current_merchant.total_orders_by_status("cancelled")%></td>
+  </tr>
+  <tr>
+    <th scope="row">Complete Orders</th>
+    <td><%@current_merchant.total_orders_by_status("complete") %></td>
+  </tr>
+</table>
+
+
+<!--<section class="summary row">-->
+<!--  <section class = "columns small-6 medium-4">-->
+<!--    <ul>-->
+<!--      <li><strong>Total Revenue:</strong> <%#= number_to_currency(@current_merchant.total_revenue) %></li>-->
+<!--      <ul>-->
+<!--        <li><strong>by Paid:</strong> </li>-->
+<!--        <li><strong>by Completed:</strong></li>-->
+<!--      </ul>-->
+<!--    </ul>-->
+<!--  </section>-->
+
+<!--  <section class = "columns small-6 medium-4">-->
+<!--    <ul>-->
+<!--      <li><strong>Total Orders:</strong></li>-->
+<!--      <ul>-->
+<!--        <li><strong>by Paid:</strong></li>-->
+<!--        <li><strong>by Completed:</strong></li>-->
+<!--      </ul>-->
+<!--    </ul>-->
+<!--  </section>-->
+
+<!--  <section class = "columns small-12 medium-4">-->
+<!--    <ul>-->
+<!--      <li><strong>Filter by status: </strong></li>-->
+<!--      <ul>-->
+<!--        <li> Paid Status: </li>-->
+<!--        <li> Complete Status: </li>-->
+<!--      </ul>-->
+<!--    </ul>-->
+<!--  </section>-->
+
+
+
+  <% if @current_merchant %>
+    <section>
+      <% if @orders.empty? %>
+        <p> You have no orders.</p>
+      <%else %>
+        <div>
+          <% @orders.each do |order| %>
+            <table class=" table table-borderless">
+              <tr>
+                <th>Order Number<strong> <%=link_to order.id,order_path(order) %></strong></th>
+                <th>Purchase Date<%= order.created_at.strftime("%m/%d/%y")%></th>
+                <th>Order status <%= order.status %></th>
+              </tr>
+            </table>
+          <% end %>
+        </div>
+      <%end %>
+    </section>
+  <%end %>
