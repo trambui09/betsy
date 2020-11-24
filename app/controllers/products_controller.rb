@@ -1,15 +1,20 @@
 class ProductsController < ApplicationController
+
   before_action :find_product, only: [:show, :edit, :update, :destroy, :update_status]
+  before_action :require_login, only: [:new, :edit, :create, :update]
+
+  before_action :set_page, only: [:index]
+  PRODUCTS_PER_PAGE = 6
 
   def index
-    if params[:category_id]
+     if params[:category_id]
       category = Category.find_by(id: params[:category_id])
-      @products = category.products
+      @products = category.products.limit(PRODUCTS_PER_PAGE).offset(@page * PRODUCTS_PER_PAGE)
     elsif params[:merchant_id]
       @merchant= Merchant.find_by(id: params[:merchant_id])
-    @products = @merchant.products
+    @products = @merchant.products.limit(PRODUCTS_PER_PAGE).offset(@page * PRODUCTS_PER_PAGE)
     else
-      @products = Product.all
+      @products = Product.all.limit(PRODUCTS_PER_PAGE).offset(@page * PRODUCTS_PER_PAGE)
     end
   end
 
@@ -114,5 +119,9 @@ class ProductsController < ApplicationController
 
   def find_product
     @product = Product.find_by(id: params[:id])
+  end
+
+  def set_page
+    @page = params[:page].to_i || 0
   end
 end
