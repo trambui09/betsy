@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe Merchant do
-  
+
   let (:new_merchant) {
     Merchant.new(provider: "github",
                  uid: 111,
@@ -30,7 +30,7 @@ describe Merchant do
       new_merchant.username = nil
 
       expect(new_merchant.valid?).must_equal false
-      expect(new_merchant.errors.messages).must_include  :username
+      expect(new_merchant.errors.messages).must_include :username
       expect(new_merchant.errors.messages[:username]).must_equal ["can't be blank"]
     end
 
@@ -39,7 +39,7 @@ describe Merchant do
       new_merchant.email = nil
 
       expect(new_merchant.valid?).must_equal false
-      expect(new_merchant.errors.messages).must_include  :email
+      expect(new_merchant.errors.messages).must_include :email
       expect(new_merchant.errors.messages[:email]).must_equal ["can't be blank"]
     end
 
@@ -109,6 +109,7 @@ describe Merchant do
       before do
         @merchant = merchants(:merch_four)
         @product_one = products(:product_one)
+        @product_two = products(:product_three)
       end
 
       it "correctly calculates total revenue for one specific merchant" do
@@ -117,7 +118,24 @@ describe Merchant do
         expect(@merchant.total_revenue).must_equal 10.99
       end
     end
+    # it "can calculate total revenue for various items" do
+    #   order1= orders(:cart_four)
+    #   order2 =orders(:cart_two)
+    # end
+
   end
+
+  # describe "find_orders_by_status" do
+  #
+  #   it "returns only orders with a specific status" do
+  #     result = @merchant.find_orders_by_status("complete")
+  #
+  #     expect(result.size).must_equal 1
+  #     result.each do |order_item|
+  #       expect(order_item.order.status).must_equal "complete"
+  #     end
+  #   end
+  # end
 end
 
 # multiple products from the same merchants 3 stockings from same merchants and
