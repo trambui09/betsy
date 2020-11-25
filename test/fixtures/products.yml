@@ -55,5 +55,19 @@ candy_cane:
   inventory_stock: 12
   status: "active"
 
+stocking:
+  name: "stocking"
+  price: 10.99
+  merchant: merch_four
+  inventory_stock: 10
+  status: "active"
+
+gingerbread:
+  name: "gingerbread cookies"
+  price: 5.00
+  merchant: merch_four
+  inventory_stock: 10
+  status: "active"
+
 
 

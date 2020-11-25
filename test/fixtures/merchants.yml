@@ -16,4 +16,10 @@ merch_three:
   email: elf@gmail.com
   username: helper_elf
 
+merch_four:
+  provider: github
+  uid: 9999
+  email: holly@gmail.com
+  username: hollyjolly
+
 

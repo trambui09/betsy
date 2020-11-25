@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-
   before_action :find_product, only: [:show, :edit, :update, :destroy, :update_status]
   before_action :require_login, only: [:new, :edit, :create, :update]
 
@@ -19,10 +18,13 @@ class ProductsController < ApplicationController
   end
 
   def show
-    # @product = Product.find_by(id: params[:id])
     if @product.nil?
       head :not_found
       return
+    end
+
+    if @product.status == "retired"
+      require_login
     end
   end
 
@@ -55,10 +57,13 @@ class ProductsController < ApplicationController
   end
 
   def edit
-
     if @product.nil?
       head :not_found
       return
+    end
+
+    if @product.merchant != @current_merchant
+      require_login
     end
   end
 
@@ -84,12 +89,12 @@ class ProductsController < ApplicationController
     if @product.status == "active"
       @product.update_attribute(:status, "retired")
       flash[:success] = "Succesfully set the product to #{@product.status}"
-      redirect_to merchant_path(@current_merchant)
+      redirect_to account_path
 
     else
       @product.update_attribute(:status, "active")
       flash[:success] = "Succesfully set the product to #{@product.status}"
-      redirect_to merchant_path(@current_merchant)
+      redirect_to account_path
     end
 
 

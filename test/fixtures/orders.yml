@@ -1,5 +1,4 @@
 cart_one:
-  status: paid
   name: Santa Claus
   email: santa@northpole.com
   address: 101 North Pole
@@ -7,6 +6,8 @@ cart_one:
   exp_date: 11/2025
   cvv: 432
   billing_zip: 15000
+  status: paid
+
 cart_two:
   name: Jack Frost
   email: JFrost@Icey.com
@@ -15,6 +16,8 @@ cart_two:
   exp_date: 12/2024
   cvv: 123
   billing_zip: 98765
+  status: cancelled
+
 cart_three:
   name: Grinch
   email: grinch@xmassucks.com
@@ -23,3 +26,17 @@ cart_three:
   exp_date: 01/2026
   cvv: 762
   billing_zip: 56472
+  status: complete
+
+pending_order:
+  status: pending
+
+cart_four:
+  name: Rudolph
+  email: rednosed@northpole.com
+  address: Red All the way
+  credit_card_num: 1111222233334444
+  exp_date: 04/2026
+  cvv: 123
+  billing_zip: 19876
+  status: complete

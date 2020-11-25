@@ -18,10 +18,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if @order.nil?
-      head :not_found
-      return
-    end
   end
 
   def new
@@ -37,10 +33,8 @@ class OrdersController < ApplicationController
         flash[:success] = "Successfully created Order ##{@current_order.id}"
         # TODO: add the update_stock here
         @current_order.update_stock
-        # ask about this
-        session[:order_id] = nil
         redirect_to order_path(@current_order.id)
-        return
+        session[:order_id] = nil
       else
         flash.now[:danger] = "Failed to create order"
         @current_order.errors.each do |column, message|
@@ -59,11 +53,6 @@ class OrdersController < ApplicationController
   end
 
   def cancel
-    if @order.nil?
-      head :not_found
-      return
-    end
-
     @order.status = "cancelled"
     @order.save
     @order.update_stock
@@ -80,6 +69,11 @@ class OrdersController < ApplicationController
 
   def find_order
     @order = Order.find_by(id: params[:id])
+
+    if @order.nil?
+      head :not_found
+      return
+    end
   end
 end
 
