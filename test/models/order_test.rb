@@ -30,7 +30,6 @@ describe Order do
     end
   end
 
-
   describe "relations" do
     it 'can have many Order Items' do
       order = orders(:cart_one)
@@ -42,7 +41,6 @@ describe Order do
     end
 
     it "has many products through order_items" do
-
       order = orders(:cart_one)
 
       order.products.each do |product|
@@ -61,11 +59,9 @@ describe Order do
         return new_order.name = nil
       end
 
-
       expect(new_order.valid?).must_equal false
       expect(new_order.errors.messages).must_include :name
       expect(new_order.errors.messages[:name]).must_equal ["can't be blank"]
-
     end
 
     it "must have an address" do
@@ -74,11 +70,9 @@ describe Order do
         return new_order.name = nil
       end
 
-
       expect(new_order.valid?).must_equal false
       expect(new_order.errors.messages).must_include :address
       expect(new_order.errors.messages[:address]).must_equal ["can't be blank"]
-
     end
 
     it "must have an email" do
@@ -87,11 +81,9 @@ describe Order do
         return new_order.email = nil
       end
 
-
       expect(new_order.valid?).must_equal false
       expect(new_order.errors.messages).must_include :email
       expect(new_order.errors.messages[:email]).must_equal ["can't be blank"]
-
     end
 
     it "must have a credit card number" do
@@ -100,11 +92,9 @@ describe Order do
         return new_order.credit_card_num = nil
       end
 
-
       expect(new_order.valid?).must_equal false
       expect(new_order.errors.messages).must_include :credit_card_num
       expect(new_order.errors.messages[:credit_card_num]).must_equal ["can't be blank"]
-
     end
 
     it "credit card number must be an integer" do
@@ -131,24 +121,19 @@ describe Order do
         return new_order.exp_date = nil
       end
 
-
       expect(new_order.valid?).must_equal false
       expect(new_order.errors.messages).must_include :exp_date
       expect(new_order.errors.messages[:exp_date]).must_equal ["can't be blank"]
-
     end
 
     it "must have a cvv" do
-
       unless :is_pending? == true
         return new_order.cvv = nil
       end
 
-
       expect(new_order.valid?).must_equal false
       expect(new_order.errors.messages).must_include :cvv
       expect(new_order.errors.messages[:cvv]).must_equal ["can't be blank"]
-
     end
 
     it "cvv must be an integer" do
@@ -175,18 +160,10 @@ describe Order do
         return new_order.billing_zip = nil
       end
 
-
       expect(new_order.valid?).must_equal false
       expect(new_order.errors.messages).must_include :billing_zip
       expect(new_order.errors.messages[:billing_zip]).must_equal ["can't be blank"]
-
     end
-
-
-
-
-
-
   end
 
   describe "custom methods" do
@@ -195,7 +172,6 @@ describe Order do
 
         expect(new_order.is_pending?).must_equal true
         expect(new_order.status).must_equal "pending"
-
       end
     end
 
@@ -207,13 +183,10 @@ describe Order do
         order_1.order_items.each do |item|
           total_cost += item.total_price
         end
-
         # act
         cart_total = order_1.total_cart_cost
-
         # assert
         expect(cart_total).must_equal total_cost
-
       end
     end
 
@@ -222,13 +195,11 @@ describe Order do
         found_order = orders(:cart_six)
         expect(found_order.status).must_equal "paid"
 
-
         found_order.complete_order?
         found_order.reload
 
         found_found_order = Order.find_by(id: found_order.id)
         expect(found_found_order.status).must_equal "completed"
-
       end
 
       it "marks order as paid when not all items are shipped" do
@@ -241,8 +212,6 @@ describe Order do
         found_order = Order.find_by(id: order.id)
         expect(found_order.status).must_equal "paid"
       end
-
-
     end
 
     describe "update_stock" do
@@ -269,15 +238,6 @@ describe Order do
         # expect(product_1_after_cancelling).must_equal product_1_stock
 
       end
-
-      # it "return the product stock if the order is cancelled" do
-      #   order_1 = orders(:cart_one)
-      #   order_1.status == "cancelled"
-      #
-      #   order_1.update_stock
-      #   order_1.reload
-      #
-      # end
     end
   end
 end
