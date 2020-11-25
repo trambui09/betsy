@@ -41,32 +41,32 @@ describe ProductsController do
     end
 
     describe 'create' do
-      # it 'can create a new product with valid information accurately, and redirect' do
-      #   merchant = Merchant.create(username: "test merchant", email: "test@test.com")
-      #   product_hash = {
-      #       product: {
-      #           merchant_id: merchant.id,
-      #           name: "test product",
-      #           price: 24.50,
-      #           description: "testing description",
-      #           photo_url: "testing.com",
-      #           inventory_stock: 5
-      #       }
-      #   }
-      #
-      #   expect {
-      #     post products_path, params: product_hash
-      #   }.must_change "Product.count", 1
-      #
-      #   new_product = Product.find_by(name: product_hash[:product][:name])
-      #
-      #   expect(new_product.price).must_equal product_hash[:product][:price]
-      #
-      #   must_respond_with :redirect
-      #   must_redirect_to product_path(new_product.id)
-      #
-      #
-      # end
+      it 'can create a new product with valid information accurately, and redirect' do
+        merchant = Merchant.create(username: "test merchant", email: "test@test.com")
+        product_hash = {
+            product: {
+                merchant_id: merchant.id,
+                name: "test product",
+                price: 24.50,
+                description: "testing description",
+                photo_url: "testing.com",
+                inventory_stock: 5
+            }
+        }
+
+        expect {
+          post products_path, params: product_hash
+        }.must_change "Product.count", 1
+
+        new_product = Product.find_by(name: product_hash[:product][:name])
+
+        expect(new_product.price).must_equal product_hash[:product][:price]
+
+        must_respond_with :redirect
+        must_redirect_to product_path(new_product.id)
+
+
+      end
     end
 
     describe "edit" do
@@ -137,7 +137,7 @@ describe ProductsController do
         product = products(:product_one)
         expect(product.status).must_equal "active"
 
-        post update_product_status_path(product.id)
+        patch update_product_status_path(product.id)
         found_product = Product.find_by(name: "tree")
         expect(found_product.status).must_equal "retired"
       end
@@ -146,7 +146,7 @@ describe ProductsController do
         product = products(:product_seven)
         expect(product.status).must_equal "retired"
 
-        post update_product_status_path(product.id)
+        patch update_product_status_path(product.id)
         found_product = Product.find_by(name: "hot chocolate")
         expect(found_product.status).must_equal "active"
 

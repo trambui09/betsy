@@ -126,7 +126,7 @@ describe OrderItemsController do
                                            fulfillment_status: "ship")
       expect(unshipped_item.fulfillment_status).must_equal "ship"
 
-      post ship_item_path(unshipped_item.id)
+      patch ship_item_path(unshipped_item.id)
       item = OrderItem.find_by(id: unshipped_item.id)
       expect(item.fulfillment_status).must_equal "shipped"
     end

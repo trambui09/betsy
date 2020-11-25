@@ -10,14 +10,14 @@
 <%if @merchant%>
 <h2><%= @merchant.username %>'s Holiday Shop </h2>
 <%end %>
-<h2>Products: </h2>
+<h2>Products</h2>
 
 <section class="row root-products">
   <!--  <h4><strong>Recently Added</strong></h4>-->
   <% @products.each do |product| %>
     <% if product.status == "active" %>
     <div class="col-md-4">
-      <div class="thumbnail">
+      <div>
         <%= image_tag(safe_product_photo_url(product), size: "250x250", alt: "product image" )%>
         <br>
         <%= link_to product.name, product_path(product) %>
@@ -42,7 +42,6 @@
   <button class="btn btn-light"><%= link_to 'Previous', products_path(page: @page - 1) %></button>
     <% end %>
   <% end %>
-
 
   <% if @products.length >= 6 %>
     <button class="btn btn-light"><%= link_to "Next", products_path(page: @page + 1) %></button>
