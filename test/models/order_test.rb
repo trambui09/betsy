@@ -217,6 +217,25 @@ describe Order do
       end
     end
 
+    describe "complete order" do
+      it "marks the order status as completed when all order items are shipped" do
+
+      end
+
+      it "marks order as paid when not all items are shipped" do
+        # arrange
+        order = orders(:cart_five)
+        expect(order.status).must_equal "paid"
+        # act
+        order.complete_order?
+        # assert
+        found_order = Order.find_by(id: order.id)
+        expect(found_order.status).must_equal "paid"
+      end
+
+
+    end
+
     describe "update_stock" do
       it "can accurately reduce the stock if the order status is paid" do
         # arrange

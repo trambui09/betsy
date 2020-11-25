@@ -40,3 +40,13 @@ cart_four:
   cvv: 123
   billing_zip: 19876
   status: complete
+
+cart_five:
+  name: Miss Claus
+  email: missclaus@northpole.com
+  address: 123 North Pole
+  credit_card_num: 1111222233334445
+  exp_date: 04/2027
+  cvv: 125
+  billing_zip: 98103
+  status: paid

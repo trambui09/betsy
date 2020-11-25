@@ -22,5 +22,15 @@ stocking_items:
   quantity: 1
   product: stocking
   order: cart_four
+hot_chocolate:
+  quantity: 1
+  product: product_seven
+  order: cart_five
+  fulfillment_status: "shipped"
+snow_globe_5:
+  quantity: 1
+  product: product_six
+  order: cart_five
+  fulfillment_status: "ship"
 
 
