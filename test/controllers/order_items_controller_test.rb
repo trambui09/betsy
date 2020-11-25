@@ -118,6 +118,17 @@ describe OrderItemsController do
     end
   end
 
+  # describe "ship" do
+  #   it "can ship an order_item" do
+  #     unshipped_item = order_items(:hot_chocolate)
+  #     expect(unshipped_item.fulfillment_status).must_equal "ship"
+  #
+  #     patch ship_item_path(unshipped_item.id)
+  #     item = OrderItem.find_by(id: unshipped_item.id)
+  #     expect(item.fulfillment_status).must_equal "shipped"
+  #   end
+  # end
+
   describe "destroy" do
     before do
       @ornament = order_items(:ornament_items)

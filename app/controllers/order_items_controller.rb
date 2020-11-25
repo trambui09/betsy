@@ -47,7 +47,6 @@ class OrderItemsController < ApplicationController
     if @item.fulfillment_status == "ship"
       @item.update_attribute(:fulfillment_status, "shipped")
       flash[:success] = "Succesfully #{@item.fulfillment_status} the item"
-      #TODO: figure to redirect_to path
       redirect_back fallback_location: '/'
     end
   end
