@@ -137,7 +137,7 @@ describe ProductsController do
         product = products(:product_one)
         expect(product.status).must_equal "active"
 
-        post update_product_status_path(product.id)
+        patch update_product_status_path(product.id)
         found_product = Product.find_by(name: "tree")
         expect(found_product.status).must_equal "retired"
       end
@@ -146,7 +146,7 @@ describe ProductsController do
         product = products(:product_seven)
         expect(product.status).must_equal "retired"
 
-        post update_product_status_path(product.id)
+        patch update_product_status_path(product.id)
         found_product = Product.find_by(name: "hot chocolate")
         expect(found_product.status).must_equal "active"
 

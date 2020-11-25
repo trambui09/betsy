@@ -1,19 +1,18 @@
 {
   "Minitest": {
     "coverage": {
-      "/Users/newuser/Ada/projects/betsy/app/controllers/categories_controller.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/controllers/categories_controller.rb": {
         "lines": [
           1,
-          null,
           1,
           null,
-          1,
-          4,
+          null,
+          null,
           null,
           null,
           1,
-          2,
-          2,
+          3,
+          3,
           1,
           null,
           null,
@@ -69,18 +68,23 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/controllers/application_controller.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
           1,
+          1,
           null,
           1,
-          89,
+          85,
           null,
           null,
           1,
-          89,
+          85,
+          null,
+          null,
+          1,
+          85,
           null,
           null,
           1,
@@ -101,7 +105,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/controllers/homepages_controller.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/controllers/homepages_controller.rb": {
         "lines": [
           1,
           1,
@@ -109,7 +113,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/controllers/merchants_controller.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/controllers/merchants_controller.rb": {
         "lines": [
           1,
           1,
@@ -123,33 +127,33 @@
           null,
           null,
           1,
-          28,
-          28,
-          28,
-          null,
-          25,
-          null,
-          null,
-          3,
-          null,
-          3,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          2,
-          2,
-          2,
-          null,
-          null,
-          null,
-          null,
+          26,
           26,
           26,
           null,
+          23,
+          null,
+          null,
+          3,
+          null,
+          3,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          2,
+          2,
+          2,
+          null,
+          null,
+          null,
+          null,
+          24,
+          24,
+          null,
           null,
           null,
           1,
@@ -162,7 +166,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/controllers/order_items_controller.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/controllers/order_items_controller.rb": {
         "lines": [
           1,
           1,
@@ -210,11 +214,10 @@
           null,
           null,
           1,
-          0,
-          0,
-          0,
-          null,
-          0,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           null,
@@ -232,12 +235,12 @@
           null,
           1,
           1,
-          5,
+          6,
           null,
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/controllers/orders_controller.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/controllers/orders_controller.rb": {
         "lines": [
           1,
           1,
@@ -250,6 +253,12 @@
           0,
           0,
           null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
           null,
           null,
           null,
@@ -320,7 +329,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/controllers/products_controller.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/controllers/products_controller.rb": {
         "lines": [
           1,
           1,
@@ -388,6 +397,8 @@
           null,
           1,
           0,
+          0,
+          null,
           null,
           null,
           null,
@@ -456,7 +467,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/category.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/models/category.rb": {
         "lines": [
           1,
           1,
@@ -465,14 +476,14 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/application_record.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/merchant.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/models/merchant.rb": {
         "lines": [
           1,
           1,
@@ -525,7 +536,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/order_item.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/models/order_item.rb": {
         "lines": [
           1,
           1,
@@ -537,18 +548,18 @@
           null,
           null,
           1,
-          0,
-          0,
+          1,
+          1,
           null,
           null,
           1,
-          0,
-          0,
+          1,
+          1,
           null,
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/order.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/models/order.rb": {
         "lines": [
           1,
           1,
@@ -593,10 +604,17 @@
           null,
           null,
           null,
+          null,
+          1,
+          6,
+          1,
+          null,
+          null,
+          null,
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/product.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/models/product.rb": {
         "lines": [
           1,
           1,
@@ -617,7 +635,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/review.rb": {
+      "/Users/ada/Desktop/Ada/betsy/app/models/review.rb": {
         "lines": [
           1,
           1,
@@ -629,6 +647,6 @@
         ]
       }
     },
-    "timestamp": 1606268468
+    "timestamp": 1606277078
   }
 }
