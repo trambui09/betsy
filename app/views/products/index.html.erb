@@ -1,3 +1,12 @@
+<aside class="category-list">
+  <h2>Categories</h2>
+    <% @categories.each do |category| %>
+      <p>
+        <%= link_to category.name, category_products_path(category) %>
+      </p>
+    <% end %>
+</aside>
+
 <%if @merchant%>
 <h2><%= @merchant.username %>'s Holiday Shop </h2>
 <%end %>
@@ -28,19 +37,14 @@
   <%# if @page != 0 %>
 <!--    <button><%#= link_to 'Previous', merchant_products_path(page: @page - 1) %></button>-->
   <%# end  %>
-
   <% if @page != 0 %>
-    <% if @merchant %>
-      <button><%= link_to 'Previous', merchant_products_path(page: @page - 1) %></button>
-      <% else @products %>
-    <button><%= link_to 'Previous', products_path(page: @page - 1) %></button>
-      <% end %>
+    <% if @products %>
+  <button class="btn btn-light"><%= link_to 'Previous', products_path(page: @page - 1) %></button>
+    <% end %>
   <% end %>
 
 
-  <% if @merchant %>
-    <button><%= link_to "Next", merchant_products_path(page: @page + 1) %></button>
-  <% else @products %>
-    <button><%= link_to "Next", products_path(page: @page + 1) %></button>
-<% end  %>
+  <% if @products.length >= 6 %>
+    <button class="btn btn-light"><%= link_to "Next", products_path(page: @page + 1) %></button>
+  <% end %>
  </div>

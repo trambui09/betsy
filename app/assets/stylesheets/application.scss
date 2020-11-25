@@ -30,7 +30,7 @@
 .navbar {
   font-family: 'Sacramento', cursive;
   font-size: 1.5rem;
-  background-color: red;
+  background-color: #b11e31;
   margin-bottom: 2rem;
 }
 
@@ -40,7 +40,7 @@
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Sacramento', cursive;
-  color: #f14c42;
+  color: #b11e31;
 }
 
 header h1 {
@@ -56,12 +56,12 @@ header h1 {
 
 header h1 a {
   text-decoration: none;
-  color: red;
+  color: white;
 }
 
 header h1 a:hover {
   text-decoration: none;
-  color: white;
+  color: gold;
 }
 
 header h1 small {
@@ -178,7 +178,7 @@ footer {
 }
 
 hr {
-  border-top: 0.5rem dotted red;
+  border-top: 0.5rem dotted #b11e31;
 }
 
 ul {
@@ -238,7 +238,7 @@ text-align: center;
 table th {
   text-align: center;
   padding: 1rem;
-  background-color: gold;
+  background-color: #9fc697;
 }
 
 table td {
@@ -261,4 +261,17 @@ table tr:nth-child(even) {
 // account page
 .merchant-show {
   text-align: center;
+}
+
+// category aside
+.category-list {
+  float: left;
+  margin-right: 2rem;
+  text-align: left;
+  padding-right: 2rem;
+  border-right: 0.5rem dotted #b11e31;
+}
+
+.category-list p {
+  text-align: right;
 }

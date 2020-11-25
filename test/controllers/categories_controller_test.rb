@@ -6,25 +6,26 @@ describe CategoriesController do
       perform_login(merchants(:merch_one))
     end
 
-    describe "index" do
-      it "responds with success when there are many categories saved" do
-        # Arrange
-        Category.create name: "food"
-        # Act
-        get categories_path
-        # Assert
-        must_respond_with :success
-      end
-
-      it "responds with success when there are no categories saved" do
-        # Arrange
-
-        # Act
-        get categories_path
-        # Assert
-        must_respond_with :success
-      end
-    end
+    # did not need index action
+    # describe "index" do
+    #   it "responds with success when there are many categories saved" do
+    #     # Arrange
+    #     Category.create name: "food"
+    #     # Act
+    #     get categories_path
+    #     # Assert
+    #     must_respond_with :success
+    #   end
+    #
+    #   it "responds with success when there are no categories saved" do
+    #     # Arrange
+    #
+    #     # Act
+    #     get categories_path
+    #     # Assert
+    #     must_respond_with :success
+    #   end
+    # end
 
 
     describe "show" do
@@ -38,7 +39,7 @@ describe CategoriesController do
         id = @category.id
         # Act
 
-        get categories_path(@category.id)
+        get category_path(@category.id)
 
         # Assert
         must_respond_with :success
@@ -139,10 +140,10 @@ describe CategoriesController do
   end
 
   describe "guest users" do
-    it "can get to the index page" do
-      get categories_path
-      must_respond_with :success
-    end
+    # it "can get to the index page" do
+    #   get categories_path
+    #   must_respond_with :success
+    # end
 
     it "can get to the show page" do
       get category_path(categories(:decor).id)

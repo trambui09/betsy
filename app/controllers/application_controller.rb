@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :current_merchant
   before_action :current_order
+  before_action :all_categories
 
   def current_merchant
     @current_merchant = Merchant.find_by(id: session[:merchant_id]) if session[:merchant_id]
@@ -8,6 +9,10 @@ class ApplicationController < ActionController::Base
 
   def current_order
     @current_order = Order.find_by(id: session[:order_id]) if session[:order_id]
+  end
+
+  def all_categories
+    @categories = Category.all
   end
 
   def require_login
