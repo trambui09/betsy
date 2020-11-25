@@ -1,19 +1,18 @@
 {
   "Minitest": {
     "coverage": {
-      "/Users/newuser/Ada/projects/betsy/app/controllers/categories_controller.rb": {
+      "/Users/TramBui/ada/rails/betsy/app/controllers/categories_controller.rb": {
         "lines": [
           1,
-          null,
           1,
           null,
-          1,
-          4,
+          null,
+          null,
           null,
           null,
           1,
-          2,
-          2,
+          3,
+          3,
           1,
           null,
           null,
@@ -69,39 +68,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          89,
-          null,
-          null,
-          1,
-          89,
-          null,
-          null,
-          1,
-          13,
-          4,
-          4,
-          null,
-          null,
-          null,
-          null,
-          1,
-          7,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/newuser/Ada/projects/betsy/app/controllers/homepages_controller.rb": {
+      "/Users/TramBui/ada/rails/betsy/app/controllers/homepages_controller.rb": {
         "lines": [
           1,
           1,
@@ -109,7 +76,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/controllers/merchants_controller.rb": {
+      "/Users/TramBui/ada/rails/betsy/app/controllers/merchants_controller.rb": {
         "lines": [
           1,
           1,
@@ -123,34 +90,34 @@
           null,
           null,
           1,
-          28,
-          28,
-          28,
+          27,
+          27,
+          27,
           null,
+          24,
+          null,
+          null,
+          3,
+          null,
+          3,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          2,
+          2,
+          2,
+          null,
+          null,
+          null,
+          null,
+          25,
           25,
           null,
           null,
-          3,
-          null,
-          3,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          2,
-          2,
-          2,
-          null,
-          null,
-          null,
-          null,
-          26,
-          26,
-          null,
-          null,
           null,
           1,
           1,
@@ -162,7 +129,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/controllers/order_items_controller.rb": {
+      "/Users/TramBui/ada/rails/betsy/app/controllers/order_items_controller.rb": {
         "lines": [
           1,
           1,
@@ -210,11 +177,10 @@
           null,
           null,
           1,
-          0,
-          0,
-          0,
-          null,
-          0,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           null,
@@ -232,12 +198,12 @@
           null,
           1,
           1,
-          5,
+          6,
           null,
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/controllers/orders_controller.rb": {
+      "/Users/TramBui/ada/rails/betsy/app/controllers/orders_controller.rb": {
         "lines": [
           1,
           1,
@@ -250,6 +216,12 @@
           0,
           0,
           null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
           null,
           null,
           null,
@@ -320,7 +292,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/controllers/products_controller.rb": {
+      "/Users/TramBui/ada/rails/betsy/app/controllers/products_controller.rb": {
         "lines": [
           1,
           1,
@@ -362,16 +334,16 @@
           null,
           null,
           null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
           0,
           null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
+          1,
           null,
           null,
           null,
@@ -388,6 +360,8 @@
           null,
           1,
           0,
+          0,
+          null,
           null,
           null,
           null,
@@ -443,7 +417,7 @@
           1,
           null,
           1,
-          2,
+          3,
           null,
           null,
           1,
@@ -456,7 +430,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/category.rb": {
+      "/Users/TramBui/ada/rails/betsy/app/models/category.rb": {
         "lines": [
           1,
           1,
@@ -465,14 +439,14 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/application_record.rb": {
+      "/Users/TramBui/ada/rails/betsy/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/merchant.rb": {
+      "/Users/TramBui/ada/rails/betsy/app/models/merchant.rb": {
         "lines": [
           1,
           1,
@@ -525,7 +499,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/order_item.rb": {
+      "/Users/TramBui/ada/rails/betsy/app/models/order_item.rb": {
         "lines": [
           1,
           1,
@@ -537,18 +511,18 @@
           null,
           null,
           1,
-          0,
-          0,
+          1,
+          1,
           null,
           null,
           1,
-          0,
-          0,
+          1,
+          1,
           null,
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/order.rb": {
+      "/Users/TramBui/ada/rails/betsy/app/models/order.rb": {
         "lines": [
           1,
           1,
@@ -593,10 +567,17 @@
           null,
           null,
           null,
+          null,
+          1,
+          6,
+          1,
+          null,
+          null,
+          null,
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/product.rb": {
+      "/Users/TramBui/ada/rails/betsy/app/models/product.rb": {
         "lines": [
           1,
           1,
@@ -617,7 +598,7 @@
           null
         ]
       },
-      "/Users/newuser/Ada/projects/betsy/app/models/review.rb": {
+      "/Users/TramBui/ada/rails/betsy/app/models/review.rb": {
         "lines": [
           1,
           1,
@@ -627,8 +608,47 @@
           null,
           null
         ]
+      },
+      "/Users/TramBui/ada/rails/betsy/app/controllers/application_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       }
     },
-    "timestamp": 1606268468
+    "timestamp": 1606275019
   }
 }
