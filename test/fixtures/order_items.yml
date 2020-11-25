@@ -22,9 +22,5 @@ stocking_items:
   quantity: 1
   product: stocking
   order: cart_four
-hot_chocolate:
-  quantity: 2
-  product: product_seven
-  order: cart_two
-  fulfillment_status: "ship"
+
 
