@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   def index
     @orders = []
     if @current_merchant
-       @current_merchant.products.each do | product |
+       @current_merchant.products.each do |product|
          product.orders.each do |order|
            @orders << order
          end
@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     end
 
     if @current_merchant != Merchant.find_by(id: params[:merchant_id])
-      flash[:danger] = "I see you tryna use your hacker skills 🧐  We secure, so you can't get your competitors' info 😛  Nice try."
+      flash[:danger] = "I see you tryna use your hacker skills 🧐 We secure, so you can't get your competitors' info 😛 Nice try."
       redirect_to account_path
       return
     end

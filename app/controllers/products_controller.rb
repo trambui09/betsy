@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy, :update_status]
   before_action :require_login, only: [:new, :edit, :create, :update]
-
   before_action :set_page, only: [:index]
   PRODUCTS_PER_PAGE = 6
 
   def index
+    @categories = Category.all
+
      if params[:category_id]
       category = Category.find_by(id: params[:category_id])
       @products = category.products.limit(PRODUCTS_PER_PAGE).offset(@page * PRODUCTS_PER_PAGE)
@@ -18,13 +19,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    if @product.nil?
+    if @product.nil? || @product.status == "retired"
       head :not_found
       return
-    end
-
-    if @product.status == "retired"
-      require_login
     end
   end
 
@@ -43,12 +40,14 @@ class ProductsController < ApplicationController
     @product = merchant.products.new(product_params)
     # @product.default
     if @product.save
-      if params[:merchant_id]
-      flash[:success] = "Successfuly created #{@product.category} #{@product.id}"
-      redirect_to merchant_product_path(id: @product.id)
-      else
-        redirect_to product_path(@product.id)
-      end
+      # if params[:merchant_id]
+      # flash[:success] = "Successfuly created #{@product.category} #{@product.id}"
+      # redirect_to merchant_product_path(id: @product.id)
+      # else
+      #   redirect_to product_path(@product.id)
+      # end
+      flash[:success] = "Successfully created #{@product.name}"
+      redirect_to product_path(@product.id)
       return
     else
       render :new, status: :bad_request
@@ -64,7 +63,7 @@ class ProductsController < ApplicationController
 
     if @product.merchant != @current_merchant
       flash[:danger] = "You must be selling the product to edit it"
-      redirect_to product_path
+      redirect_to product_path(@product.id)
       return
     end
   end
@@ -102,21 +101,19 @@ class ProductsController < ApplicationController
 
   end
 
-  def destroy
-    # product_id = params[:id]
-    # @product = Product.find_by(id: product_id)
-    if @product
-      @product.destroy
-      if params[:merchant_id]
-        redirect_to merchant_path(params[:merchant_id])
-      else
-        redirect_to products_path
-      end
-    else
-      head :not_found
-      return
-    end
-  end
+  # def destroy
+  #   if @product
+  #     @product.destroy
+  #     if params[:merchant_id]
+  #       redirect_to merchant_path(params[:merchant_id])
+  #     else
+  #       redirect_to products_path
+  #     end
+  #   else
+  #     head :not_found
+  #     return
+  #   end
+  # end
 
   private
 

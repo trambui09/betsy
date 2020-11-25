@@ -14,7 +14,7 @@ describe ProductsController do
 
     describe 'index' do
       it "gets index" do
-        get "/products"
+        get products_path
         must_respond_with :success
       end
     end
@@ -29,6 +29,13 @@ describe ProductsController do
 
       it "will show not_found when given an invalid product id " do
         get product_path(-1)
+        must_respond_with :not_found
+      end
+
+      it "will not show a retired product's page" do
+        patch update_product_status_path(@product.id)
+
+        get product_path(@product.id)
         must_respond_with :not_found
       end
     end
@@ -59,13 +66,29 @@ describe ProductsController do
         }.must_change "Product.count", 1
 
         new_product = Product.find_by(name: product_hash[:product][:name])
-
         expect(new_product.price).must_equal product_hash[:product][:price]
+
+        expect(flash[:success]).must_equal "Successfully created test product"
 
         must_respond_with :redirect
         must_redirect_to product_path(new_product.id)
+      end
 
+      it "cannot create a product with invalid information, responds with bad request" do
+        merchant = Merchant.create(username: "test merchant", email: "test@test.com")
+        product_hash = {
+            product: {
+                merchant_id: merchant.id,
+                name: "",
+                price: 0
+            }
+        }
 
+        expect {
+          post products_path, params: product_hash
+        }.wont_change "Product.count"
+
+        must_respond_with :bad_request
       end
     end
 
@@ -78,6 +101,18 @@ describe ProductsController do
       it "will return not_found if product id is invalid" do
         get edit_product_path(-1)
         must_respond_with :not_found
+      end
+
+      it "does not allow a merchant to edit another merchant's product" do
+        post logout_path
+        perform_login(merchants(:merch_two))
+        @merchant = merchants(:merch_two)
+        get edit_product_path(@product.id)
+
+        expect(flash[:danger]).must_equal "You must be selling the product to edit it"
+
+        must_respond_with :redirect
+        must_redirect_to product_path(@product.id)
       end
     end
 
@@ -153,37 +188,37 @@ describe ProductsController do
       end
     end
 
-    describe "destroy" do
-      before do
-        merchant = Merchant.create(username: "test merchant", email: "test@test.com")
-        Product.create!(merchant: merchant, name: "test", price: 1.99, description: "test description", photo_url: "www.test.com", inventory_stock: 15)
-      end
-
-      it "destroys the product instance in db when product exists, then redirects" do
-        # Arrange
-        id = Product.find_by(name: "test")[:id]
-        # id = trip.id
-        # Act
-        expect {
-          delete product_path(id)
-        }.must_change "Product.count", -1
-
-        deleted_product = Product.find_by(name: "test", price: 1.99)
-
-        # Assert
-        expect(deleted_product).must_be_nil
-        must_respond_with :redirect
-        must_redirect_to products_path
-      end
-
-      it "will show not_found for invalid product " do
-        expect {
-          delete product_path(-1)
-        }.wont_differ "Product.count"
-
-        must_respond_with :not_found
-      end
-    end
+    # describe "destroy" do
+    #   before do
+    #     merchant = Merchant.create(username: "test merchant", email: "test@test.com")
+    #     Product.create!(merchant: merchant, name: "test", price: 1.99, description: "test description", photo_url: "www.test.com", inventory_stock: 15)
+    #   end
+    #
+    #   it "destroys the product instance in db when product exists, then redirects" do
+    #     # Arrange
+    #     id = Product.find_by(name: "test")[:id]
+    #     # id = trip.id
+    #     # Act
+    #     expect {
+    #       delete product_path(id)
+    #     }.must_change "Product.count", -1
+    #
+    #     deleted_product = Product.find_by(name: "test", price: 1.99)
+    #
+    #     # Assert
+    #     expect(deleted_product).must_be_nil
+    #     must_respond_with :redirect
+    #     must_redirect_to products_path
+    #   end
+    #
+    #   it "will show not_found for invalid product " do
+    #     expect {
+    #       delete product_path(-1)
+    #     }.wont_differ "Product.count"
+    #
+    #     must_respond_with :not_found
+    #   end
+    # end
   end
 
   describe "guest users" do
@@ -205,3 +240,4 @@ describe ProductsController do
     end
   end
 end
+
