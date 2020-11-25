@@ -107,6 +107,7 @@ describe ProductsController do
 
         product = Product.find_by(id: @product.id)
         expect(product.name).must_equal new_product_hash[:product][:name]
+
       end
 
       it "would show not_found given an invalid id" do

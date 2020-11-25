@@ -1,3 +1,4 @@
+
 <%if @merchant%>
 <h2><%= @merchant.username %>'s Holiday Shop </h2>
 <%end %>
@@ -38,9 +39,12 @@
   <% end %>
 
 
-  <% if @merchant %>
+
+    <% if @merchant %>
     <button><%= link_to "Next", merchant_products_path(page: @page + 1) %></button>
   <% else @products %>
     <button><%= link_to "Next", products_path(page: @page + 1) %></button>
 <% end  %>
  </div>
+
+
