@@ -35,15 +35,13 @@ class Merchant < ApplicationRecord
 
   def total_orders_by_status(status)
     status_hash = Hash.new(0)
-    if status.nil?
-      return self.order_items.count
-    else
-      self.order_items.each do |order_item|
-        if order_item.order.status == status
-          status_hash[order_item.order.id] = status
-        end
+
+    self.order_items.each do |order_item|
+      if order_item.order.status == status
+        status_hash[order_item.order.id] = status
       end
-      return status_hash.values.count(status)
     end
+    
+    return status_hash.values.count(status)
   end
 end

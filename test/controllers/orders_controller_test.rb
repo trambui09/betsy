@@ -1,6 +1,17 @@
 require "test_helper"
 
 describe OrdersController do
+  describe "index" do
+    it "will redirect merchant to their account page when trying to access another merchant's account dashboard" do
+      perform_login(merchants(:merch_two))
+      get merchant_orders_path(1)
+
+      expect(flash[:danger]).must_equal "I see you tryna use your hacker skills 🧐 We secure, so you can't get your competitors' info 😛 Nice try."
+      must_respond_with :redirect
+      must_redirect_to account_path
+    end
+  end
+
   describe "cart" do
     it "can get to the cart" do
       get show_cart_path
@@ -139,6 +150,27 @@ describe OrdersController do
         must_respond_with :redirect
         must_redirect_to show_cart_path
       end
+
+      # it "redirects if no cart is in session when checking out" do
+      #   session[:order_id] = -1
+      #   Order.delete_all
+      #
+      #   order_hash = {
+      #       name: "Mrs. Claus",
+      #       email: "mrs.claus@gmail.com",
+      #       address: "North Pole",
+      #       credit_card_num: 1111222233334444,
+      #       exp_date: 1220,
+      #       cvv: 123,
+      #       billing_zip: 12345
+      #   }
+      #
+      #   patch paid_order_path(session[:order_id]), params: order_hash
+      #
+      #   expect(flash[:danger]).must_equal "You must have a cart in session"
+      #   must_respond_with :redirect
+      #   must_redirect_to root_path
+      # end
     end
 
     describe "cancel" do
