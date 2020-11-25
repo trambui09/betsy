@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post "/logout", to: "merchants#logout", as: "logout"
   post "/products/:id/orders", to: "order_items#create", as: "add_cart"
   get "/cart", to: "orders#cart", as: "show_cart"
+  get "/account", to: "merchants#account", as: "account"
   patch "/orders/:id/cancel", to: "orders#cancel", as: "cancel_order"
   patch "/orders/:id", to: "orders#checkout", as: "paid_order"
   post "/products/:id", to: "products#update_status", as: "update_product_status"

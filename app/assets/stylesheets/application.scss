@@ -191,13 +191,13 @@ ul {
 }
 
 // new order
-.new-order-form {
+.new-order-form, .product-form {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.new-order-form .btn {
+.new-order-form .btn, .product-form btn {
   display: flex;
   margin-left: auto;
   margin-right: auto;
