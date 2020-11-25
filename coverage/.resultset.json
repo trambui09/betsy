@@ -23,48 +23,36 @@
           null,
           null,
           1,
-          1,
+          2,
           null,
-          1,
-          1,
-          1,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
+          2,
           1,
           1,
           null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+<<<<<<< HEAD
           null
         ]
       },
@@ -85,27 +73,29 @@
           null,
           1,
           85,
+=======
+          null,
+          null,
+          null,
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
+          null,
+          null,
+          null,
+          null,
           null,
           null,
           1,
-          13,
-          4,
-          4,
-          null,
-          null,
-          null,
-          null,
           1,
-          7,
-          1,
-          1,
-          null,
-          null,
+          2,
           null,
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/ada/Desktop/Ada/betsy/app/controllers/homepages_controller.rb": {
+=======
+      "/Users/TramBui/ada/rails/betsy/app/controllers/homepages_controller.rb": {
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
         "lines": [
           1,
           1,
@@ -113,7 +103,11 @@
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/ada/Desktop/Ada/betsy/app/controllers/merchants_controller.rb": {
+=======
+      "/Users/TramBui/ada/rails/betsy/app/controllers/merchants_controller.rb": {
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
         "lines": [
           1,
           1,
@@ -166,7 +160,11 @@
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/ada/Desktop/Ada/betsy/app/controllers/order_items_controller.rb": {
+=======
+      "/Users/TramBui/ada/rails/betsy/app/controllers/order_items_controller.rb": {
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
         "lines": [
           1,
           1,
@@ -240,7 +238,11 @@
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/ada/Desktop/Ada/betsy/app/controllers/orders_controller.rb": {
+=======
+      "/Users/TramBui/ada/rails/betsy/app/controllers/orders_controller.rb": {
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
         "lines": [
           1,
           1,
@@ -329,7 +331,11 @@
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/ada/Desktop/Ada/betsy/app/controllers/products_controller.rb": {
+=======
+      "/Users/TramBui/ada/rails/betsy/app/controllers/products_controller.rb": {
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
         "lines": [
           1,
           1,
@@ -371,16 +377,16 @@
           null,
           null,
           null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
           0,
           null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
+          1,
           null,
           null,
           null,
@@ -454,7 +460,7 @@
           1,
           null,
           1,
-          2,
+          3,
           null,
           null,
           1,
@@ -467,7 +473,11 @@
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/ada/Desktop/Ada/betsy/app/models/category.rb": {
+=======
+      "/Users/TramBui/ada/rails/betsy/app/models/category.rb": {
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
         "lines": [
           1,
           1,
@@ -476,14 +486,22 @@
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/ada/Desktop/Ada/betsy/app/models/application_record.rb": {
+=======
+      "/Users/TramBui/ada/rails/betsy/app/models/application_record.rb": {
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
         "lines": [
           1,
           1,
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/ada/Desktop/Ada/betsy/app/models/merchant.rb": {
+=======
+      "/Users/TramBui/ada/rails/betsy/app/models/merchant.rb": {
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
         "lines": [
           1,
           1,
@@ -536,7 +554,11 @@
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/ada/Desktop/Ada/betsy/app/models/order_item.rb": {
+=======
+      "/Users/TramBui/ada/rails/betsy/app/models/order_item.rb": {
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
         "lines": [
           1,
           1,
@@ -559,7 +581,11 @@
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/ada/Desktop/Ada/betsy/app/models/order.rb": {
+=======
+      "/Users/TramBui/ada/rails/betsy/app/models/order.rb": {
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
         "lines": [
           1,
           1,
@@ -614,7 +640,11 @@
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/ada/Desktop/Ada/betsy/app/models/product.rb": {
+=======
+      "/Users/TramBui/ada/rails/betsy/app/models/product.rb": {
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
         "lines": [
           1,
           1,
@@ -635,7 +665,11 @@
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/ada/Desktop/Ada/betsy/app/models/review.rb": {
+=======
+      "/Users/TramBui/ada/rails/betsy/app/models/review.rb": {
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
         "lines": [
           1,
           1,
@@ -645,8 +679,51 @@
           null,
           null
         ]
+      },
+      "/Users/TramBui/ada/rails/betsy/app/controllers/application_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       }
     },
+<<<<<<< HEAD
     "timestamp": 1606277078
+=======
+    "timestamp": 1606275770
+>>>>>>> a5e10896e9eccdbaa890383f21057f6c74132528
   }
 }
