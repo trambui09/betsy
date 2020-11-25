@@ -104,12 +104,13 @@ main {
 }
 
 .root-products {
-  padding: 15px;
+  padding: 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-right: 20px;
-  margin-left: 20px;
+}
 
+.thumbnail {
+  margin-left: 4.8rem;
 }
 
 .root-products ul {
@@ -121,6 +122,7 @@ main {
 }
 
 footer {
+  color: whitesmoke;
   font-size: small;
   margin-top: 2rem;
   background-color: forestgreen;
@@ -203,8 +205,8 @@ ul {
   margin-right: auto;
 }
 
-#pagination, .new-form-heading {
-text-align: center;
+#pagination, .form-heading {
+  text-align: center;
 }
 
 // product detail page
@@ -251,7 +253,7 @@ table tr:nth-child(odd) {
 }
 
 table tr:nth-child(even) {
-  background-color: lightgray;
+  background-color: #dfecdc;
 }
 
 .merchant-table-index {
