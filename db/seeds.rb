@@ -127,7 +127,7 @@ categories = [
         name: "decor"
     },
     {
-        name: "food"
+        name: "treats"
     },
     {
         name: "gifts"
@@ -138,11 +138,6 @@ categories.each do |category|
   Category.create(category)
 end
 
-
-
-
-# cat1 = Category.create(name: "decor")
-# cat2 = Category.create(name: "food")
-# cat3 = Category.create(name: "gifts")
-
-
+Product.first.categories << Category.first
+Product.find_by(id: 2).categories << Category.find_by(name: "treats")
+Product.last.categories << Category.first
