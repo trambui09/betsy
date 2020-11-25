@@ -7,12 +7,12 @@
   <tr>
     <td></td>
     <th scope="col"> Orders</th>
-    <th scope="col"> Total Revenue: <%= number_to_currency(@current_merchant.total_revenue) %></th>
+<!--    <th scope="col"> Total Revenue: <%#= number_to_currency(@current_merchant.total_revenue) %></th>-->
   </tr>
   <tr>
-    <th scope="row">Pending Orders</th>
-    <td><%@current_merchant.total_orders_by_status("pending") %></td>
-  </tr>
+<!--    <th scope="row">Pending Orders</th>-->
+<!--    <td><%#@current_merchant.total_orders_by_status("pending") %></td>-->
+<!--  </tr>-->
   <tr>
     <th scope="row"> Paid Orders </th>
     <td><%=@current_merchant.total_orders_by_status("paid")%></td>
@@ -23,7 +23,11 @@
   </tr>
   <tr>
     <th scope="row">Complete Orders</th>
-    <td><%@current_merchant.total_orders_by_status("complete") %></td>
+    <td><%@current_merchant.total_orders_by_status("completed") %></td>
+  </tr>
+  <tr>
+    <th scope="row"> Total Order Revenue:</th>
+    <td><%= number_to_currency(@current_merchant.total_revenue) %></td>
   </tr>
 </table>
 
