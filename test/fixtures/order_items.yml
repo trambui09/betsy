@@ -17,5 +17,8 @@ tree_cart_2:
 tree_cart_3:
   quantity: 1
   product: product_one
-  order: cart_three
+stocking_items:
+  quantity: 1
+  product: stocking
+  order: cart_four
 
