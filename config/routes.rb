@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   patch "/orders/:id/cancel", to: "orders#cancel", as: "cancel_order"
   patch "/orders/:id", to: "orders#checkout", as: "paid_order"
   post "/products/:id", to: "products#update_status", as: "update_product_status"
-  post "/order_items/:id", to: "order_items#ship", as: "ship_item"
+  patch "/order_items/:id", to: "order_items#ship", as: "ship_item"
 
   root to: 'homepages#index'
 
