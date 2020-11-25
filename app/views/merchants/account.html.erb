@@ -1,10 +1,9 @@
 <section class="merchant-show">
-  <h2>Merchant Summary: <%= @current_merchant.username %> </h2>
-  <p>Joined site:  <%= @current_merchant.created_at.strftime("%B %d, %Y") %></p>
-  <p><%= link_to "Add Category", new_category_path %> | <%= link_to "Add new product", new_product_path %> </p>
+  <h2>Merchant Summary for <%= @current_merchant.username %> </h2>
+  <p>Joined site:  <%= @current_merchant.created_at.strftime("%b %d, %Y") %></p>
+  <p><%= link_to "Add Category", new_category_path %> | <%= link_to "Add New Product", new_product_path %> </p>
+  <p><%= link_to "Order Summary", merchant_orders_path(@current_merchant) %></p>
 </section>
-
-<p><%= link_to "Order Summary", merchant_orders_path(@current_merchant.id) %></p>
 
 <section class="merchant-products__container">
   <h3 class="-merchant-product_header"></h3>
