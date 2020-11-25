@@ -22,4 +22,10 @@ merch_four:
   email: holly@gmail.com
   username: hollyjolly
 
+merch_five:
+  provider: github
+  uid: 6543
+  email: test@test.com
+  username: hollyjolly
+
 

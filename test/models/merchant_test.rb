@@ -117,26 +117,28 @@ describe Merchant do
 
         expect(@merchant.total_revenue).must_equal 10.99
       end
+
+      it "will return 0 if merchant has no sales" do
+        expect(merchants(:merch_five).total_revenue).must_equal 0
+      end
+
+      it "can calculate total revenue for various items" do
+        order1= orders(:cart_four)
+        order2 =orders(:cart_two)
+
+        expect(merchants(:merch_four).total_revenue).must_equal 10.99
+
+      end
     end
-    # it "can calculate total revenue for various items" do
-    #   order1= orders(:cart_four)
-    #   order2 =orders(:cart_two)
-    # end
+    describe "total_orders_by_status" do
 
+      it "will display number of orders by status for merchant" do
+        expect(merchants(:merch_four).total_orders_by_status("complete")).must_equal 1
+      end
+
+      it "will return 0 for non-existing status" do
+        expect(merchants(:merch_four).total_orders_by_status("")).must_equal 0
+    end
+    end
   end
-
-  # describe "find_orders_by_status" do
-  #
-  #   it "returns only orders with a specific status" do
-  #     result = @merchant.find_orders_by_status("complete")
-  #
-  #     expect(result.size).must_equal 1
-  #     result.each do |order_item|
-  #       expect(order_item.order.status).must_equal "complete"
-  #     end
-  #   end
-  # end
 end
-
-# multiple products from the same merchants 3 stockings from same merchants and
-# cancelled item- cart_four as an order
