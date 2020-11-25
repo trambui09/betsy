@@ -63,7 +63,9 @@ class ProductsController < ApplicationController
     end
 
     if @product.merchant != @current_merchant
-      require_login
+      flash[:danger] = "You must be selling the product to edit it"
+      redirect_to product_path
+      return
     end
   end
 

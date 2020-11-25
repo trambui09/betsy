@@ -118,6 +118,20 @@ describe OrderItemsController do
     end
   end
 
+  describe "ship" do
+    it "can ship an order_item" do
+      unshipped_item = OrderItem.create!(quantity: 1,
+                                           product: products(:product_seven),
+                                           order: orders(:cart_four),
+                                           fulfillment_status: "ship")
+      expect(unshipped_item.fulfillment_status).must_equal "ship"
+
+      post ship_item_path(unshipped_item.id)
+      item = OrderItem.find_by(id: unshipped_item.id)
+      expect(item.fulfillment_status).must_equal "shipped"
+    end
+  end
+
   describe "destroy" do
     before do
       @ornament = order_items(:ornament_items)

@@ -1,8 +1,7 @@
 <center><h1>Order Summary</h1> </center>
 <br>
-<h4> <%=link_to "Back to My Account", merchant_path(session[:merchant_id]),class: "btn btn-secondary" %></h4>
+<h4> <%=link_to "Back to My Account", account_path, class: "btn btn-secondary" %></h4>
 <br>
-
 
 <table class="table">
   <tr>
@@ -33,7 +32,7 @@
   <section>
     <h3>Order Summary</h3>
     <% if @orders.empty? %>
-      <p> You have no orders.</p>
+      <p>You have no orders. 😢</p>
     <%else %>
       <div>
           <table class=" table table-borderless">

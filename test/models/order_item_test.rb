@@ -81,5 +81,20 @@ describe OrderItem do
 
       end
     end
+
+    describe "find_order" do
+      it "finds the Order instance of the order_item" do
+        order_item = order_items(:tree_items)
+        order = order_item.find_order
+        expect(order).must_equal orders(:cart_one)
+      end
+    end
+    describe "find product" do
+      it "finds the product instance of the order item" do
+        order_item = order_items(:tree_items)
+        order = order_item.find_product
+        expect(order).must_equal products(:product_one)
+      end
+    end
   end
 end

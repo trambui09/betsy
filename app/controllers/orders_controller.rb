@@ -11,6 +11,12 @@ class OrdersController < ApplicationController
          end
        end
     end
+
+    if @current_merchant != Merchant.find_by(id: params[:merchant_id])
+      flash[:danger] = "I see you tryna use your hacker skills 🧐  We secure, so you can't get your competitors' info 😛  Nice try."
+      redirect_to account_path
+      return
+    end
   end
 
   def cart
