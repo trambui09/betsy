@@ -50,3 +50,13 @@ cart_five:
   cvv: 125
   billing_zip: 98103
   status: paid
+
+cart_six:
+  name: Miss Clauso
+  email: missclauso@northpole.com
+  address: 123 North Poleo
+  credit_card_num: 1111222233334455
+  exp_date: 04/2028
+  cvv: 126
+  billing_zip: 98103
+  status: paid

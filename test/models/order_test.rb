@@ -219,6 +219,15 @@ describe Order do
 
     describe "complete order" do
       it "marks the order status as completed when all order items are shipped" do
+        found_order = orders(:cart_six)
+        expect(found_order.status).must_equal "paid"
+
+
+        found_order.complete_order?
+        found_order.reload
+
+        found_found_order = Order.find_by(id: found_order.id)
+        expect(found_found_order.status).must_equal "completed"
 
       end
 

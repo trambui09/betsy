@@ -32,5 +32,15 @@ snow_globe_5:
   product: product_six
   order: cart_five
   fulfillment_status: "ship"
+hot_chocolate_6:
+  quantity: 1
+  product: product_seven
+  order: cart_six
+  fulfillment_status: "shipped"
+snow_globe_6:
+  quantity: 1
+  product: product_six
+  order: cart_six
+  fulfillment_status: "shipped"
 
 
