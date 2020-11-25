@@ -41,4 +41,9 @@ class Order < ApplicationRecord
       end
     end
   end
+
+  def complete_order?
+    return self.order_items.all? {|item| item.fulfillment_status == "shipped"}
+  end
+
 end
