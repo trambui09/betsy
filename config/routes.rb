@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   get "/account", to: "merchants#account", as: "account"
   patch "/orders/:id/cancel", to: "orders#cancel", as: "cancel_order"
   patch "/orders/:id", to: "orders#checkout", as: "paid_order"
-  post "/products/:id", to: "products#update_status", as: "update_product_status"
-  post "/order_items/:id", to: "order_items#ship", as: "ship_item"
+  patch "/products/:id/status", to: "products#update_status", as: "update_product_status"
+  patch "/order_items/:id/shipped", to: "order_items#ship", as: "ship_item"
 
   root to: 'homepages#index'
 

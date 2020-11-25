@@ -1,6 +1,6 @@
 <center><h1>Order Summary</h1> </center>
 <br>
-<h4> <%=link_to "Back to My Account", account_path, class: "btn btn-secondary" %></h4>
+<h4><%=link_to "Back to My Account", account_path, class: "btn btn-secondary" %></h4>
 <br>
 
 <table class="table">
@@ -30,7 +30,7 @@
 
 <% if @current_merchant %>
   <section>
-    <h3>Order Summary</h3>
+    <h3>Order Items</h3>
     <% if @orders.empty? %>
       <p>You have no orders. 😢</p>
     <%else %>
@@ -54,7 +54,7 @@
               <td><%= "x#{order_item.quantity}" %></td>
               <td><%= number_to_currency(order_item.total_price) %></td>
               <td><%= order_item.find_order.created_at.strftime("%m/%d/%y")%></td>
-              <td><%= link_to order_item.fulfillment_status, ship_item_path(order_item), method: :post %></td>
+              <td><%= link_to order_item.fulfillment_status, ship_item_path(order_item), method: :patch %></td>
               <td><%= order_item.find_order.status %></td>
             </tr>
             <% end %>
