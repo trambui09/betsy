@@ -28,6 +28,7 @@ class Order < ApplicationRecord
     return true
   end
 
+  # I think I wrote this?
   def update_stock
     if self.status == "paid"
       self.order_items.each do |item|
@@ -42,6 +43,7 @@ class Order < ApplicationRecord
     end
   end
 
+  # and wrote this?
   def complete_order?
     if self.order_items.all? {|item| item.fulfillment_status == "shipped"}
       self.update_attribute(:status, 'completed')
