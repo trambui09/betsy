@@ -41,7 +41,7 @@
 </section>
 
 <%= link_to "Cancel Order",
-            cancel_order_path(@order), 
+            cancel_order_path(@order),
             method: :patch,
             data: { confirm: "Are you sure you want to cancel your order?" },
             class: "btn btn-danger cancel-order-btn" %>

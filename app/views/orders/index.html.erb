@@ -63,11 +63,12 @@
               <td><%= number_to_currency(order_item.total_price) %></td>
               <td><%= order_item.find_order.created_at.strftime("%m/%d/%y")%></td>
               <td><%= link_to order_item.fulfillment_status, ship_item_path(order_item), method: :patch %></td>
+<!--              I need to call the complete_order? method here?-->
+              <% order_item.find_order.complete_order? %>
               <td><%= order_item.find_order.status %></td>
             </tr>
             <% end %>
           </table>
-
       </div>
     <%end %>
   </section>

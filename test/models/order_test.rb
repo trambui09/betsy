@@ -23,7 +23,7 @@ describe Order do
     # Arrange
     new_order.save
     order = Order.first
-    [:status, :name].each do |field|
+    [:status, :name, :credit_card_num, :cvv].each do |field|
 
       # Assert
       expect(order).must_respond_to field

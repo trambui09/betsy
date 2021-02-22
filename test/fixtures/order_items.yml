@@ -42,5 +42,11 @@ snow_globe_6:
   product: product_six
   order: cart_six
   fulfillment_status: "shipped"
+gingerbread_6:
+  quantity: 1
+  product: gingerbread
+  order: cart_six
+  fulfillment_status: "shipped"
+
 
 
