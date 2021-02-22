@@ -143,19 +143,21 @@ describe Merchant do
 
       it "will return 0 for non-existing status" do
         expect(merchants(:merch_four).total_orders_by_status("")).must_equal 0
-    end
-    end
-
-    describe "total_revenue_by_status" do
-
+       end
     end
 
     describe "total_orders" do
       it "will return 0 if merchant has no orders" do
+        merch_3 = merchants(:merch_three)
+
+        expect(merch_3.total_orders).must_equal 0
 
       end
 
       it "will return the number of total orders" do
+        merch_4 = merchants(:merch_four)
+
+        expect(merch_4.total_orders).must_equal 2
 
       end
     end
