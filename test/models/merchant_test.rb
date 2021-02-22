@@ -113,9 +113,12 @@ describe Merchant do
       end
 
       it "correctly calculates total revenue for one specific merchant" do
-        order = orders(:cart_four)
+        total = 0
+        @merchant.order_items.each do |item|
+          total += item.quantity * item.product.price
+        end
 
-        expect(@merchant.total_revenue).must_equal 10.99
+        expect(@merchant.total_revenue).must_equal total
       end
 
       it "will return 0 if merchant has no sales" do
@@ -123,10 +126,12 @@ describe Merchant do
       end
 
       it "can calculate total revenue for various items" do
-        order1= orders(:cart_four)
-        order2 =orders(:cart_two)
+        merch_four_total = 0
+        merchants(:merch_four).order_items.each do |item|
+          merch_four_total += item.quantity * item.product.price
+        end
 
-        expect(merchants(:merch_four).total_revenue).must_equal 10.99
+        expect(merchants(:merch_four).total_revenue).must_equal merch_four_total
 
       end
     end
@@ -139,6 +144,20 @@ describe Merchant do
       it "will return 0 for non-existing status" do
         expect(merchants(:merch_four).total_orders_by_status("")).must_equal 0
     end
+    end
+
+    describe "total_revenue_by_status" do
+
+    end
+
+    describe "total_orders" do
+      it "will return 0 if merchant has no orders" do
+
+      end
+
+      it "will return the number of total orders" do
+
+      end
     end
   end
 end

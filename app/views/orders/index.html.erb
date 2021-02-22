@@ -3,38 +3,13 @@
 
 <ul class="order-summary">
   <li> <strong>Total Order Revenue:</strong> <%= number_to_currency(@current_merchant.total_revenue) %></li>
-  <li> <strong>Paid/Completed Orders:</strong> <%=@current_merchant.total_orders_by_status("paid")%></li>
+  <li> By Paid: <%= number_to_currency(@current_merchant.total_revenue_by_status("paid")) %></li>
+  <li> By Completed: <%= number_to_currency(@current_merchant.total_revenue_by_status("completed")) %></li>
+  <li><strong>Total Orders:</strong> <%=@current_merchant.total_orders %>  </li>
+  <li>Paid Orders: <%=@current_merchant.total_orders_by_status("paid")%>  </li>
+  <li>Completed Orders:<%=@current_merchant.total_orders_by_status("completed")%> </li>
   <li> <strong>Cancelled Orders:</strong> <%=@current_merchant.total_orders_by_status("cancelled")%></li>
 </ul>
-
-<!--<table class="table">-->
-<!--  <tr>-->
-<!--    <td></td>-->
-<!--    <th scope="col"> Orders</th>-->
-<!--    <th scope="col"> Total Revenue: <%#= number_to_currency(@current_merchant.total_revenue) %></th>-->
-<!--  </tr>-->
-<!--  <tr>-->
-<!--    <th scope="row">Pending Orders</th>-->
-<!--    <td><%#@current_merchant.total_orders_by_status("pending") %></td>-->
-<!--  </tr>-->
-<!--  <tr>-->
-<!--    <th scope="row"> Paid/Completed Orders </th>-->
-<!--    <td><%#=@current_merchant.total_orders_by_status("paid")%></td>-->
-<!--  </tr>-->
-<!--  <tr>-->
-<!--    <th scope="row">Cancelled Orders</th>-->
-<!--    <td><%#=@current_merchant.total_orders_by_status("cancelled")%></td>-->
-<!--  </tr>-->
-<!--  <tr>-->
-<!--    <th scope="row">Complete Orders</th>-->
-<!--    <td><%#@current_merchant.total_orders_by_status("completed") %></td>-->
-<!--  </tr>-->
-<!--  <tr>-->
-<!--    <th scope="row"> Total Order Revenue:</th>-->
-<!--    <td><%#= number_to_currency(@current_merchant.total_revenue) %></td>-->
-<!--  </tr>-->
-<!--</table>-->
-
 
 <% if @current_merchant %>
   <section>

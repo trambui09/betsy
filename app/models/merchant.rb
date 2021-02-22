@@ -19,16 +19,14 @@ class Merchant < ApplicationRecord
   end
 
   def total_revenue
-    merchant_products = self.products
+
     total_revenue = 0
 
-    merchant_products.each do |products|
-      products.order_items.each do |item|
-        if item.order.status == "cancelled"
-          next
-        end
-        total_revenue += item.quantity * item.product.price
+    self.order_items.each do |item|
+      if item.order.status == "cancelled"
+        next
       end
+      total_revenue += item.quantity * item.product.price
     end
     return total_revenue
   end
@@ -43,5 +41,33 @@ class Merchant < ApplicationRecord
     end
     
     return status_hash.values.count(status)
+  end
+
+  # TODO: unit test
+  def total_revenue_by_status(status)
+    revenue = 0
+
+    self.order_items.each do |item|
+      if item.order.status != status
+        next
+      end
+      revenue += item.quantity * item.product.price
+    end
+    return revenue
+
+
+  end
+
+  # get all the orders that the current merchant has
+  # TODO: unit test for custom method
+  def total_orders
+    orders = []
+    self.order_items.each do |order_item|
+      unless orders.include?(order_item.order.id)
+        orders.push(order_item.order.id)
+      end
+    end
+
+    return orders.size
   end
 end
