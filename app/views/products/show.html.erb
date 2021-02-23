@@ -38,3 +38,7 @@
 <section class="product-desc">
   <p>Description: <%= @product.description %></p>
 </section>
+
+<section>
+  <p><%= link_to 'New Review', new_product_review_path(@product, @review), :class => "btn btn-info" %></p>
+</section>

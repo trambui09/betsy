@@ -20,8 +20,8 @@
   <ul>
     <li><strong>Total Orders:</strong> <%=@current_merchant.total_orders %>  </li>
     <li class="order-summary-item-indent">Paid Orders: <%=@current_merchant.total_orders_by_status("paid")%>  </li>
-    <li class="order-summary-item-indent">Completed Orders:<%=@current_merchant.total_orders_by_status("completed")%> </li>
-    <li class="order-summary-item-indent"> Cancelled Orders:<%=@current_merchant.total_orders_by_status("cancelled")%></li>
+    <li class="order-summary-item-indent">Completed Orders: <%=@current_merchant.total_orders_by_status("completed")%> </li>
+    <li class="order-summary-item-indent"> Cancelled Orders: <%=@current_merchant.total_orders_by_status("cancelled")%></li>
   </ul>
 </section>
 
