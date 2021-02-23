@@ -279,5 +279,10 @@ table tr:nth-child(even) {
 }
 
 .order-summary {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.order-summary-item-indent {
+  text-indent: 20px;
 }

@@ -1,15 +1,29 @@
 <center><h1>Order Summary</h1> </center>
 
 
-<ul class="order-summary">
-  <li> <strong>Total Order Revenue:</strong> <%= number_to_currency(@current_merchant.total_revenue) %></li>
-  <li> By Paid: <%= number_to_currency(@current_merchant.total_revenue_by_status("paid")) %></li>
-  <li> By Completed: <%= number_to_currency(@current_merchant.total_revenue_by_status("completed")) %></li>
-  <li><strong>Total Orders:</strong> <%=@current_merchant.total_orders %>  </li>
-  <li>Paid Orders: <%=@current_merchant.total_orders_by_status("paid")%>  </li>
-  <li>Completed Orders:<%=@current_merchant.total_orders_by_status("completed")%> </li>
-  <li> <strong>Cancelled Orders:</strong> <%=@current_merchant.total_orders_by_status("cancelled")%></li>
-</ul>
+<!--<ul class="order-summary">-->
+<!--  <li> <strong>Total Order Revenue:</strong> <%#= number_to_currency(@current_merchant.total_revenue) %></li>-->
+<!--  <li> By Paid: <%#= number_to_currency(@current_merchant.total_revenue_by_status("paid")) %></li>-->
+<!--  <li> By Completed: <%#= number_to_currency(@current_merchant.total_revenue_by_status("completed")) %></li>-->
+<!--  <li><strong>Total Orders:</strong> <%#=@current_merchant.total_orders %>  </li>-->
+<!--  <li>Paid Orders: <%#=@current_merchant.total_orders_by_status("paid")%>  </li>-->
+<!--  <li>Completed Orders:<%#=@current_merchant.total_orders_by_status("completed")%> </li>-->
+<!--  <li> <strong>Cancelled Orders:</strong> <%#=@current_merchant.total_orders_by_status("cancelled")%></li>-->
+<!--</ul>-->
+
+<section class="order-summary" >
+  <ul>
+    <li> <strong>Total Order Revenue:</strong> <%= number_to_currency(@current_merchant.total_revenue) %></li>
+    <li class="order-summary-item-indent"> By Paid: <%= number_to_currency(@current_merchant.total_revenue_by_status("paid")) %></li>
+    <li class="order-summary-item-indent"> By Completed: <%= number_to_currency(@current_merchant.total_revenue_by_status("completed")) %></li>
+  </ul>
+  <ul>
+    <li><strong>Total Orders:</strong> <%=@current_merchant.total_orders %>  </li>
+    <li class="order-summary-item-indent">Paid Orders: <%=@current_merchant.total_orders_by_status("paid")%>  </li>
+    <li class="order-summary-item-indent">Completed Orders:<%=@current_merchant.total_orders_by_status("completed")%> </li>
+    <li class="order-summary-item-indent"> Cancelled Orders:<%=@current_merchant.total_orders_by_status("cancelled")%></li>
+  </ul>
+</section>
 
 <% if @current_merchant %>
   <section>
