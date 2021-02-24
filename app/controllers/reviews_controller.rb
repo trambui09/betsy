@@ -5,18 +5,24 @@ class ReviewsController < ApplicationController
   def index
     @product = Product.find(params[:product_id])
   end
+
   def new
     # @review = Review.new
+    merchant = @current_merchant
 
-    @review = Review.new
+    if merchant.products.include?(@product)
+      flash[:warning] = "You can't review your own product!"
+      redirect_to product_path(@product)
+    else
+      @review = Review.new
+    end
+
   end
 
   def create
-
     # nested reviews inside product
     # similar to merchant having many products create controller action
     @review = @product.reviews.new(review_params)
-
 
     if @review.save
       flash[:success] = 'Review was successfully created.'
@@ -30,7 +36,6 @@ class ReviewsController < ApplicationController
     end
 
   end
-
 
   private
   def review_params

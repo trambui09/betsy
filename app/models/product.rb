@@ -11,7 +11,19 @@ class Product < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than: 0 ,
                                                     message: "price must be greater than 0"}
 
+  # TODO: merchant can't write review for their own products
+  # where would I put that check?
+
   def self.recently_added
     return Product.order('created_at DESC').limit(6)
   end
+
+  def average_rating
+    if self.reviews.size > 0
+      self.reviews.average(:rating)
+    else
+      'no one has rated this item yet, be the first one!'
+    end
+  end
+
 end

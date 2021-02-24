@@ -39,6 +39,16 @@
   <p>Description: <%= @product.description %></p>
 </section>
 
+<section class="product-reviews">
+  <h4>Reviews for <%= @product.name%>:</h4>
+  <h5>Average Rating: <%=number_with_precision(@product.average_rating, :precision => 1) %></h5>
+  <% @product.reviews.each do |review| %>
+  <p><%= review.rating %>/5</p>
+    <p><%= review.description %></p>
+  <% end %>
+
+</section>
+
 <section>
   <p><%= link_to 'New Review', new_product_review_path(@product, @review), :class => "btn btn-info" %></p>
 </section>
