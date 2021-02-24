@@ -12,25 +12,14 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    # @review = Review.new(review_params)
-    # if @review.save
-    #   flash[:success] = "Successfully added your review"
-    #   # TODO: redirect to product show page, how to find the product id?
-    #   redirect_to product_path(@product)
-    # else
-    #   @review.errors.each do |column, message|
-    #     flash.now[:warning] = "A problem occurred: Could not create review #{column}: #{message}"
-    #   end
-    #   render :new, status: :bad_request
-    #   return
-    # end
 
+    # nested reviews inside product
+    # similar to merchant having many products create controller action
+    @review = @product.reviews.new(review_params)
 
-    @review = Review.new
-    @review.product_id = @product.id
 
     if @review.save
-      flash[:notice] = 'Review was successfully created.'
+      flash[:success] = 'Review was successfully created.'
       redirect_to product_path(@product)
     else
       @review.errors.each do |column, message|
