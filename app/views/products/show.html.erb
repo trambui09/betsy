@@ -43,8 +43,13 @@
   <h4>Reviews for <%= @product.name%>:</h4>
   <h5>Average Rating: <%=number_with_precision(@product.average_rating, :precision => 1) %></h5>
   <% @product.reviews.each do |review| %>
-  <p><%= review.rating %>/5</p>
+    <p><%= review.rating %>/5</p>
+    <% review.rating.times do  %>
+      <span class="glyphicon glyphicon-star"></span>
+    <% end %>
     <p><%= review.description %></p>
+    <p><%= review.nickname %></p>
+    <p>-----------------------------</p>
   <% end %>
 
 </section>
