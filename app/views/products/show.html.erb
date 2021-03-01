@@ -1,43 +1,45 @@
-<h1><%= @product.name %></h1>
-<section class="product-img">
-  <%= image_tag(@product.photo_url, size: "250x250") %>
-</section>
-<section>
-  <p>Price: <%= number_to_currency(@product.price) %></p>
-  <p>Sold by: <%= link_to @product.merchant.username, merchant_products_path(@product.merchant.id) %></p>
-  <p>Categories:</p>
-  <ul>
-    <% @product.categories.each do |category| %>
-      <li>
-        <%= link_to category.name, category_products_path(category) %>
-      </li>
-    <% end %>
-  </ul>
-
-  <% if @product.inventory_stock.nil? %>
-    <p>"Coming soon!"</p>
-  <% elsif @product.inventory_stock == 0 %>
-    <p>"Out of stock ☹️"</p>
-  <% else %>
-    <section class="form-row">
-      <%= form_with url: add_cart_path(@product), method: :post do |f| %>
-        <div class="form-inline">
-          <%= f.label :quantity %>
-          <%= f.select :quantity, options_for_select(1..@product.inventory_stock),
-                       {},
-                       class:"form-control"%>
-        </div>
-        <br>
-        <div class="form-group">
-          <%= f.submit "Add to Cart", class: "btn btn-success" %>
-        </div>
+ <section class="product-info">
+  <h1><%= @product.name %></h1>
+  <section class="product-img">
+    <%= image_tag(@product.photo_url, size: "250x250") %>
+  </section>
+  <section>
+    <p>Price: <%= number_to_currency(@product.price) %></p>
+    <p>Sold by: <%= link_to @product.merchant.username, merchant_products_path(@product.merchant.id) %></p>
+    <p>Categories:</p>
+    <ul>
+      <% @product.categories.each do |category| %>
+        <li>
+          <%= link_to category.name, category_products_path(category) %>
+        </li>
       <% end %>
-    </section>
-  <% end %>
-</section>
-<section class="product-desc">
-  <p>Description: <%= @product.description %></p>
-</section>
+    </ul>
+
+    <% if @product.inventory_stock.nil? %>
+      <p>"Coming soon!"</p>
+    <% elsif @product.inventory_stock == 0 %>
+      <p>"Out of stock ☹️"</p>
+    <% else %>
+      <section class="form-row">
+        <%= form_with url: add_cart_path(@product), method: :post do |f| %>
+          <div class="form-inline">
+            <%= f.label :quantity %>
+            <%= f.select :quantity, options_for_select(1..@product.inventory_stock),
+                         {},
+                         class:"form-control"%>
+          </div>
+          <br>
+          <div class="form-group">
+            <%= f.submit "Add to Cart", class: "btn btn-success" %>
+          </div>
+        <% end %>
+      </section>
+    <% end %>
+  </section>
+  <section class="product-desc">
+    <p>Description: <%= @product.description %></p>
+  </section>
+ </section>
 
 <section class="product-reviews">
   <h4>Reviews for <%= @product.name%>:</h4>
