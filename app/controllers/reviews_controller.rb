@@ -10,13 +10,18 @@ class ReviewsController < ApplicationController
     # @review = Review.new
     merchant = @current_merchant
 
-    if merchant.products.include?(@product)
-      flash[:warning] = "You can't review your own product!"
-      redirect_to product_path(@product)
-    else
+    # need to fix this to allow non-logged in users to review every product
+    if merchant.nil?
       @review = Review.new
+    else
+      if merchant.products.include?(@product)
+        flash[:warning] = "You can't review your own product!"
+        redirect_to product_path(@product)
+      else
+        @review = Review.new
+      end
     end
-
+    
   end
 
   def create
